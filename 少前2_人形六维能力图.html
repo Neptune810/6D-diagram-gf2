@@ -544,7 +544,7 @@ var LAYOUT = {
   sizeCard: 300, R100: 72, gridRings: 8, overflow: 'always',
   overflowAlpha: 0, ringAlpha: 0.145, ringMajorAlpha: 0.5, axisAlpha: 0,
   polyStroke: 0.5, polyFill: 0.35,
-  labelPad: 12, labelMinR: 28,                 /* 标签贴在各自维度的顶点外侧 12，最小半径 28 */
+  labelPad: 12, labelMinR: 28,                 /* 标签中心压在轴上、贴该维顶点外侧 12；数值极小时顶点半径兜底 28 */
   nameSize: 8, nameWeight: 600, nameStroke: 0,
   gradeSize: 9, ultraSize: 12, gradeStroke: 0, ultraStroke: 0,
   cardMinW: 276, cardGap: 0, cardPad: 12, cardInnerGap: 4
@@ -624,9 +624,12 @@ function radar(series, size, opt){
       var gI = (series[0] && series[0].letters) ? series[0].letters[i4] : letterOf(vI);
       if (opt.grades === false) gI = '';
       var wI = labelWidth(DSHORT[i4], gI);
-      var lrI = Math.min(Math.max(rOf(vI) + LAYOUT.labelPad, LAYOUT.labelMinR), cx - 8 - wI);
+      var angI = -Math.PI/2 + i4*Math.PI/3;
+      /* 标签中心压在轴线上：沿轴的半投影只有半宽×|cos|，所以能真正贴近顶点而不会越框 */
+      var halfI = Math.max(LAYOUT.nameSize * 0.6, (wI/2) * Math.abs(Math.cos(angI)));
+      var lrI = Math.min(Math.max(rOf(vI), LAYOUT.labelMinR) + LAYOUT.labelPad + halfI, cx - 6 - halfI);
       var pn = polar(cx,cy,lrI,i4);
-      var an = Math.abs(pn[0]-cx) < 1.5 ? 'middle' : (pn[0] > cx ? 'start' : 'end');
+      var an = 'middle';
       var ts = '<tspan style="fill:var(--paper-2);stroke-width:'+LAYOUT.nameStroke+'px">'+DSHORT[i4]+'</tspan>';
       if (gI) ts += '<tspan fill="'+gradeFill(gI, gpre)+'" style="font-size:'+(gI==='ULTRA'?LAYOUT.ultraSize:LAYOUT.gradeSize)+'px;font-weight:700;stroke-width:'+
         (gI==='ULTRA'?LAYOUT.ultraStroke:LAYOUT.gradeStroke)+'px"> '+gI+'</tspan>';

@@ -195,9 +195,11 @@ function radar(vals, color){
   for (var j = 0; j < 6; j++){
     var L = letterOf(vals[j]);
     var w = DSHORT[j].length * R.nameSize + 4 + L.length * (L === 'ULTRA' ? R.ultraSize : R.gradeSize) * 0.62;
-    var lr = Math.min(Math.max(vv[j] + R.labelPad, R.labelMinR), cx - 8 - w);
+    var ang = -Math.PI/2 + j*Math.PI/3;
+    var half = Math.max(R.nameSize * 0.6, (w/2) * Math.abs(Math.cos(ang)));
+    var lr = Math.min(Math.max(vv[j], R.labelMinR) + R.labelPad + half, cx - 6 - half);
     var lp2 = polar(cx,cy,lr,j);
-    o.push('<text class="albl" x="' + f1(lp2[0]) + '" y="' + f1(lp2[1] + 3) + '" text-anchor="' + labelAnchor(lp2[0]) + '"' +
+    o.push('<text class="albl" x="' + f1(lp2[0]) + '" y="' + f1(lp2[1] + 3) + '" text-anchor="middle"' +
       ' font-size="' + R.nameSize + '" font-weight="' + R.nameWeight + '">' +
       '<tspan style="fill:var(--paper-2);stroke-width:' + R.nameStroke + '">' + DSHORT[j] + '</tspan>' +
       '<tspan fill="' + gradeFill(L, gpre) + '" style="font-size:' + (L === 'ULTRA' ? R.ultraSize : R.gradeSize) + ';font-weight:700;stroke-width:' + (L === 'ULTRA' ? R.ultraStroke : R.gradeStroke) + '"> ' + L + '</tspan>' +
