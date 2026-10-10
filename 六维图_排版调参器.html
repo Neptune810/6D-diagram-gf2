@@ -84,7 +84,7 @@ textarea{width:100%;height:210px;padding:10px 12px;background:rgba(0,0,0,.32);bo
   <div class="top">
     <div>
       <h1>六维图 · <em>排版调参器</em></h1>
-      <p class="lede">左边拖滑条，右边 4 张样本卡实时重画。调好后点「导出配置」，把下面那段 JSON 发我——参数名和正式页面里的变量一一对应，我照着落进 <code>少前2_人形六维能力图.html</code>。</p>
+      <p class="lede">左边拖滑条，右边 4 张样本卡实时重画。调好后点「导出配置」，把下面那段 JSON 发我——参数名和正式页面里的变量一一对应，我照着落进 <code>少前2_人形六维能力图.html</code>。（顶点圆点与档位弧已在正式页按作者要求删除，这里也不再提供那两个滑条。）</p>
     </div>
     <div class="actions">
       <button class="btn" id="btnReset">恢复当前线上值</button>
@@ -120,13 +120,13 @@ textarea{width:100%;height:210px;padding:10px 12px;background:rgba(0,0,0,.32);bo
 /* ===== 默认值 = 当前线上页面的实际取值（改这里以对齐线上） ===== */
 var DEFAULTS = {
   radar: {
-    sizeCard: 300, R100: 69, gridRings: 8, overflow: 'auto',
-    overflowAlpha: 0.11, ringAlpha: 0.065, ringMajorAlpha: 0.20, axisAlpha: 0.085,
-    polyStroke: 2.4, polyFill: 0.30, vtxR: 3.6, arcW: 3, arcSpan: 0.075,
-    nameR: 60, nameSize: 10, nameWeight: 600, nameStroke: 3.2,
-    gradeR: 80, gradeSize: 10.5, ultraSize: 14.5, gradeStroke: 3, ultraStroke: 3.8, valueSize: 10.5
+    sizeCard: 300, R100: 72, gridRings: 8, overflow: 'always',
+    overflowAlpha: 0, ringAlpha: 0.145, ringMajorAlpha: 0.5, axisAlpha: 0,
+    polyStroke: 0.5, polyFill: 0.35,
+    nameR: 108, nameSize: 8, nameWeight: 600, nameStroke: 0,
+    gradeR: 80, gradeSize: 8, ultraSize: 11, gradeStroke: 0, ultraStroke: 0
   },
-  card: { minW: 292, gap: 1, pad: 16, innerGap: 12 }
+  card: { minW: 276, gap: 0, pad: 12, innerGap: 4 }
 };
 var P = JSON.parse(JSON.stringify(DEFAULTS));
 
@@ -188,30 +188,26 @@ function radar(vals, color){
   }
   for (var i3 = 0; i3 < 6; i3++){ var pa = polar(cx,cy,axisR,i3);
     o.push('<line class="axis" x1="' + cx + '" y1="' + cy + '" x2="' + f1(pa[0]) + '" y2="' + f1(pa[1]) + '" style="stroke:rgba(226,232,235,' + R.axisAlpha + ')"/>'); }
-  o.push('<circle class="scope" cx="' + cx + '" cy="' + cy + '" r="' + f1(R.R100) + '" style="stroke:rgba(226,232,235,.11)"/>');
 
   var vp = [], vv = [];
   for (var i4 = 0; i4 < 6; i4++){ var rv = rOf(vals[i4]); vv.push(rv); var pt = polar(cx,cy,rv,i4); vp.push(f1(pt[0]) + ',' + f1(pt[1])); }
   o.push('<polygon points="' + vp.join(' ') + '" fill="' + color + '" fill-opacity="' + R.polyFill + '" stroke="' + color + '" stroke-width="' + R.polyStroke + '"/>');
   for (var j = 0; j < 6; j++){
-    var L = letterOf(vals[j]), pt2 = polar(cx,cy,vv[j],j);
-    var a1 = polar(cx,cy,vv[j],j - R.arcSpan), a2 = polar(cx,cy,vv[j],j + R.arcSpan);
-    o.push('<path d="M ' + f1(a1[0]) + ' ' + f1(a1[1]) + ' A ' + f1(vv[j]) + ' ' + f1(vv[j]) + ' 0 0 1 ' + f1(a2[0]) + ' ' + f1(a2[1]) +
-      '" fill="none" stroke="' + gradeFill(L, gpre) + '" stroke-width="' + R.arcW + '" stroke-linecap="round"/>');
-    o.push('<circle cx="' + f1(pt2[0]) + '" cy="' + f1(pt2[1]) + '" r="' + R.vtxR + '" fill="' + gradeFill(L, gpre) + '"/>');
-    o.push('<text class="albl" x="' + f1(polar(cx,cy,R.nameR,j)[0]) + '" y="' + f1(polar(cx,cy,R.nameR,j)[1] + 3) + '" text-anchor="' + anchor(polar(cx,cy,R.nameR,j)[0], 'in') + '"' +
+    var L = letterOf(vals[j]);
+    var np = polar(cx,cy,R.nameR,j);
+    o.push('<text class="albl" x="' + f1(np[0]) + '" y="' + f1(np[1] + 3) + '" text-anchor="' + nameAnchor(np[0]) + '"' +
       ' font-size="' + R.nameSize + '" font-weight="' + R.nameWeight + '" fill="var(--paper-2)" stroke-width="' + R.nameStroke + '">' + DSHORT[j] + '</text>');
     var gp = polar(cx,cy,R.gradeR,j);
-    o.push('<text class="agl" x="' + f1(gp[0]) + '" y="' + f1(gp[1] + 4) + '" text-anchor="' + anchor(gp[0], 'out') + '"' +
+    o.push('<text class="agl" x="' + f1(gp[0]) + '" y="' + f1(gp[1] + 4) + '" text-anchor="middle"' +
       ' font-size="' + (L === 'ULTRA' ? R.ultraSize : R.gradeSize) + '" fill="' + gradeFill(L, gpre) + '" stroke-width="' + (L === 'ULTRA' ? R.ultraStroke : R.gradeStroke) + '">' + L + '</text>');
   }
   o.push('</svg>');
   return o.join('');
 }
-function anchor(x, dir){
+function nameAnchor(x){
   if (Math.abs(x - P.radar.sizeCard/2) < 1.5) return 'middle';
-  var right = x > P.radar.sizeCard/2;
-  return dir === 'in' ? (right ? 'end' : 'start') : (right ? 'start' : 'end');
+  var right = x > P.radar.sizeCard/2, out = P.radar.nameR >= P.radar.R100;   // 名字环在 100 环外→朝外排
+  return right ? (out ? 'start' : 'end') : (out ? 'end' : 'start');
 }
 
 /* ===== 样本 ===== */
@@ -258,9 +254,7 @@ var KNOBS = [
   ['数据图形', [
     ['radar.polyStroke', '多边形描边宽', 0.5, 6, .1, 'parea stroke-width'],
     ['radar.polyFill', '多边形填充', 0, .8, .01, 'parea fill-opacity'],
-    ['radar.vtxR', '顶点半径', 1, 8, .1, '.vtx r'],
-    ['radar.arcW', '档位弧宽', 1, 8, .1, '档位弧 stroke-width'],
-    ['radar.arcSpan', '档位弧半角', .02, .2, .005, '弧跨过顶点的角度']
+    /* 顶点圆点与档位弧已按作者要求删除，不再提供滑条 */
   ]],
   ['标签', [
     ['radar.nameR', '维度名半径', 10, 140, 1, 'NAME_R（环内）'],
