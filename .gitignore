@@ -3,7 +3,7 @@ _tools/
 _research/
 _skills/
 记忆/
-番外_*/
+番外_*
 *.docx
 *.zip
 Python/
@@ -13,3 +13,16 @@ _work/edgeprofile/
 _work/shots/
 _work/*.raw
 _work/gfl1_tables/
+
+# 程序之外的本地文件（同人小说 / 旧工作产物）—— 永久忽略，保持 git status 干净
+README_同人小说.md
+少前2_角色语感对照表.md
+少前2_设定考据档_官方文本提取.md
+第二章_整备室.md
+番外_余温.md
+_work/*.json
+_work/*.txt
+_work/RECOVERY_NOTE.md
+_work/待裁定清单.md
+_work/素体修正记录_2026-10-09.md
+_work/⚠_gunchar_recs_系列已作废_勿用.md
