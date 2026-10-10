@@ -557,12 +557,12 @@ function polar(cx,cy,r,i){ var a = -Math.PI/2 + i*Math.PI/3; return [cx + r*Math
    poly*=多边形描边/填充 · nameR/gradeR=维度名与档位字所在半径 · *Size/*Stroke=字号与文字描边
    card*=卡片版式（写进 CSS 变量） ---------- */
 var LAYOUT = {
-  sizeCard: 300, R100: 75, gridRings: 7, overflow: 'always',
+  sizeCard: 300, R100: 70, gridRings: 7, overflow: 'always',
   overflowAlpha: 0, ringAlpha: 0.25, ringMajorAlpha: 0.6, axisAlpha: 0,
   polyStroke: 0, polyFill: 0.6, labelPad: 8,
   nameSize: 10, nameWeight: 600, nameStroke: 0.4,
   gradeSize: 10, ultraSize: 11, gradeStroke: 0.6, ultraStroke: 0.6,
-  cardMinW: 278, cardGap: 0, cardPad: 17, cardInnerGap: 15
+  cardMinW: 318, cardGap: 0, cardPad: 30, cardInnerGap: 20
 };
 function applyTheme(){
   var s = document.documentElement.style, T = THEME;
