@@ -13,7 +13,8 @@ const html = fs.readFileSync(HTMLF, 'utf8');
 const L = html.split('\n');
 const DIMS = ['火力', '电子战', '搏斗', '素体', '速度', '战术'];
 const GRADES = ['E', 'D', 'C', 'B', 'A', 'S', 'SS', 'ULTRA'];
-const letterOf = v => v > 100 ? 'ULTRA' : GRADES[Math.max(0, Math.min(6, Math.floor(v / 12.5)))];
+const GBANDS = [20, 40, 60, 70, 80, 90, 100];
+const letterOf = v => { if (v > 100) return 'ULTRA'; for (let i = 0; i < GBANDS.length; i++) if (v <= GBANDS[i]) return GRADES[i]; return 'SS'; };
 
 const extract = (name) => {
   const i = L.findIndex(s => s.startsWith('var ' + name + ' = ['));
@@ -62,7 +63,7 @@ ck('05 条目 id / 名称唯一（' + E.length + ' 条）',
 ck('06 六维取值合法（每条 6 个，0–200）',
   E.every(e => Array.isArray(e.s) && e.s.length === 6 && e.s.every(v => typeof v === 'number' && v >= 0 && v <= 200) && e.total >= 0 && e.total <= 200), '');
 
-ck('07 字母档＝数值的 12.5 分带（同分必同档）',
+ck('07 字母档＝数值分带（同分必同档）',
   E.every(e => e.s.map(letterOf).join() === (e.letters || []).join()),
   E.filter(e => e.s.map(letterOf).join() !== (e.letters || []).join()).map(e => e.name).join('; '));
 

@@ -474,8 +474,14 @@ function clone(o){ return JSON.parse(JSON.stringify(o)); }
 function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function f1(n){ return Math.round(n*100)/100; }
 function q(id){ return document.getElementById(id); }
-/* 字母档＝数值分带：E<12.5≤D<25≤C<37.5≤B<50≤A<62.5≤S<75≤SS≤100；数值 >100 即 ULTRA（顶点 200） */
-function letterOf(v){ return v > 100 ? 'ULTRA' : GRADES[Math.max(0, Math.min(6, Math.floor(v / 12.5)))]; }
+/* 字母档分带（作者 2026-10-10 定）：E 0–20 · D 21–40 · C 41–60 · B 61–70 · A 71–80 · S 81–90 · SS 91–100 · >100 ULTRA */
+var GBANDS = [20, 40, 60, 70, 80, 90, 100];
+var GBAND_LABEL = ['0–20','21–40','41–60','61–70','71–80','81–90','91–100','>100'];
+function letterOf(v){
+  if (v > 100) return 'ULTRA';
+  for (var i = 0; i < GBANDS.length; i++) if (v <= GBANDS[i]) return GRADES[i];
+  return 'SS';
+}
 /* 字母档＝【分数的 12.5 分带】（E→ULTRA）。同一个分数必然同一个档；
    素体的型号阶梯已重铺到跨满 E→SS，所以最弱的民用素体会落到 E。 */
 function computeDimLetters(){
@@ -771,7 +777,7 @@ function renderModels(){
   }).join('　');
 }
 function renderScale(){
-  q('scale').innerHTML = GRADES.map(function(g,i){ return '<span><i style="'+gradeBg(GRADES[i])+'"></i>'+g+'</span>'; }).join('');
+  q('scale').innerHTML = GRADES.map(function(g,i){ return '<span title="'+g+' '+GBAND_LABEL[i]+' 分"><i style="'+gradeBg(GRADES[i])+'"></i>'+g+'</span>'; }).join('');
 }
 
 /* ---------- 阶梯 ---------- */

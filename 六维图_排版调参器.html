@@ -181,7 +181,12 @@ var GRADES = ['E','D','C','B','A','S','SS','ULTRA'];
 var GGRAD = { SS:['#fffbe0','#ffd23f','#f2a51a'], ULTRA:['#ff4d6d','#ffb84d','#ffe95c','#5fe0a0','#5fc7ff','#b06bff'] };
 var GGRAD_ANGLE = { SS:'105deg', ULTRA:'80deg' };
 function tierColor(i){ return get('theme.tier.'+i); }
-function letterOf(v){ return v > 100 ? 'ULTRA' : GRADES[Math.max(0,Math.min(6,Math.floor(v/12.5)))]; }
+var GBANDS = [20, 40, 60, 70, 80, 90, 100];
+function letterOf(v){
+  if (v > 100) return 'ULTRA';
+  for (var i = 0; i < GBANDS.length; i++) if (v <= GBANDS[i]) return GRADES[i];
+  return 'SS';
+}
 function gradeColor(g){ return tierColor(GRADES.indexOf(g)); }
 function gradeCss(g){ var c = gradeColor(g); return GGRAD[g]
   ? 'color:'+c+';background-image:linear-gradient('+(GGRAD_ANGLE[g]||'110deg')+','+GGRAD[g].join(',')+');-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent'
