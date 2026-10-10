@@ -138,6 +138,8 @@ input:focus,select:focus{border-color:var(--amber);background:rgba(229,161,60,.0
 svg.radar{display:block;width:100%;height:auto;overflow:visible}
 .ring{fill:none;stroke:rgba(226,232,235,.065);stroke-width:1}
 .ring.major{stroke:rgba(226,232,235,.14)}
+.ring.ultra{stroke:rgba(226,232,235,.042)}
+.ring.halo{stroke:rgba(226,232,235,.24)}
 .axis{stroke:rgba(226,232,235,.085);stroke-width:1}
 .node{fill:rgba(226,232,235,.22)}
 .albl{font:400 9.5px var(--txt);fill:var(--paper-faint);letter-spacing:.03em}
@@ -518,15 +520,15 @@ function radar(series, size, opt){
   var R = outer * 100 / MAXV;                // 100 的半径（六维图上限）
   parts.push('<svg class="radar" viewBox="0 0 '+size+' '+size+'" aria-hidden="true">');
   function rOf(v){ return R * Math.max(0, Math.min(MAXV, v)) / 100; }   // >100 即画到 100 环外
-  for (var k=1;k<=8;k++){
+  /* 网格按 12.5 分带铺到 200：0–100 正常亮，100–200（ULTRA 区）压暗，最外圈 200＝虚线六边形边界 */
+  for (var k=1;k<=16;k++){
     var rr = R*k/8, pts = [];
     for (var i=0;i<6;i++){ var p = polar(cx,cy,rr,i); pts.push(f1(p[0])+','+f1(p[1])); }
-    parts.push('<polygon class="ring'+(k===8?' major':'')+'" points="'+pts.join(' ')+'"/>');
+    parts.push('<polygon class="ring'+(k===8?' major':'')+(k>8?' ultra':'')+(k===16?' halo':'')+'" points="'+pts.join(' ')+'"/>');
   }
   for (var i2=0;i2<6;i2++){ var pa = polar(cx,cy,outer,i2);
     parts.push('<line class="axis" x1="'+cx+'" y1="'+cy+'" x2="'+f1(pa[0])+'" y2="'+f1(pa[1])+'"/>'); }
   parts.push('<circle class="scope" cx="'+cx+'" cy="'+cy+'" r="'+R+'"/>');
-  parts.push('<circle class="scope" cx="'+cx+'" cy="'+cy+'" r="'+f1(outer)+'" style="opacity:.22"/>');
   series.forEach(function(se, si){
     var pts = [], vt = [];
     parts.push('<g class="'+(se.cls||'')+'">');
@@ -545,7 +547,7 @@ function radar(series, size, opt){
       if (series.length > 1 && opt.gradesAll === true){
         for (var j2=0;j2<6;j2++){
           var Lg = se.letters ? se.letters[j2] : letterOf(se.vals[j2]);
-          var plg = polar(cx,cy,R + 10,j2);
+          var plg = polar(cx,cy,Math.min(Math.max(R, rOf(se.vals[j2])) + 10, outer - 4),j2);
           var alg = Math.abs(plg[0]-cx) < 1.5 ? 'middle' : (plg[0] > cx ? 'start' : 'end');
           parts.push('<text class="agl" x="'+f1(plg[0])+'" y="'+f1(plg[1]+4)+'" text-anchor="'+alg+'" fill="'+GCOLOR[GRADES.indexOf(Lg)]+'">'+Lg+'</text>');
         }
@@ -573,12 +575,15 @@ function radar(series, size, opt){
       var lg = (series.length===1 && opt.grades !== false) ? (series[0].letters ? series[0].letters[i] : letterOf(series[0].vals[i])) : '';
       var wid = 0;
       if (multi) for (var q=0;q<series.length;q++){ var lq = series[q].letters ? series[q].letters[i] : letterOf(series[q].vals[i]); wid = Math.max(wid, W[lq]||9); }
-      var lr = R + 10 + (lg ? (W[lg]||9) + 10 : (multi ? wid + 10 : 0));
+      /* 档位字母贴着该维顶点（数值 >100 时跟着出了 100 环），轴名再往外让开 */
+      var vR = series[0] ? rOf(series[0].vals[i]) : R;
+      var letterR = Math.min(Math.max(R, vR) + 10, outer - 4);
+      var lr = Math.min(letterR + (lg ? (W[lg]||9) + 10 : (multi ? wid + 10 : 0)), cx - 4);
       var pn = polar(cx,cy,lr,i);
       var an = Math.abs(pn[0]-cx) < 1.5 ? 'middle' : (pn[0] > cx ? 'start' : 'end');
       parts.push('<text class="albl" x="'+f1(pn[0])+'" y="'+f1(pn[1]+3)+'" text-anchor="'+an+'">'+DSHORT[i]+'</text>');
       if (lg){
-        var pl = polar(cx,cy,R+10,i);
+        var pl = polar(cx,cy,letterR,i);
         var al = Math.abs(pl[0]-cx) < 1.5 ? 'middle' : (pl[0] > cx ? 'start' : 'end');
         parts.push('<text class="agl" x="'+f1(pl[0])+'" y="'+f1(pl[1]+4)+'" text-anchor="'+al+'" fill="'+GCOLOR[GRADES.indexOf(lg)]+'">'+lg+'</text>');
       }
