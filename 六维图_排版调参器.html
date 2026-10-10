@@ -99,16 +99,63 @@ textarea{width:100%;height:220px;padding:10px 12px;background:rgba(0,0,0,.32);bo
 <div class="toast" id="toast"></div>
 <script>
 var DEFAULTS = {
-  radar: { sizeCard:300, R100:72, gridRings:8, overflow:'always', overflowAlpha:0, ringAlpha:0.145, ringMajorAlpha:0.5, axisAlpha:0,
-    polyStroke:0.5, polyFill:0.35, labelPad:12,
-    nameSize:8, nameWeight:600, nameStroke:0, gradeSize:9, ultraSize:12, gradeStroke:0, ultraStroke:0 },
-  card: { minW:276, gap:0, pad:12, innerGap:4 },
-  theme: { bg:'#0a1219', bgGlow:'rgba(95,179,176,.085)', bgGlow2:'rgba(229,161,60,.055)', bgGrid:'rgba(226,232,235,.032)',
-    panelTop:'#0d1822', panelBot:'#0a1219', line:'rgba(226,232,235,.14)', lineSoft:'rgba(226,232,235,.07)',
-    text:'#eae5da', nameText:'#c3cdd4', textDim:'#8ea3b1', textFaint:'#67808f', accent:'#ffb84d',
-    grid:'#e2e8eb', gridMajor:'#e2e8eb', axis:'#e2e8eb', overflowLine:'#e2e8eb',
-    self:'#ffb84d', foe:'#ff6f75',
-    tier:['#9c9c9c','#9c9c9c','#9c9c9c','#f0c53f','#f0c53f','#f0c53f','#f0c53f','#e08cff'] }
+  radar: {
+    sizeCard: 300,
+    R100: 75,
+    gridRings: 7,
+    overflow: "always",
+    overflowAlpha: 0,
+    ringAlpha: 0.25,
+    ringMajorAlpha: 0.6,
+    axisAlpha: 0,
+    polyStroke: 0,
+    polyFill: 0.6,
+    labelPad: 8,
+    nameSize: 10,
+    nameWeight: 600,
+    nameStroke: 0.4,
+    gradeSize: 10,
+    ultraSize: 11,
+    gradeStroke: 0.6,
+    ultraStroke: 0.6
+  },
+  card: {
+    minW: 278,
+    gap: 0,
+    pad: 17,
+    innerGap: 15
+  },
+  theme: {
+    bg: "#0a1219",
+    bgGlow: "rgba(95,179,176,.085)",
+    bgGlow2: "rgba(229,161,60,.055)",
+    bgGrid: "rgba(10,18,25,0.032)",
+    panelTop: "#101d28",
+    panelBot: "#101d28",
+    line: "rgba(255,255,255,0.14)",
+    lineSoft: "rgba(255,255,255,0.07)",
+    text: "#eae5da",
+    nameText: "#c9d2d9",
+    textDim: "#8ea3b1",
+    textFaint: "#67808f",
+    accent: "#ffb84d",
+    grid: "#e2e8eb",
+    gridMajor: "#e2e8eb",
+    axis: "#e2e8eb",
+    overflowLine: "#e2e8eb",
+    self: "#56a2d2",
+    foe: "#e74040",
+    tier: [
+      "#9c9c9c",
+      "#9c9c9c",
+      "#9c9c9c",
+      "#f0c53f",
+      "#f0c53f",
+      "#f0c53f",
+      "#f0c53f",
+      "#e08cff"
+    ]
+  }
 };
 var P = JSON.parse(JSON.stringify(DEFAULTS));
 function get(path){ var a = path.split('.'), o = P; for (var i=0;i<a.length;i++) o = o[a[i]]; return o; }
