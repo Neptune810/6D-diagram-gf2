@@ -1,5 +1,846 @@
 {
- "entries": [],
+ "entries": [
+  {
+   "id": "nb01",
+   "name": "闪电",
+   "faction": "艾莫号 · 闪电小队",
+   "cls": "防卫",
+   "weapon": "突击步枪",
+   "brand": "OTs-14",
+   "frame": "SST-05A2",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "待考",
+   "basis": "闪电小队队长 · 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb02",
+   "name": "可露凯",
+   "faction": "H.I.D.E.404",
+   "cls": "火力",
+   "weapon": "突击步枪",
+   "brand": "HK416",
+   "frame": "SST-05",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "待考",
+   "basis": "H.I.D.E.404 现任队长 · 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb03",
+   "name": "莱娅",
+   "faction": "H.I.D.E.404",
+   "cls": "火力",
+   "weapon": "冲锋枪",
+   "brand": "UMP45",
+   "frame": "DUAL_DSI_8",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "待考",
+   "basis": "前 H.I.D.E.404 队长 · 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb04",
+   "name": "维克托",
+   "faction": "H.I.D.E.404",
+   "cls": "支援",
+   "weapon": "冲锋枪",
+   "brand": "Vector",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "待考",
+   "basis": "H.I.D.E.404 · 战术指挥位 · 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb05",
+   "name": "索普",
+   "faction": "AR小队",
+   "cls": "尖兵",
+   "weapon": "突击步枪",
+   "brand": "",
+   "frame": "SST_05A3_SEP",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "待考",
+   "basis": "AR小队 · 战术指挥位 · 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb06",
+   "name": "威玛西娜",
+   "faction": "忤逆小队",
+   "cls": "火力",
+   "weapon": "突击步枪",
+   "brand": "AK-15",
+   "frame": "CSD_09B4M",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "待考",
+   "basis": "忤逆小队 · 战术指挥位 · 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb07",
+   "name": "纳美西丝",
+   "faction": "艾莫号 · 闪电小队",
+   "cls": "火力",
+   "weapon": "狙击枪",
+   "brand": "OM50 复仇女神",
+   "frame": "SST-05A2",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "待考",
+   "basis": "自机 · 非 SSD 素体（SST-05A2）· 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb08",
+   "name": "纳美西丝·衍光",
+   "faction": "艾莫号 · 闪电小队",
+   "cls": "火力",
+   "weapon": "狙击枪",
+   "brand": "异格素体",
+   "frame": "OBSRV_PRT_00",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "待考",
+   "basis": "自机 · 非 SSD 素体（OBSRV_PRT_00）· 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb09",
+   "name": "寇尔芙·镜刻",
+   "faction": "艾莫号 · 闪电小队",
+   "cls": "支援",
+   "weapon": "手枪",
+   "brand": "异格素体",
+   "frame": "DOPPELGAENGER",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "待考",
+   "basis": "自机 · 非 SSD 素体（DOPPELGAENGER）· 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb10",
+   "name": "朝晖",
+   "faction": "艾莫号",
+   "cls": "尖兵",
+   "weapon": "冲锋枪",
+   "brand": "CL/LS06",
+   "frame": "SST-05",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "待考",
+   "basis": "自机 · 非 SSD 素体（SST-05）· 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb11",
+   "name": "莱妮",
+   "faction": "其他势力",
+   "cls": "火力",
+   "weapon": "冲锋枪",
+   "brand": "UMP40",
+   "frame": "PPD_02",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "待考",
+   "basis": "自机 · 非 SSD 素体（PPD_02）· 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb12",
+   "name": "洛贝拉",
+   "faction": "AR小队",
+   "cls": "尖兵",
+   "weapon": "冲锋枪",
+   "brand": "柯尔特635",
+   "frame": "PPD_02",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "待考",
+   "basis": "自机 · 非 SSD 素体（PPD_02）· 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb13",
+   "name": "托洛洛",
+   "faction": "G.&K. 霜降小队",
+   "cls": "火力",
+   "weapon": "突击步枪",
+   "brand": "阿拉什-阿尔法",
+   "frame": "SST-05",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "待考",
+   "basis": "自机 · 非 SSD 素体（SST-05）· 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb14",
+   "name": "琳德",
+   "faction": "G.&K. 霜降小队",
+   "cls": "火力",
+   "weapon": "霰弹枪",
+   "brand": "AA-12",
+   "frame": "SST-05",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "待考",
+   "basis": "自机 · 非 SSD 素体（SST-05）· 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb15",
+   "name": "克莱妲",
+   "faction": "忤逆小队",
+   "cls": "尖兵",
+   "weapon": "突击步枪",
+   "brand": "AK-12",
+   "frame": "GOL_Loki_00",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "待考",
+   "basis": "自机 · 非 SSD 素体（GOL_Loki_00）· 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb16",
+   "name": "埃芙",
+   "faction": "忤逆小队",
+   "cls": "火力",
+   "weapon": "突击步枪",
+   "brand": "AN-94",
+   "frame": "CSD_09B4M",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "待考",
+   "basis": "自机 · 非 SSD 素体（CSD_09B4M）· 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb17",
+   "name": "莫辛纳甘",
+   "faction": "其他势力",
+   "cls": "火力",
+   "weapon": "狙击枪",
+   "brand": "莫辛-纳甘",
+   "frame": "SST-05",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "待考",
+   "basis": "自机 · 非 SSD 素体（SST-05）· 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb18",
+   "name": "代理人",
+   "faction": "其他势力",
+   "cls": "尖兵",
+   "weapon": "机枪",
+   "brand": "近战 / 护盾",
+   "frame": "AGENT",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "待考",
+   "basis": "自机 · 非 SSD 素体（AGENT）· 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb19",
+   "name": "翡图萨",
+   "faction": "待考（阵营未明）",
+   "cls": "火力",
+   "weapon": "近战武器",
+   "brand": "Phaetusa",
+   "frame": "DUAL_DSI_9",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "待考",
+   "basis": "自机 · 非 SSD 素体（DUAL_DSI_9）· 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb20",
+   "name": "阿斯缇亚",
+   "faction": "待考（阵营未明）",
+   "cls": "支援",
+   "weapon": "突击步枪",
+   "brand": "",
+   "frame": "SST_05A3_ST",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "待考",
+   "basis": "自机 · 非 SSD 素体（SST_05A3_ST）· 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb21",
+   "name": "芙铃",
+   "faction": "待考（阵营未明）",
+   "cls": "支援",
+   "weapon": "突击步枪",
+   "brand": "",
+   "frame": "SST-05",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "待考",
+   "basis": "自机 · 非 SSD 素体（SST-05）· 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  }
+ ],
  "edges": [],
  "frameModels": [],
  "frameSrcNote": "素体型号来自本机客户端表 GunCharacterData.bytes 的 protobuf 字段 f17（<CODE>→型号），角色名由同记录的 LangPackage 文本 id 对齐（LangPackageTableCnData.bytes）；EventRoleTrialData.bytes 的 ActivityChrTryItemBg_<CODE> / Img_Activity_ChrTryNumber_<型号> 为第二独立来源，两表全量一致。不使用任何网络资料。",

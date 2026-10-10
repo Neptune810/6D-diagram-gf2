@@ -17,12 +17,15 @@ const GBANDS = [20, 40, 60, 70, 80, 90, 100];
 const letterOf = v => { if (v > 100) return 'ULTRA'; for (let i = 0; i < GBANDS.length; i++) if (v <= GBANDS[i]) return GRADES[i]; return 'SS'; };
 
 const extract = (name) => {
-  const i = L.findIndex(s => s.startsWith('var ' + name + ' = ['));
+  const head = 'var ' + name + ' = ';
+  const i = L.findIndex(s => s.startsWith(head));
   if (i < 0) return null;
-  if (L[i].replace(/\s/g, '') === ('var' + name + '=[];')) return [];
-  const e = L.findIndex((s, k) => k > i && s.trim() === '];');
-  if (e < 0) return null;
-  return JSON.parse('[' + L.slice(i + 1, e).filter(s => s.trim()).map(s => s.replace(/,\s*$/, '')).join(',') + ']');
+  let buf = '';
+  for (let k = i; k < Math.min(i + 400, L.length); k++){
+    buf += (k === i ? L[i].slice(head.length) : L[k]);
+    try { return JSON.parse(buf.trim().replace(/;\s*$/, '')); } catch (e) {}
+  }
+  return null;
 };
 const HENT = extract('DEFAULT_DATA');
 const HEDG = extract('DEFAULT_EDGES');
