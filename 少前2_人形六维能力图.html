@@ -573,7 +573,8 @@ function showVerBar(){
 }
 /* 2026-10-10 起改手动保存：所有原来的自动保存调用点 save() 现在只标脏，真正写入 localStorage 交给「保存」按钮 */
 function persist(){ syncLetters(); try { localStorage.setItem(LSKEY, JSON.stringify({ ver: DATA_VERSION, entries: state.entries, edges: state.edges, review: state.review })); } catch(e){} state.dirty = false; updateDirtyUI(); }
-function markDirty(){ state.dirty = true; updateDirtyUI(); }
+/* 任何改动都要重算派生数据（字母档/总分/梯队）——手动保存模式下 save() 只标脏，容易漏掉这一步 */
+function markDirty(){ syncLetters(); state.dirty = true; updateDirtyUI(); }
 function save(){ markDirty(); }
 function updateDirtyUI(){ var b = q('btnSave'); if (!b) return; b.classList.toggle('dirty', !!state.dirty); b.textContent = state.dirty ? '保存 •' : '保存'; b.title = state.dirty ? '有未保存的改动，点击写入浏览器存档' : '与本地存档一致'; }
 
@@ -1508,7 +1509,7 @@ state.entries.forEach(function(e){ if (!e.id) e.id = uid(); if (!e.tier) e.tier 
 syncLetters();
 applyHash();
 q('q').value = state.q; q('fSide').value = state.side;
-applyRail(); applyLayout(); applyTheme(); bind(); render(); showVerBar();
+applyRail(); applyLayout(); applyTheme(); syncLetters(); bind(); render(); showVerBar();
 </script>
 </body>
 </html>
