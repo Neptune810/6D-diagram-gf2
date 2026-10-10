@@ -192,6 +192,7 @@ function radar(vals, color){
   var vp = [], vv = [];
   for (var i4 = 0; i4 < 6; i4++){ var rv = rOf(vals[i4]); vv.push(rv); var pt = polar(cx,cy,rv,i4); vp.push(f1(pt[0]) + ',' + f1(pt[1])); }
   o.push('<polygon points="' + vp.join(' ') + '" fill="' + color + '" fill-opacity="' + R.polyFill + '" stroke="' + color + '" stroke-width="' + R.polyStroke + '"/>');
+  for (var j = 0; j < 6; j++){
     var L = letterOf(vals[j]);
     var w = DSHORT[j].length * R.nameSize + 4 + L.length * (L === 'ULTRA' ? R.ultraSize : R.gradeSize) * 0.62;
     var lr = Math.min(Math.max(vv[j] + R.labelPad, R.labelMinR), cx - 8 - w);
@@ -201,6 +202,7 @@ function radar(vals, color){
       '<tspan style="fill:var(--paper-2);stroke-width:' + R.nameStroke + '">' + DSHORT[j] + '</tspan>' +
       '<tspan fill="' + gradeFill(L, gpre) + '" style="font-size:' + (L === 'ULTRA' ? R.ultraSize : R.gradeSize) + ';font-weight:700;stroke-width:' + (L === 'ULTRA' ? R.ultraStroke : R.gradeStroke) + '"> ' + L + '</tspan>' +
       '</text>');
+  }
   o.push('</svg>');
   return o.join('');
 }
