@@ -10,8 +10,8 @@
   --ink-900:#0a1219; --ink-850:#0d1822; --ink-800:#111d28; --ink-750:#16242f;
   --paper:#eae5da; --paper-2:#c3cdd4; --paper-dim:#8ea3b1; --paper-faint:#67808f;
   --line:rgba(226,232,235,.14); --line-soft:rgba(226,232,235,.07); --line-hard:rgba(226,232,235,.24);
-  --amber:#e5a13c; --crimson:#cf5a5f; --teal:#5fb3b0;
-  --g0:#6d7a86; --g1:#7d94a4; --g2:#66a9a0; --g3:#9fb35c; --g4:#ddba55; --g5:#e08f3c; --g6:#d2694f; --g7:#c8455f;
+  --amber:#ffb84d; --crimson:#cf5a5f; --teal:#5fb3b0;
+  --g0:#9a9088; --g1:#c08a5e; --g2:#b3c0cf; --g3:#5cc4c9; --g4:#7fa8e8; --g5:#b070e0; --g6:#f0c53f; --g7:#e08cff;
   --sp:8px; --r:2px;
   --dsp:'Bahnschrift SemiCondensed','Bahnschrift','DIN Alternate','DIN Condensed','Microsoft YaHei UI',sans-serif;
   --txt:'Segoe UI Variable Text','Segoe UI','Microsoft YaHei UI','PingFang SC',sans-serif;
@@ -412,18 +412,18 @@ var DSHORT = ['火力','电子战','搏斗','素体','速度','战术'];
 /* 档位配色＝LoL 现役段位徽章取色（CommunityDragon 图标采样，按暗底可读性提亮后转三段渐变）：
    E 黑铁 iron｜D 黄铜 bronze｜C 白银 silver｜B 铂金 platinum｜A 钻石 diamond
    S 超凡大师 master（紫）｜SS 最强王者 challenger（金，偏黄）｜ULTRA 五彩斑斓 */
-var GCOLOR = ['#8b8481','#bd7550','#a4b7cd','#2fbfd6','#3f8ef2','#b44ef2','#ffd23f','#e08cff'];
+/* 档位用色逻辑（照前端审美 Skill 卡 4「桌面工具 UI」）：
+   ① 色相＝LoL 现役徽章：E 黑铁／D 黄铜／C 白银／B 铂金／A 钻石／S 大师紫／SS 王者金／ULTRA 五彩
+   ② 低饱和 calm band：E–A 一律纯色（S≤.45、V .60–.72），**只有 S/SS/ULTRA 用渐变**——全饱和街机色在 UI 密度下会读成噪声
+   ③ 对比度＝工程：每档对卡片地面 #0d1822 都 ≥4.5:1（脚本逐值验过）
+   ④ 明度随段位单调上升：黑铁最沉 → 王者最亮 */
+var GCOLOR = ['#9a9088','#c08a5e','#b3c0cf','#5cc4c9','#7fa8e8','#b070e0','#f0c53f','#e08cff'];
 var GGRAD = {
-  E:     ['#cbc7c4','#8b8481','#57514f'],
-  D:     ['#f5b189','#bd7550','#7d472c'],
-  C:     ['#eef5ff','#a4b7cd','#63758c'],
-  B:     ['#9cf2e4','#2fbfd6','#1a7f9c'],
-  A:     ['#bcdcff','#3f8ef2','#234f9e'],
-  S:     ['#e6bcff','#b44ef2','#7826b8'],
+  S:     ['#dca8ff','#b070e0','#7a3fb0'],
   SS:    ['#fffbe0','#ffd23f','#f2a51a'],
   ULTRA: ['#ff4d6d','#ffb84d','#ffe95c','#5fe0a0','#5fc7ff','#b06bff']
 };
-var GGRAD_ANGLE = { E:'150deg', D:'135deg', C:'140deg', B:'135deg', A:'130deg', S:'120deg', SS:'105deg', ULTRA:'80deg' };
+var GGRAD_ANGLE = { S:'120deg', SS:'105deg', ULTRA:'80deg' };
 function gradList(g){ return GGRAD[g].join(','); }
 function gradeStyle(g){ return GGRAD[g]
   ? 'color:' + GCOLOR[GRADES.indexOf(g)] + ';background-image:linear-gradient(' + (GGRAD_ANGLE[g]||'110deg') + ',' + gradList(g) + ');-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent'
