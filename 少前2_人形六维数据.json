@@ -839,6 +839,126 @@
     "E",
     "E"
    ]
+  },
+  {
+   "id": "nb22",
+   "name": "六分仪",
+   "faction": "敌方 · 三代人形",
+   "cls": "火力",
+   "weapon": "近战武器",
+   "brand": "Sextans",
+   "frame": "STR-01A247",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "三代人形；以权限漏洞入侵他人心智，后入队 · 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb23",
+   "name": "蓝雪球",
+   "faction": "敌方 · 三代人形",
+   "cls": "未知",
+   "weapon": "重装 / 再生",
+   "brand": "Blue Snowball",
+   "frame": "",
+   "side": "foe",
+   "src": "追放主线",
+   "conf": "待考",
+   "basis": "与黑眼并列的敌方人形 · 素体可自行恢复损伤 · 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
+  },
+  {
+   "id": "nb24",
+   "name": "黑眼",
+   "faction": "敌方 · 三代人形",
+   "cls": "未知",
+   "weapon": "阳伞 / 近战",
+   "brand": "Black Eye",
+   "frame": "",
+   "side": "foe",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "沉默护卫型 · 近身与复原速度描写突出 · 数值待填",
+   "rank": 0,
+   "total": 0,
+   "tier": "E",
+   "s": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ],
+   "letters": [
+    "E",
+    "E",
+    "E",
+    "E",
+    "E",
+    "E"
+   ]
   }
  ],
  "edges": [],
