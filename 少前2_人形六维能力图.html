@@ -138,7 +138,6 @@ svg.radar{display:block;width:100%;height:auto;overflow:visible}
 .node{fill:rgba(226,232,235,.22)}
 .albl{font-family:var(--txt);fill:var(--paper-2);letter-spacing:.03em;paint-order:stroke;stroke:var(--ink-900);stroke-linejoin:round}
 .fval{fill:var(--paper-2);font-family:var(--dsp);font-size:9px;font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--ink-900);stroke-linejoin:round}
-.agl{font-family:var(--dsp);letter-spacing:.01em;paint-order:stroke;stroke:var(--ink-900);stroke-linejoin:round}
 .evidence{font-size:11.5px;line-height:1.55;color:var(--paper-dim);border-left:1px solid var(--line-hard);padding-left:9px}
 .ledger{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;border-top:1px solid var(--line-soft);padding-top:8px}
 .led{display:flex;justify-content:space-between;gap:8px;align-items:baseline;padding:3px 0;border-bottom:1px solid var(--line-soft)}
@@ -545,8 +544,9 @@ var LAYOUT = {
   sizeCard: 300, R100: 72, gridRings: 8, overflow: 'always',
   overflowAlpha: 0, ringAlpha: 0.145, ringMajorAlpha: 0.5, axisAlpha: 0,
   polyStroke: 0.5, polyFill: 0.35,
-  nameR: 80, nameSize: 8, nameWeight: 600, nameStroke: 0,
-  gradeR: 128, gradeSize: 9, ultraSize: 12, gradeStroke: 0, ultraStroke: 0,
+  labelPad: 12, labelMinR: 28,                 /* 标签贴在各自维度的顶点外侧 12，最小半径 28 */
+  nameSize: 8, nameWeight: 600, nameStroke: 0,
+  gradeSize: 9, ultraSize: 12, gradeStroke: 0, ultraStroke: 0,
   cardMinW: 276, cardGap: 0, cardPad: 12, cardInnerGap: 4
 };
 function applyLayout(){
@@ -558,6 +558,12 @@ function applyLayout(){
 }
 /* 字号/字重/描边走内联 style，排版参数才能即时生效（颜色仍由 class 控） */
 function textStyle(size, stroke){ return 'font-size:' + size + 'px;font-weight:700;stroke-width:' + stroke + 'px'; }
+/* 标签宽度粗估（中文按 1em、拉丁按 0.62em），用来把标签钳在画布内 */
+function labelWidth(name, grade){
+  var w = name.length * LAYOUT.nameSize + (grade ? 4 : 0);
+  if (grade) w += grade.length * (grade === 'ULTRA' ? LAYOUT.ultraSize : LAYOUT.gradeSize) * 0.62;
+  return w;
+}
 
 function radar(series, size, opt){
   opt = opt || {};
@@ -603,13 +609,6 @@ function radar(series, size, opt){
         parts.push('<text class="fval" x="'+f1(lp[0])+'" y="'+f1(lp[1]+3.5)+'" text-anchor="middle">'+se.vals[m]+'</text>');
       }
     }
-    if (series.length > 1 && opt.gradesAll === true){    /* 双形态：每态一圈档位字，靠对比度切换亮暗 */
-      for (var j2=0;j2<6;j2++){
-        var Lg = se.letters ? se.letters[j2] : letterOf(se.vals[j2]);
-        var plg = polar(cx,cy,LAYOUT.gradeR,j2);
-        parts.push('<text class="agl" x="'+f1(plg[0])+'" y="'+f1(plg[1]+4)+'" text-anchor="middle" fill="'+gradeFill(Lg, gpre)+'" style="'+textStyle(Lg==='ULTRA'?LAYOUT.ultraSize:LAYOUT.gradeSize, Lg==='ULTRA'?LAYOUT.ultraStroke:LAYOUT.gradeStroke)+'">'+Lg+'</text>');
-      }
-    }
     parts.push('</g>');
   });
   if (opt.drag && series.length === 1){
@@ -618,18 +617,20 @@ function radar(series, size, opt){
       parts.push('<circle class="dragv" data-i="'+dg+'" cx="'+f1(hp[0])+'" cy="'+f1(hp[1])+'" r="11" fill="none" stroke="none"/>');
     }
   }
-  /* 标签：维度名一圈、档位字一圈，半径来自排版参数，位置不随数值移动 */
+  /* 标签：每个维度只出一个「维度名 + 档位」，位置贴着该维顶点外侧——实时跟着图面积走 */
   if (opt.labels !== false){
-    var nameOut = LAYOUT.nameR >= R;   // 名字环在 100 环外就朝外排，在环内就朝圆心排
     for (var i4=0;i4<6;i4++){
-      var lg = (series.length===1 && opt.grades !== false) ? (series[0].letters ? series[0].letters[i4] : letterOf(series[0].vals[i4])) : '';
-      var pn = polar(cx,cy,LAYOUT.nameR,i4);
-      var an = Math.abs(pn[0]-cx) < 1.5 ? 'middle' : (pn[0] > cx ? (nameOut?'start':'end') : (nameOut?'end':'start'));
-      parts.push('<text class="albl" x="'+f1(pn[0])+'" y="'+f1(pn[1]+3)+'" text-anchor="'+an+'" style="'+textStyle(LAYOUT.nameSize, LAYOUT.nameStroke)+'">'+DSHORT[i4]+'</text>');
-      if (lg){
-        var pl = polar(cx,cy,LAYOUT.gradeR,i4);
-        parts.push('<text class="agl" x="'+f1(pl[0])+'" y="'+f1(pl[1]+4)+'" text-anchor="middle" fill="'+gradeFill(lg, gpre)+'" style="'+textStyle(lg==='ULTRA'?LAYOUT.ultraSize:LAYOUT.gradeSize, lg==='ULTRA'?LAYOUT.ultraStroke:LAYOUT.gradeStroke)+'">'+lg+'</text>');
-      }
+      var vI = series[0] ? series[0].vals[i4] : 0;
+      var gI = (series[0] && series[0].letters) ? series[0].letters[i4] : letterOf(vI);
+      if (opt.grades === false) gI = '';
+      var wI = labelWidth(DSHORT[i4], gI);
+      var lrI = Math.min(Math.max(rOf(vI) + LAYOUT.labelPad, LAYOUT.labelMinR), cx - 8 - wI);
+      var pn = polar(cx,cy,lrI,i4);
+      var an = Math.abs(pn[0]-cx) < 1.5 ? 'middle' : (pn[0] > cx ? 'start' : 'end');
+      var ts = '<tspan style="fill:var(--paper-2);stroke-width:'+LAYOUT.nameStroke+'px">'+DSHORT[i4]+'</tspan>';
+      if (gI) ts += '<tspan fill="'+gradeFill(gI, gpre)+'" style="font-size:'+(gI==='ULTRA'?LAYOUT.ultraSize:LAYOUT.gradeSize)+'px;font-weight:700;stroke-width:'+
+        (gI==='ULTRA'?LAYOUT.ultraStroke:LAYOUT.gradeStroke)+'px"> '+gI+'</tspan>';
+      parts.push('<text class="albl" x="'+f1(pn[0])+'" y="'+f1(pn[1]+3)+'" text-anchor="'+an+'" style="font-size:'+LAYOUT.nameSize+'px;font-weight:'+LAYOUT.nameWeight+'">'+ts+'</text>');
     }
   }
   parts.push('</svg>');

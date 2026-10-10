@@ -62,7 +62,6 @@ svg.radar{display:block;width:100%;height:auto;overflow:visible}
 .axis{stroke-width:1}
 .scope{fill:none;stroke-dasharray:3 5}
 .albl{font-family:var(--txt);letter-spacing:.03em;paint-order:stroke;stroke:var(--ink-900);stroke-linejoin:round}
-.agl{font-family:var(--dsp);letter-spacing:.01em;paint-order:stroke;stroke:var(--ink-900);stroke-linejoin:round}
 .fval{font-family:var(--dsp);font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--ink-900);stroke-linejoin:round}
 .ledger{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;border-top:1px solid var(--line-soft);padding-top:8px}
 .led{display:flex;justify-content:space-between;gap:8px;align-items:baseline;padding:3px 0;border-bottom:1px solid var(--line-soft)}
@@ -84,7 +83,7 @@ textarea{width:100%;height:210px;padding:10px 12px;background:rgba(0,0,0,.32);bo
   <div class="top">
     <div>
       <h1>六维图 · <em>排版调参器</em></h1>
-      <p class="lede">左边拖滑条，右边 4 张样本卡实时重画。调好后点「导出配置」，把下面那段 JSON 发我——参数名和正式页面里的变量一一对应，我照着落进 <code>少前2_人形六维能力图.html</code>。（顶点圆点与档位弧已在正式页按作者要求删除，这里也不再提供那两个滑条。）</p>
+      <p class="lede">左边拖滑条，右边 4 张样本卡实时重画。调好后点「导出配置」，把下面那段 JSON 发我——参数名和正式页面里的变量一一对应，我照着落进 <code>少前2_人形六维能力图.html</code>。（顶点圆点与档位弧已删除；标签已合并成「维度名＋档位」一个，贴着各自顶点走。）</p>
     </div>
     <div class="actions">
       <button class="btn" id="btnReset">恢复当前线上值</button>
@@ -123,8 +122,9 @@ var DEFAULTS = {
     sizeCard: 300, R100: 72, gridRings: 8, overflow: 'always',
     overflowAlpha: 0, ringAlpha: 0.145, ringMajorAlpha: 0.5, axisAlpha: 0,
     polyStroke: 0.5, polyFill: 0.35,
-    nameR: 80, nameSize: 8, nameWeight: 600, nameStroke: 0,
-    gradeR: 128, gradeSize: 9, ultraSize: 12, gradeStroke: 0, ultraStroke: 0
+    labelPad: 12, labelMinR: 28,
+    nameSize: 8, nameWeight: 600, nameStroke: 0,
+    gradeSize: 9, ultraSize: 12, gradeStroke: 0, ultraStroke: 0
   },
   card: { minW: 276, gap: 0, pad: 12, innerGap: 4 }
 };
@@ -192,22 +192,21 @@ function radar(vals, color){
   var vp = [], vv = [];
   for (var i4 = 0; i4 < 6; i4++){ var rv = rOf(vals[i4]); vv.push(rv); var pt = polar(cx,cy,rv,i4); vp.push(f1(pt[0]) + ',' + f1(pt[1])); }
   o.push('<polygon points="' + vp.join(' ') + '" fill="' + color + '" fill-opacity="' + R.polyFill + '" stroke="' + color + '" stroke-width="' + R.polyStroke + '"/>');
-  for (var j = 0; j < 6; j++){
     var L = letterOf(vals[j]);
-    var np = polar(cx,cy,R.nameR,j);
-    o.push('<text class="albl" x="' + f1(np[0]) + '" y="' + f1(np[1] + 3) + '" text-anchor="' + nameAnchor(np[0]) + '"' +
-      ' font-size="' + R.nameSize + '" font-weight="' + R.nameWeight + '" fill="var(--paper-2)" stroke-width="' + R.nameStroke + '">' + DSHORT[j] + '</text>');
-    var gp = polar(cx,cy,R.gradeR,j);
-    o.push('<text class="agl" x="' + f1(gp[0]) + '" y="' + f1(gp[1] + 4) + '" text-anchor="middle"' +
-      ' font-size="' + (L === 'ULTRA' ? R.ultraSize : R.gradeSize) + '" fill="' + gradeFill(L, gpre) + '" stroke-width="' + (L === 'ULTRA' ? R.ultraStroke : R.gradeStroke) + '">' + L + '</text>');
-  }
+    var w = DSHORT[j].length * R.nameSize + 4 + L.length * (L === 'ULTRA' ? R.ultraSize : R.gradeSize) * 0.62;
+    var lr = Math.min(Math.max(vv[j] + R.labelPad, R.labelMinR), cx - 8 - w);
+    var lp2 = polar(cx,cy,lr,j);
+    o.push('<text class="albl" x="' + f1(lp2[0]) + '" y="' + f1(lp2[1] + 3) + '" text-anchor="' + labelAnchor(lp2[0]) + '"' +
+      ' font-size="' + R.nameSize + '" font-weight="' + R.nameWeight + '">' +
+      '<tspan style="fill:var(--paper-2);stroke-width:' + R.nameStroke + '">' + DSHORT[j] + '</tspan>' +
+      '<tspan fill="' + gradeFill(L, gpre) + '" style="font-size:' + (L === 'ULTRA' ? R.ultraSize : R.gradeSize) + ';font-weight:700;stroke-width:' + (L === 'ULTRA' ? R.ultraStroke : R.gradeStroke) + '"> ' + L + '</tspan>' +
+      '</text>');
   o.push('</svg>');
   return o.join('');
 }
-function nameAnchor(x){
+function labelAnchor(x){                     // 标签一律朝外排，绝不压回图里
   if (Math.abs(x - P.radar.sizeCard/2) < 1.5) return 'middle';
-  var right = x > P.radar.sizeCard/2, out = P.radar.nameR >= P.radar.R100;   // 名字环在 100 环外→朝外排
-  return right ? (out ? 'start' : 'end') : (out ? 'end' : 'start');
+  return x > P.radar.sizeCard/2 ? 'start' : 'end';
 }
 
 /* ===== 样本 ===== */
@@ -257,15 +256,15 @@ var KNOBS = [
     /* 顶点圆点与档位弧已按作者要求删除，不再提供滑条 */
   ]],
   ['标签', [
-    ['radar.nameR', '维度名半径', 10, 140, 1, 'NAME_R（环内）'],
+    ['radar.labelPad', '标签离顶点', 0, 40, 1, 'labelPad：贴顶点外侧多少'],
+    ['radar.labelMinR', '标签最小半径', 0, 80, 1, 'labelMinR：数值很小时的兜底'],
     ['radar.nameSize', '维度名字号', 7, 18, .5, '.albl font-size'],
     ['radar.nameWeight', '维度名字重', 400, 800, 100, '.albl font-weight'],
-    ['radar.nameStroke', '维度名描边', 0, 8, .2, '.albl stroke-width'],
-    ['radar.gradeR', '档位字半径', 10, 150, 1, 'GRADE_R（环外）'],
-    ['radar.gradeSize', '档位字号', 7, 20, .5, '.agl font-size'],
-    ['radar.ultraSize', 'ULTRA 字号', 8, 26, .5, '.agl.big font-size'],
-    ['radar.gradeStroke', '档位描边', 0, 8, .2, '.agl stroke-width'],
-    ['radar.ultraStroke', 'ULTRA 描边', 0, 8, .2, '.agl.big stroke-width']
+    ['radar.nameStroke', '维度名描边', 0, 8, .2, '名字部分 stroke-width'],
+    ['radar.gradeSize', '档位字号', 7, 20, .5, '档位部分 font-size'],
+    ['radar.ultraSize', 'ULTRA 字号', 8, 26, .5, 'ULTRA 部分 font-size'],
+    ['radar.gradeStroke', '档位描边', 0, 8, .2, '档位部分 stroke-width'],
+    ['radar.ultraStroke', 'ULTRA 描边', 0, 8, .2, 'ULTRA 部分 stroke-width']
   ]],
   ['卡片', [
     ['card.minW', '卡片最小宽', 200, 460, 2, '.plates minmax()'],
