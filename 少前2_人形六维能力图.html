@@ -311,7 +311,8 @@ svg.net{display:block;width:100%;height:auto}
 .plate .fp{opacity:.18;transition:opacity .42s var(--easing),filter .42s var(--easing)}
 .plate .fp .parea{transition:stroke-width .42s var(--easing)}
 .plate[data-active="0"] .f0,.plate[data-active="1"] .f1{opacity:1}
-.plate[data-active="0"] .f1 .agl,.plate[data-active="1"] .f0 .agl{display:none}
+.plate[data-active="0"] .f1 .albl,.plate[data-active="1"] .f0 .albl{display:none}
+.plate.dual .albl{transition:opacity .42s var(--easing)}
 .rankno .ta,.rankno .tb,.tier .ta,.tier .tb{transition:opacity .42s var(--easing)}
 .rankno .tb,.tier .tb{margin-left:9px}
 .rankno .tb{font-size:18px;color:var(--paper-dim)}
@@ -659,12 +660,14 @@ function radar(series, size, opt){
       parts.push('<line class="axis" x1="'+cx+'" y1="'+cy+'" x2="'+f1(pa[0])+'" y2="'+f1(pa[1])+'" style="stroke:'+withAlpha(THEME.axis, LAYOUT.axisAlpha)+'"/>'); }
   }
   /* 数据多边形：只有描边＋填充（顶点、档位弧已按作者要求删除） */
+  var isDualNow = series.length > 1 && opt.gradesAll === true;
   series.forEach(function(se, si){
     var pts = [];
     parts.push('<g class="'+(se.cls||'')+'">');
     for (var i=0;i<6;i++){ var rr = rOf(se.vals[i]); var p = polar(cx,cy,rr,i); pts.push(f1(p[0])+','+f1(p[1])); }
     var fop = opt.fillOpacity !== undefined ? opt.fillOpacity : LAYOUT.polyFill;
     parts.push('<polygon class="parea" points="'+pts.join(' ')+'" fill="'+se.color+'" fill-opacity="'+fop+'" stroke="'+se.color+'" stroke-width="'+LAYOUT.polyStroke+'"/>');
+    if (isDualNow && opt.labels !== false) emitLabels(se.vals, se.letters);   /* 每态一套标签 */
     if (opt.values){
       for (var m=0;m<6;m++){
         var vv = rOf(se.vals[m]), lp = polar(cx,cy,Math.min(vv + 13 + si*11, R - 6), m);
@@ -679,11 +682,12 @@ function radar(series, size, opt){
       parts.push('<circle class="dragv" data-i="'+dg+'" cx="'+f1(hp[0])+'" cy="'+f1(hp[1])+'" r="11" fill="none" stroke="none"/>');
     }
   }
-  /* 标签：每个维度只出一个「维度名 + 档位」，位置贴着该维顶点外侧——实时跟着图面积走 */
-  if (opt.labels !== false){
+  /* 标签：每个维度一个「维度名 + 档位」，位置贴着该维基准半径——实时跟着图面积走
+     双形态卡每态各出一套（放在各自 <g> 里），切换时由 CSS 显隐，档位文字会跟着换 */
+  function emitLabels(vals, letters){
     for (var i4=0;i4<6;i4++){
-      var vI = series[0] ? series[0].vals[i4] : 0;
-      var gI = (series[0] && series[0].letters) ? series[0].letters[i4] : letterOf(vI);
+      var vI = vals ? vals[i4] : 0;
+      var gI = letters ? letters[i4] : letterOf(vI);
       if (opt.grades === false) gI = '';
       var wI = labelWidth(DSHORT[i4], gI);
       var angI = -Math.PI/2 + i4*Math.PI/3;
@@ -701,6 +705,8 @@ function radar(series, size, opt){
       parts.push('<text class="albl" x="'+f1(pn[0])+'" y="'+f1(pn[1]+3)+'" text-anchor="'+an+'" style="font-size:'+LAYOUT.nameSize+'px;font-weight:'+LAYOUT.nameWeight+'">'+ts+'</text>');
     }
   }
+  var isDual = series.length > 1 && opt.gradesAll === true;
+  if (opt.labels !== false && !isDual) emitLabels(series[0] ? series[0].vals : null, series[0] ? series[0].letters : null);
   parts.push('</svg>');
   return parts.join('');
 }
