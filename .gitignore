@@ -1,0 +1,15 @@
+# 大块语料 / 第三方解包表 / 私有素材 —— 不进仓库
+_tools/
+_research/
+_skills/
+记忆/
+番外_*/
+*.docx
+*.zip
+Python/
+
+# 运行时产物
+_work/edgeprofile/
+_work/shots/
+_work/*.raw
+_work/gfl1_tables/

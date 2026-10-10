@@ -1,0 +1,4168 @@
+{
+ "entries": [
+  {
+   "id": "s1",
+   "name": "闪电",
+   "faction": "艾莫号 · 闪电小队",
+   "cls": "防卫",
+   "weapon": "突击步枪",
+   "brand": "OTs-14",
+   "frame": "SST-05A2",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "主线中统合性格迥异的小队，全程担任现场指挥；心智承压后仍维持判断（2026-10-09 重评：OTs-14；『有着丰富的指挥经验』，闪电小队队长、全程现场指挥）",
+   "s": [
+    76,
+    69,
+    71,
+    45,
+    72,
+    120
+   ],
+   "rank": 73.9,
+   "edges": [],
+   "letters": [
+    "SS",
+    "S",
+    "S",
+    "B",
+    "S",
+    "ULTRA"
+   ],
+   "tier": "S",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 0,
+   "frameSrc": "客户端 GunCharacterData.bytes（protobuf 直解）+ LangPackageTableCnData.bytes 名称对齐",
+   "total": 73.9,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s74",
+   "name": "黑闪电",
+   "faction": "敌方 · 三代人形",
+   "cls": "火力",
+   "weapon": "突击步枪",
+   "brand": "OTs-14",
+   "frame": "SST_05A2_X",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "财团用闪电损毁素体改造的三代人形：伯介姆细胞修复了格里芬时期记忆（『您记忆中的那个人不只是闪电，同时也是我』）；近战怪力（『黑漆漆的闪电刚才简直是在砸钢板』『你就算用当时和我对打的怪力也没用的』）；火力型·源谐伤害（2026-10-09 新增：素体 SST_05A2_X＝**87 SS**——作者裁定，与三代素体／针同档、超过威玛西娜 85，**不受普通 SST 的 C–A 阶梯约束**；六维为助手提案，待作者复核）",
+   "s": [
+    85,
+    45,
+    88,
+    87,
+    48,
+    95
+   ],
+   "rank": 79.2,
+   "edges": [],
+   "letters": [
+    "SS",
+    "B",
+    "SS",
+    "SS",
+    "B",
+    "SS"
+   ],
+   "tier": "SS",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 282,
+   "verdict": "2026-10-09 补登：客户端独立记录（code=OTs14 / skin=OTs14SSR / 型号 SST_05A2_X），官方别称「黑闪电」，2026-03-17「镜像冗余」实装为限定精英人形。素体先取 58 A、经作者 2026-10-09 裁定改为 **87 SS**（SST-05A2-X 不是普通 SST 改，强度对标针、超过威玛西娜）。六维为助手提案，待作者复核。",
+   "vSrc": "助手提案（待作者复核）",
+   "frameSrc": "客户端 GunCharacterData / LangPackageTableCnData（code=OTs14 / skin=OTs14SSR）",
+   "total": 79.2,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s2",
+   "name": "纳美西丝",
+   "faction": "艾莫号 · 闪电小队",
+   "cls": "火力",
+   "weapon": "狙击枪",
+   "brand": "OM50 复仇女神",
+   "frame": "SST-05A2",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "远距离精准射击担当，主线多次执行狙杀；性格迷信占卜、近身战非长项（2026-10-09 重评：Nemesis/SST-05A2；狙击担当，近身非长项）",
+   "s": [
+    69,
+    59,
+    31,
+    45,
+    39,
+    48
+   ],
+   "rank": 47.3,
+   "edges": [],
+   "letters": [
+    "S",
+    "A",
+    "C",
+    "B",
+    "B",
+    "B"
+   ],
+   "tier": "B",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 1165,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 47.3,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s3",
+   "name": "纳美西丝·衍光",
+   "faction": "艾莫号 · 闪电小队",
+   "cls": "火力",
+   "weapon": "狙击枪",
+   "brand": "异格素体",
+   "frame": "OBSRV_PRT_00",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "待考",
+   "basis": "衍光形态；定位与本体一致",
+   "s": [
+    59,
+    41,
+    6,
+    79,
+    19,
+    40
+   ],
+   "rank": 40.7,
+   "edges": [],
+   "letters": [
+    "A",
+    "B",
+    "E",
+    "SS",
+    "D",
+    "B"
+   ],
+   "tier": "B",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 1165,
+   "frameSrc": "客户端 GunCharacterData.bytes（protobuf 直解）+ LangPackageTableCnData.bytes 名称对齐",
+   "total": 40.7,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s4",
+   "name": "克罗丽科",
+   "faction": "艾莫号 · 闪电小队",
+   "cls": "尖兵",
+   "weapon": "刀",
+   "brand": "Charolic",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "小队白刃担当，剧情反复以近战突进压制敌人；情绪起伏大",
+   "s": [
+    40,
+    35,
+    76,
+    24,
+    45,
+    40
+   ],
+   "rank": 45.7,
+   "edges": [
+    {
+     "a": "克罗丽科",
+     "b": "长袍人",
+     "rel": "击败",
+     "dim": -1,
+     "note": "克罗丽科击败了眼前的几个穿着长袍的人",
+     "group": false
+    }
+   ],
+   "letters": [
+    "B",
+    "C",
+    "SS",
+    "D",
+    "B",
+    "B"
+   ],
+   "tier": "B",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 0,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 45.7,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s5",
+   "name": "寇尔芙",
+   "faction": "艾莫号 · 闪电小队",
+   "cls": "支援",
+   "weapon": "手枪",
+   "brand": "GSh-18",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "医疗人形；半个素体被严重烧伤仍拦下敌人，心智表现突出（2026-10-09 八评：素体改按型号绝对线性 = 基线 64）",
+   "s": [
+    6,
+    41,
+    6,
+    24,
+    45,
+    31
+   ],
+   "rank": 21.5,
+   "edges": [],
+   "letters": [
+    "E",
+    "B",
+    "E",
+    "D",
+    "B",
+    "C"
+   ],
+   "tier": "D",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 1201,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 21.5,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s6",
+   "name": "寇尔芙·镜刻",
+   "faction": "艾莫号 · 闪电小队",
+   "cls": "支援",
+   "weapon": "手枪",
+   "brand": "异格素体",
+   "frame": "DOPPELGAENGER",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "待考",
+   "basis": "镜刻形态；依据与本体相近（2026-10-09 八评：素体改按型号绝对线性 = 基线 74）",
+   "s": [
+    34,
+    71,
+    39,
+    64,
+    56,
+    44
+   ],
+   "rank": 49.4,
+   "edges": [],
+   "letters": [
+    "C",
+    "S",
+    "B",
+    "S",
+    "A",
+    "B"
+   ],
+   "tier": "B",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 1201,
+   "frameSrc": "客户端 GunCharacterData.bytes（protobuf 直解）+ LangPackageTableCnData.bytes 名称对齐",
+   "total": 49.4,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s7",
+   "name": "维普蕾",
+   "faction": "艾莫号",
+   "cls": "尖兵",
+   "weapon": "霰弹枪",
+   "brand": "Vepr-12",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "尖兵定位，剧情多为冲阵与支援（2026-10-09 重评：Vepley/SSD-62D 标准民用素体）",
+   "s": [
+    44,
+    27,
+    48,
+    24,
+    28,
+    6
+   ],
+   "rank": 31.7,
+   "edges": [],
+   "letters": [
+    "B",
+    "C",
+    "B",
+    "D",
+    "C",
+    "E"
+   ],
+   "tier": "C",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 1161,
+   "frameSrc": "客户端 GunCharacterData.bytes（protobuf 直解）+ LangPackageTableCnData.bytes 名称对齐",
+   "total": 31.7,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s8",
+   "name": "秋桦",
+   "faction": "艾莫号",
+   "cls": "尖兵",
+   "weapon": "霰弹枪",
+   "brand": "97式霰弹枪",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "黄区美食猎人，剧情以物资支援与轻装突击为主（2026-10-09 八评：素体改按型号绝对线性 = 基线 64）",
+   "s": [
+    6,
+    19,
+    45,
+    24,
+    6,
+    31
+   ],
+   "rank": 24.7,
+   "edges": [],
+   "letters": [
+    "E",
+    "D",
+    "B",
+    "D",
+    "E",
+    "C"
+   ],
+   "tier": "D",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 353,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 24.7,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s9",
+   "name": "佩莉",
+   "faction": "艾莫号",
+   "cls": "防卫",
+   "weapon": "冲锋枪",
+   "brand": "MP5",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "暗商出身；剧情中举枪射击、反复调用心智记录脱困（2026-10-09 六评：被强行接入覆写程序，「她一次次进入那扇门，又一次次被击倒」仍坚持演算终止码，最终「覆写已终止」——按用户口径属心智底层抗攻击加分，43→60；心智仍有缺损（2026-10-09 八评：素体改按型号绝对线性 = 基线 64）",
+   "s": [
+    34,
+    53,
+    19,
+    24,
+    66,
+    31
+   ],
+   "rank": 33.3,
+   "edges": [],
+   "letters": [
+    "C",
+    "A",
+    "D",
+    "D",
+    "S",
+    "C"
+   ],
+   "tier": "C",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 594,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 33.3,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s10",
+   "name": "海伦",
+   "faction": "艾莫号",
+   "cls": "防卫",
+   "weapon": "霰弹枪",
+   "brand": "DP-12",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "擅长利用规则；剧情负责潜入控制室切断装置）（2026-10-09 三评：『心智空间内无法阻挡地下坠』『仿佛要将海伦的每一寸心智都剥开』）",
+   "s": [
+    59,
+    79,
+    79,
+    24,
+    68,
+    76
+   ],
+   "rank": 62.9,
+   "edges": [
+    {
+     "a": "海伦",
+     "b": "茧",
+     "rel": "近身压制",
+     "dim": 2,
+     "note": "她很难想象自己居然会被一个二代人形在近身战中暂时压制",
+     "group": false
+    }
+   ],
+   "letters": [
+    "A",
+    "SS",
+    "SS",
+    "D",
+    "S",
+    "SS"
+   ],
+   "tier": "S",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 1874,
+   "verdict": "近身压制茧判定为情境性偷袭，不计入常态战力",
+   "vSrc": "用户判定",
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 62.9,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s11",
+   "name": "芙洛伦",
+   "faction": "艾莫号",
+   "cls": "支援",
+   "weapon": "手枪",
+   "brand": "PA-15",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "医疗人形，剧情中负责监测与数据分析",
+   "s": [
+    6,
+    53,
+    6,
+    24,
+    34,
+    44
+   ],
+   "rank": 23.7,
+   "edges": [],
+   "letters": [
+    "E",
+    "A",
+    "E",
+    "D",
+    "C",
+    "B"
+   ],
+   "tier": "D",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 471,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 23.7,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s12",
+   "name": "妮基塔",
+   "faction": "艾莫号",
+   "cls": "火力",
+   "weapon": "狙击枪",
+   "brand": "VSK-94",
+   "frame": "SSD-62G",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "治安系狙击人形；参与对茧的作战，直来直往",
+   "s": [
+    65,
+    53,
+    45,
+    24,
+    52,
+    60
+   ],
+   "rank": 48.3,
+   "edges": [],
+   "letters": [
+    "S",
+    "A",
+    "B",
+    "D",
+    "A",
+    "A"
+   ],
+   "tier": "B",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 530,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 48.3,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s13",
+   "name": "朝晖",
+   "faction": "艾莫号",
+   "cls": "尖兵",
+   "weapon": "冲锋枪",
+   "brand": "CL/LS06",
+   "frame": "SST-05",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "季风小队；剧情中练习刀术、持长刀行动",
+   "s": [
+    53,
+    41,
+    74,
+    32,
+    52,
+    60
+   ],
+   "rank": 53.6,
+   "edges": [
+    {
+     "a": "朝晖",
+     "b": "可疑男子",
+     "rel": "压制",
+     "dim": -1,
+     "note": "朝晖以迅雷之势压制住了躲在墙后的可疑男子",
+     "group": false
+    }
+   ],
+   "letters": [
+    "A",
+    "B",
+    "S",
+    "C",
+    "A",
+    "A"
+   ],
+   "tier": "A",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 0,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 53.6,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s14",
+   "name": "幼熙",
+   "faction": "艾莫号",
+   "cls": "支援",
+   "weapon": "突击步枪",
+   "brand": "K2",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "与队友合力击溃防御机械组",
+   "s": [
+    6,
+    27,
+    39,
+    24,
+    19,
+    40
+   ],
+   "rank": 26.8,
+   "edges": [],
+   "letters": [
+    "E",
+    "C",
+    "B",
+    "D",
+    "D",
+    "B"
+   ],
+   "tier": "C",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 330,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 26.8,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s15",
+   "name": "春田",
+   "faction": "艾莫号",
+   "cls": "支援",
+   "weapon": "狙击枪",
+   "brand": "M1903",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "官方",
+   "basis": "情报网组织者；剧情明确其电子战不及莱娅与卡萝，但胜在统合与筹谋（2026-10-09 六评：『春田向来是成熟的代表』『稳定了军心』——成熟度第一，但心智锚按用户裁定让给「强度」轴第一的埃芙，90→85）",
+   "s": [
+    65,
+    76,
+    52,
+    24,
+    85,
+    69
+   ],
+   "rank": 57.5,
+   "edges": [],
+   "letters": [
+    "S",
+    "SS",
+    "A",
+    "D",
+    "SS",
+    "S"
+   ],
+   "tier": "A",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 1064,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 57.5,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s16",
+   "name": "可露凯",
+   "faction": "H.I.D.E.404",
+   "cls": "火力",
+   "weapon": "突击步枪",
+   "brand": "HK416",
+   "frame": "SST-05",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "404 现任队长，剧情定位为压倒性的精英；被队友视为不可输的存在（2026-10-09 重评：404队长、火力型人形；但蓝雪球单人即可单挑404一队，可露凯个人战力明显在蓝雪球之下（2026-10-09 八评：素体改按型号绝对线性 = 基线 72）",
+   "s": [
+    87,
+    84,
+    76,
+    32,
+    80,
+    82
+   ],
+   "rank": 71.4,
+   "edges": [],
+   "letters": [
+    "SS",
+    "SS",
+    "SS",
+    "C",
+    "SS",
+    "SS"
+   ],
+   "tier": "S",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 1288,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 71.4,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s17",
+   "name": "莱娅",
+   "faction": "H.I.D.E.404",
+   "cls": "火力",
+   "weapon": "冲锋枪",
+   "brand": "UMP45",
+   "frame": "DUAL_DSI_8",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "前 404 队长；电子战顶点（心智空间、伞病毒、镜茧与囚蝶）（2026-10-09 三评：莱娅心智空间被 OGAS 持续干扰、极不稳定——电子战强 ≠ 心智稳，心智 82→58）",
+   "s": [
+    85,
+    120,
+    76,
+    70,
+    60,
+    86
+   ],
+   "rank": 81.6,
+   "edges": [],
+   "letters": [
+    "SS",
+    "ULTRA",
+    "SS",
+    "S",
+    "A",
+    "SS"
+   ],
+   "tier": "SS",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 1545,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 81.6,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s18",
+   "name": "莱娜",
+   "faction": "H.I.D.E.404",
+   "cls": "支援",
+   "weapon": "冲锋枪",
+   "brand": "UMP9",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "沟通协调与电子战专精；剧情中被单独夺取控制权（2026-10-09 三评：『莱娜的声音始终开朗且稳定』『莱娜坚定的态度』）",
+   "s": [
+    48,
+    76,
+    52,
+    24,
+    80,
+    60
+   ],
+   "rank": 52.6,
+   "edges": [],
+   "letters": [
+    "B",
+    "SS",
+    "A",
+    "D",
+    "SS",
+    "A"
+   ],
+   "tier": "A",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 1079,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 52.6,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s19",
+   "name": "安朵丝",
+   "faction": "H.I.D.E.404",
+   "cls": "防卫",
+   "weapon": "突击步枪",
+   "brand": "G36-KSK",
+   "frame": "SSD-62F",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "情报收集特化，护住指挥官的同时完成数据解析（2026-10-09 三评：『安朵丝的情绪稳定性真是太厉害了』）",
+   "s": [
+    34,
+    71,
+    42,
+    24,
+    84,
+    66
+   ],
+   "rank": 48.2,
+   "edges": [],
+   "letters": [
+    "C",
+    "S",
+    "B",
+    "D",
+    "SS",
+    "S"
+   ],
+   "tier": "B",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 646,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 48.2,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s20",
+   "name": "比悠卡",
+   "faction": "H.I.D.E.404",
+   "cls": "尖兵",
+   "weapon": "突击步枪",
+   "brand": "G28",
+   "frame": "SSD-62G",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "404 尖兵，剧情中冲阵与近身压制",
+   "s": [
+    59,
+    53,
+    69,
+    24,
+    34,
+    44
+   ],
+   "rank": 49,
+   "edges": [],
+   "letters": [
+    "A",
+    "A",
+    "S",
+    "D",
+    "C",
+    "B"
+   ],
+   "tier": "B",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 404,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 49,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s21",
+   "name": "维克托",
+   "faction": "H.I.D.E.404",
+   "cls": "支援",
+   "weapon": "冲锋枪",
+   "brand": "Vector",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "剧情称其能做出更优秀的战时判断；多次带伤作战（2026-10-09 三评：『维克托也绝对会坚守到最后一刻』『维克托的心智有着坚定的』）",
+   "s": [
+    83,
+    80,
+    78,
+    24,
+    82,
+    86
+   ],
+   "rank": 69.9,
+   "edges": [
+    {
+     "a": "维克托",
+     "b": "可露凯",
+     "rel": "相当",
+     "dim": -1,
+     "note": "维克托可是最强的，认真起来和可露凯也不相上下",
+     "group": false
+    }
+   ],
+   "letters": [
+    "SS",
+    "SS",
+    "SS",
+    "D",
+    "SS",
+    "SS"
+   ],
+   "tier": "S",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 0,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 69.9,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s22",
+   "name": "米什缇",
+   "faction": "H.I.D.E.404",
+   "cls": "支援",
+   "weapon": "突击步枪",
+   "brand": "G11",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "被可露凯督促提升火力，输出核心之一（2026-10-09 重评：G11/404一队，同样在蓝雪球单挑战力之下）",
+   "s": [
+    79,
+    76,
+    60,
+    24,
+    48,
+    60
+   ],
+   "rank": 56.9,
+   "edges": [],
+   "letters": [
+    "SS",
+    "SS",
+    "A",
+    "D",
+    "B",
+    "A"
+   ],
+   "tier": "A",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 0,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 56.9,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s23",
+   "name": "哈卜茜",
+   "faction": "H.I.D.E.404",
+   "cls": "防卫",
+   "weapon": "冲锋枪",
+   "brand": "TMP",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "与维尔德协同袭击；剧情涉及系统操作与删帖",
+   "s": [
+    40,
+    66,
+    19,
+    24,
+    19,
+    40
+   ],
+   "rank": 32.6,
+   "edges": [],
+   "letters": [
+    "B",
+    "S",
+    "D",
+    "D",
+    "D",
+    "B"
+   ],
+   "tier": "C",
+   "wSrc": "客户端配给文本",
+   "frameTier": "客户端",
+   "ev": 340,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 32.6,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s24",
+   "name": "维尔德",
+   "faction": "H.I.D.E.404",
+   "cls": "支援",
+   "weapon": "手枪",
+   "brand": "Welrod",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "视觉被干扰、素体多处伤口仍继续战斗（2026-10-09 八评：素体改按型号绝对线性 = 基线 64）",
+   "s": [
+    53,
+    64,
+    39,
+    24,
+    45,
+    52
+   ],
+   "rank": 44.1,
+   "edges": [
+    {
+     "a": "维尔德",
+     "b": "敌方集群",
+     "rel": "不敌",
+     "dim": -1,
+     "note": "敌方人数众多，正面战斗的话，维尔德可能不是对手",
+     "group": false
+    }
+   ],
+   "letters": [
+    "A",
+    "S",
+    "B",
+    "D",
+    "B",
+    "A"
+   ],
+   "tier": "B",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 0,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 44.1,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s25",
+   "name": "希丽雅",
+   "faction": "H.I.D.E.404",
+   "cls": "支援",
+   "weapon": "突击步枪",
+   "brand": "",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "待考",
+   "basis": "剧情大量描写其心智承压与自我压制",
+   "s": [
+    40,
+    41,
+    45,
+    24,
+    52,
+    40
+   ],
+   "rank": 39.4,
+   "edges": [
+    {
+     "a": "希丽雅",
+     "b": "桑朵莱希",
+     "rel": "交手",
+     "dim": 2,
+     "note": "希丽雅跃起试图飞踢击退桑朵莱希",
+     "group": false
+    }
+   ],
+   "letters": [
+    "B",
+    "B",
+    "B",
+    "D",
+    "A",
+    "B"
+   ],
+   "tier": "B",
+   "wSrc": "客户端配给文本",
+   "frameTier": "客户端",
+   "ev": 481,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 39.4,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s26",
+   "name": "莱妮",
+   "faction": "其他势力",
+   "cls": "火力",
+   "weapon": "冲锋枪",
+   "brand": "UMP40",
+   "frame": "PPD_02",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "由 UMP40 心智数据重构的独立人形，心智层面特殊",
+   "s": [
+    65,
+    76,
+    64,
+    32,
+    64,
+    64
+   ],
+   "rank": 59.2,
+   "edges": [],
+   "letters": [
+    "S",
+    "SS",
+    "S",
+    "C",
+    "S",
+    "S"
+   ],
+   "tier": "A",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 206,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 59.2,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s27",
+   "name": "洛贝拉",
+   "faction": "AR小队",
+   "cls": "尖兵",
+   "weapon": "冲锋枪",
+   "brand": "柯尔特635",
+   "frame": "PPD_02",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "总结战斗日志、电子战与近战兼顾",
+   "s": [
+    65,
+    76,
+    69,
+    32,
+    56,
+    66
+   ],
+   "rank": 60,
+   "edges": [],
+   "letters": [
+    "S",
+    "SS",
+    "S",
+    "C",
+    "A",
+    "S"
+   ],
+   "tier": "A",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 0,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 60,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s28",
+   "name": "索普",
+   "faction": "AR小队",
+   "cls": "尖兵",
+   "weapon": "突击步枪",
+   "brand": "",
+   "frame": "SST_05A3_SEP",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "待考",
+   "basis": "素体被生物缠裹仍持续战斗，与洛贝拉同组（2026-10-09 重评：SST_05A3_SEP特化；对伯介姆拆解经验丰富；与埃芙战胜三代原型机；『索普的判断不会错』）",
+   "s": [
+    81,
+    77,
+    81,
+    58,
+    76,
+    80
+   ],
+   "rank": 75.3,
+   "edges": [
+    {
+     "a": "索普",
+     "b": "洛贝拉",
+     "rel": "压制",
+     "dim": -1,
+     "note": "我们两个加起来恐怕都打不过索普你哦",
+     "group": false
+    }
+   ],
+   "letters": [
+    "SS",
+    "SS",
+    "SS",
+    "A",
+    "SS",
+    "SS"
+   ],
+   "tier": "SS",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 737,
+   "verdict": "「两人合力不敌」为戏言，无实战战绩支撑，降至 S 档中游",
+   "vSrc": "用户判定",
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 75.3,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s29",
+   "name": "琼玖",
+   "faction": "G.&K. 霜降小队",
+   "cls": "火力",
+   "weapon": "突击步枪",
+   "brand": "一九一式",
+   "frame": "SSD-62G",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "官方",
+   "basis": "霜降小队核心，多年战场反应与计划能力突出（2026-10-09 三评：『尚不成熟的琼玖』但『确实成长了很多』）",
+   "s": [
+    76,
+    76,
+    64,
+    24,
+    76,
+    71
+   ],
+   "rank": 61.9,
+   "edges": [],
+   "letters": [
+    "SS",
+    "SS",
+    "S",
+    "D",
+    "SS",
+    "S"
+   ],
+   "tier": "A",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 416,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 61.9,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s30",
+   "name": "托洛洛",
+   "faction": "G.&K. 霜降小队",
+   "cls": "火力",
+   "weapon": "突击步枪",
+   "brand": "阿拉什-阿尔法",
+   "frame": "SST-05",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "官方",
+   "basis": "标准战斗装备与冷静表现，剧情强调其从不在人前失控",
+   "s": [
+    59,
+    41,
+    45,
+    32,
+    52,
+    40
+   ],
+   "rank": 44.4,
+   "edges": [],
+   "letters": [
+    "A",
+    "B",
+    "B",
+    "C",
+    "A",
+    "B"
+   ],
+   "tier": "B",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 377,
+   "frameSrc": "客户端 GunCharacterData.bytes（protobuf 直解）+ LangPackageTableCnData.bytes 名称对齐",
+   "total": 44.4,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s31",
+   "name": "奇塔",
+   "faction": "G.&K. 霜降小队",
+   "cls": "支援",
+   "weapon": "冲锋枪",
+   "brand": "黑科赫7",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "官方",
+   "basis": "发明大王；用战术遥控器解题，素体曾严重受损",
+   "s": [
+    6,
+    53,
+    6,
+    24,
+    19,
+    40
+   ],
+   "rank": 21.6,
+   "edges": [],
+   "letters": [
+    "E",
+    "A",
+    "E",
+    "D",
+    "D",
+    "B"
+   ],
+   "tier": "D",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 429,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 21.6,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s32",
+   "name": "琳德",
+   "faction": "G.&K. 霜降小队",
+   "cls": "火力",
+   "weapon": "霰弹枪",
+   "brand": "AA-12",
+   "frame": "SST-05",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "官方",
+   "basis": "剧情描写其心智急速升温（高负荷输出）",
+   "s": [
+    59,
+    64,
+    45,
+    32,
+    19,
+    40
+   ],
+   "rank": 43.8,
+   "edges": [],
+   "letters": [
+    "A",
+    "S",
+    "B",
+    "C",
+    "D",
+    "B"
+   ],
+   "tier": "B",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 459,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 43.8,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s33",
+   "name": "克莱妲",
+   "faction": "忤逆小队",
+   "cls": "尖兵",
+   "weapon": "突击步枪",
+   "brand": "AK-12",
+   "frame": "GOL_Loki_00",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "官方",
+   "basis": "前 AK-12；长期研究自身素体，忤逆小队成员",
+   "s": [
+    69,
+    76,
+    69,
+    72,
+    64,
+    64
+   ],
+   "rank": 69.2,
+   "edges": [],
+   "letters": [
+    "S",
+    "SS",
+    "S",
+    "S",
+    "S",
+    "S"
+   ],
+   "tier": "S",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 148,
+   "frameSrc": "客户端 GunCharacterData.bytes（protobuf 直解）+ LangPackageTableCnData.bytes 名称对齐",
+   "total": 69.2,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s34",
+   "name": "埃芙",
+   "faction": "忤逆小队",
+   "cls": "火力",
+   "weapon": "突击步枪",
+   "brand": "AN-94",
+   "frame": "CSD_09B4M",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "官方",
+   "basis": "前 AN-94；数据传输与防护检查描写（2026-10-09 六评：心智舱内被针反复破解、身体剧烈抽搐，但心智底层未被攻破（『107 种方式尝试破解，均告失败』）——用户裁定心智强度强调「强度」而非「稳定」，埃芙为该维度唯一 ULTRA；2026-10-09 七评：「为了抵御心智清洗，我在心智底层，构建了一个属于自己的『安全屋』」经用户确认为埃芙所言，再加一分，82→92→94）",
+   "s": [
+    69,
+    71,
+    69,
+    85,
+    120,
+    64
+   ],
+   "rank": 76.8,
+   "edges": [],
+   "letters": [
+    "S",
+    "S",
+    "S",
+    "SS",
+    "ULTRA",
+    "S"
+   ],
+   "tier": "SS",
+   "wSrc": "客户端配给文本",
+   "frameTier": "客户端",
+   "ev": 637,
+   "frameSrc": "客户端 GunCharacterData.bytes（protobuf 直解）+ LangPackageTableCnData.bytes 名称对齐",
+   "total": 76.8,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s35",
+   "name": "威玛西娜",
+   "faction": "忤逆小队",
+   "cls": "火力",
+   "weapon": "突击步枪",
+   "brand": "AK-15",
+   "frame": "CSD_09B4M",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "官方",
+   "basis": "长刀格挡、刀刃断裂仍死战；火力掩护四人突围（2026-10-09 三评：战斗冷静/判断力归入【战术】(88)；心智只算底层稳定性与成熟度，故 92→74）",
+   "s": [
+    120,
+    77,
+    85,
+    85,
+    77,
+    84
+   ],
+   "rank": 89.4,
+   "edges": [],
+   "letters": [
+    "ULTRA",
+    "SS",
+    "SS",
+    "SS",
+    "SS",
+    "SS"
+   ],
+   "tier": "SS",
+   "wSrc": "客户端配给文本（并以长刀白刃作战）",
+   "frameTier": "客户端",
+   "ev": 710,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 89.4,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s36",
+   "name": "玛绮朵",
+   "faction": "方糖咖啡馆 · 餐饮",
+   "cls": "火力",
+   "weapon": "狙击枪",
+   "brand": "WA2000",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "官方",
+   "basis": "狙击手，冷静高傲、临场判断强",
+   "s": [
+    69,
+    64,
+    45,
+    24,
+    52,
+    66
+   ],
+   "rank": 51.3,
+   "edges": [],
+   "letters": [
+    "S",
+    "S",
+    "B",
+    "D",
+    "A",
+    "S"
+   ],
+   "tier": "A",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 0,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 51.3,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s37",
+   "name": "桑朵莱希",
+   "faction": "方糖咖啡馆 · 餐饮",
+   "cls": "支援",
+   "weapon": "突击步枪",
+   "brand": "G36",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "官方",
+   "basis": "剧情以接近极限的精准与组合技巧维持均势（2026-10-09 三评：桑朵莱希以稳重著称）",
+   "s": [
+    48,
+    53,
+    64,
+    24,
+    77,
+    60
+   ],
+   "rank": 52.5,
+   "edges": [],
+   "letters": [
+    "B",
+    "A",
+    "S",
+    "D",
+    "SS",
+    "A"
+   ],
+   "tier": "A",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 0,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 52.5,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s38",
+   "name": "夏克里",
+   "faction": "方糖咖啡馆 · 餐饮",
+   "cls": "火力",
+   "weapon": "突击步枪",
+   "brand": "XCR",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "机甲撞击后仍行动，输出型",
+   "s": [
+    40,
+    27,
+    39,
+    24,
+    19,
+    31
+   ],
+   "rank": 31.5,
+   "edges": [],
+   "letters": [
+    "B",
+    "C",
+    "B",
+    "D",
+    "D",
+    "C"
+   ],
+   "tier": "C",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 1380,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 31.5,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s39",
+   "name": "索米",
+   "faction": "人形社区",
+   "cls": "支援",
+   "weapon": "冲锋枪",
+   "brand": "索米 KP-31",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "官方",
+   "basis": "社区领袖；素体损伤后仍带队行动（2026-10-09 三评：『索米也变得更加成熟』『索米已经成长了很多』）",
+   "s": [
+    48,
+    53,
+    52,
+    24,
+    79,
+    60
+   ],
+   "rank": 49.7,
+   "edges": [
+    {
+     "a": "索米",
+     "b": "敌方集群",
+     "rel": "被围攻",
+     "dim": -1,
+     "note": "索米遭到了敌人围攻",
+     "group": false
+    }
+   ],
+   "letters": [
+    "B",
+    "A",
+    "A",
+    "D",
+    "SS",
+    "A"
+   ],
+   "tier": "B",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 0,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 49.7,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s40",
+   "name": "洛塔",
+   "faction": "人形社区",
+   "cls": "火力",
+   "weapon": "霰弹枪",
+   "brand": "LTLX7000",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "与莉塔拉等人以尸体为掩护推进",
+   "s": [
+    53,
+    53,
+    56,
+    24,
+    34,
+    44
+   ],
+   "rank": 44.7,
+   "edges": [],
+   "letters": [
+    "A",
+    "A",
+    "A",
+    "D",
+    "C",
+    "B"
+   ],
+   "tier": "B",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 409,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 44.7,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s41",
+   "name": "乌尔丽德",
+   "faction": "人形社区",
+   "cls": "尖兵",
+   "weapon": "刀",
+   "brand": "羽锋",
+   "frame": "SSD-62G",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "社区领袖，白刃与行动力突出，剧情中亦有脆弱面",
+   "s": [
+    59,
+    53,
+    76,
+    24,
+    64,
+    66
+   ],
+   "rank": 57.1,
+   "edges": [],
+   "letters": [
+    "A",
+    "A",
+    "SS",
+    "D",
+    "S",
+    "S"
+   ],
+   "tier": "A",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 836,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 57.1,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s42",
+   "name": "波波沙",
+   "faction": "POL-03 治安管理部门",
+   "cls": "火力",
+   "weapon": "冲锋枪",
+   "brand": "PPSh-41",
+   "frame": "SSD-62G",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "治安小队；剧情中排除程序干扰",
+   "s": [
+    48,
+    53,
+    39,
+    24,
+    6,
+    31
+   ],
+   "rank": 34.8,
+   "edges": [],
+   "letters": [
+    "B",
+    "A",
+    "B",
+    "D",
+    "E",
+    "C"
+   ],
+   "tier": "C",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 208,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 34.8,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s43",
+   "name": "科谢尼娅",
+   "faction": "POL-03 治安管理部门",
+   "cls": "支援",
+   "weapon": "手枪",
+   "brand": "斯捷奇金",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "剧情中骇入无人机系统（非正面战斗型）",
+   "s": [
+    19,
+    53,
+    6,
+    24,
+    6,
+    31
+   ],
+   "rank": 21.3,
+   "edges": [],
+   "letters": [
+    "D",
+    "A",
+    "E",
+    "D",
+    "E",
+    "C"
+   ],
+   "tier": "D",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 391,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 21.3,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s44",
+   "name": "纳甘",
+   "faction": "POL-03 治安管理部门",
+   "cls": "支援",
+   "weapon": "手枪",
+   "brand": "纳甘左轮",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "官方",
+   "basis": "剧情中勉力护住自身心智（2026-10-09 八评：素体改按型号绝对线性 = 基线 64）",
+   "s": [
+    34,
+    27,
+    6,
+    24,
+    19,
+    31
+   ],
+   "rank": 22.2,
+   "edges": [],
+   "letters": [
+    "C",
+    "C",
+    "E",
+    "D",
+    "D",
+    "C"
+   ],
+   "tier": "D",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 854,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 22.2,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s45",
+   "name": "罗蕾莱",
+   "faction": "其他势力",
+   "cls": "支援",
+   "weapon": "狙击枪",
+   "brand": "DSR-50",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "国安局籍；远程支援与交涉为主",
+   "s": [
+    59,
+    64,
+    39,
+    24,
+    45,
+    52
+   ],
+   "rank": 45.1,
+   "edges": [],
+   "letters": [
+    "A",
+    "S",
+    "B",
+    "D",
+    "B",
+    "A"
+   ],
+   "tier": "B",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 279,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 45.1,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s46",
+   "name": "绯",
+   "faction": "季风乐队",
+   "cls": "尖兵",
+   "weapon": "手枪",
+   "brand": "CZ-75",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "在心智承压状态下仍承担小队指挥",
+   "s": [
+    34,
+    31,
+    52,
+    24,
+    6,
+    44
+   ],
+   "rank": 34.8,
+   "edges": [],
+   "letters": [
+    "C",
+    "C",
+    "A",
+    "D",
+    "E",
+    "B"
+   ],
+   "tier": "C",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 289,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 34.8,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s47",
+   "name": "黛烟",
+   "faction": "季风乐队",
+   "cls": "尖兵",
+   "weapon": "突击步枪",
+   "brand": "九五式",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "无声接近身侧，近身与潜行表现突出",
+   "s": [
+    40,
+    41,
+    52,
+    24,
+    52,
+    44
+   ],
+   "rank": 41.7,
+   "edges": [],
+   "letters": [
+    "B",
+    "B",
+    "A",
+    "D",
+    "A",
+    "B"
+   ],
+   "tier": "B",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 591,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 41.7,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s48",
+   "name": "绛雨",
+   "faction": "季风乐队",
+   "cls": "火力",
+   "weapon": "突击步枪",
+   "brand": "九七式",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "与生骸正面战斗的英勇表现",
+   "s": [
+    48,
+    41,
+    64,
+    24,
+    34,
+    40
+   ],
+   "rank": 43.8,
+   "edges": [],
+   "letters": [
+    "B",
+    "B",
+    "S",
+    "D",
+    "C",
+    "B"
+   ],
+   "tier": "B",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 508,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 43.8,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s49",
+   "name": "莫辛纳甘",
+   "faction": "其他势力",
+   "cls": "火力",
+   "weapon": "狙击枪",
+   "brand": "莫辛-纳甘",
+   "frame": "SST-05",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "官方",
+   "basis": "配给高性能狙击枪，消极性格下仍坚持命中",
+   "s": [
+    69,
+    41,
+    52,
+    32,
+    56,
+    60
+   ],
+   "rank": 51.3,
+   "edges": [],
+   "letters": [
+    "S",
+    "B",
+    "A",
+    "C",
+    "A",
+    "A"
+   ],
+   "tier": "A",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 381,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 51.3,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s50",
+   "name": "佩里缇亚",
+   "faction": "其他势力",
+   "cls": "火力",
+   "weapon": "机枪",
+   "brand": "佩切涅 PKP",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "官方",
+   "basis": "入侵低级傀儡心智使其烧毁；火力开路",
+   "s": [
+    69,
+    76,
+    56,
+    24,
+    45,
+    52
+   ],
+   "rank": 52.6,
+   "edges": [
+    {
+     "a": "佩里缇亚",
+     "b": "傀儡人形",
+     "rel": "入侵烧毁",
+     "dim": 1,
+     "note": "被佩里缇亚入侵心智后直接烧掉的低级傀儡人形",
+     "group": false
+    }
+   ],
+   "letters": [
+    "S",
+    "SS",
+    "A",
+    "D",
+    "B",
+    "A"
+   ],
+   "tier": "A",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 0,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 52.6,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s51",
+   "name": "塞布丽娜",
+   "faction": "方糖咖啡馆 · 餐饮",
+   "cls": "防卫",
+   "weapon": "霰弹枪",
+   "brand": "梅扎露娜",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "官方",
+   "basis": "防卫型，料理与后勤为主，正面战斗描写有限（2026-10-09 八评：素体改按型号绝对线性 = 基线 64）",
+   "s": [
+    6,
+    27,
+    6,
+    24,
+    19,
+    19
+   ],
+   "rank": 15.4,
+   "edges": [],
+   "letters": [
+    "E",
+    "C",
+    "E",
+    "D",
+    "D",
+    "D"
+   ],
+   "tier": "D",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 589,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 15.4,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s52",
+   "name": "莉塔拉",
+   "faction": "其他势力",
+   "cls": "火力",
+   "weapon": "机枪",
+   "brand": "MG3",
+   "frame": "SSD-62G",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "笔谈交流，掩护射击与战术素养被明确点名",
+   "s": [
+    53,
+    53,
+    6,
+    24,
+    34,
+    52
+   ],
+   "rank": 33.4,
+   "edges": [],
+   "letters": [
+    "A",
+    "A",
+    "E",
+    "D",
+    "C",
+    "A"
+   ],
+   "tier": "C",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 417,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 33.4,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s53",
+   "name": "杜莎妮",
+   "faction": "其他势力",
+   "cls": "支援",
+   "weapon": "狙击枪",
+   "brand": "KSVK",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "强行以心智操控机甲肢体与武器，素体与心智双重承压；被贝丝蒂用力制服）（2026-10-09 三评：『心智不稳定的杜莎妮』『杜莎妮小姐心智受损』）",
+   "s": [
+    73,
+    79,
+    69,
+    24,
+    56,
+    64
+   ],
+   "rank": 59.9,
+   "edges": [
+    {
+     "a": "杜莎妮",
+     "b": "机甲",
+     "rel": "心智操控",
+     "dim": 4,
+     "note": "强行以自己的心智去控制机甲的肢体和武器",
+     "group": false
+    }
+   ],
+   "letters": [
+    "S",
+    "SS",
+    "S",
+    "D",
+    "A",
+    "S"
+   ],
+   "tier": "A",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 1157,
+   "verdict": "以心智操控机甲属一次性爆发，不计入常态六维",
+   "vSrc": "用户判定",
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 59.9,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s54",
+   "name": "代理人",
+   "faction": "其他势力",
+   "cls": "尖兵",
+   "weapon": "机枪",
+   "brand": "近战 / 护盾",
+   "frame": "AGENT",
+   "side": "self",
+   "src": "追放 + 1代",
+   "conf": "官方",
+   "basis": "前铁血头目级人形；剧情中闪避反击后被收服",
+   "s": [
+    69,
+    76,
+    76,
+    78,
+    64,
+    71
+   ],
+   "rank": 73.2,
+   "edges": [],
+   "letters": [
+    "S",
+    "SS",
+    "SS",
+    "SS",
+    "S",
+    "S"
+   ],
+   "tier": "S",
+   "wSrc": "客户端配给文本",
+   "frameTier": "客户端",
+   "ev": 523,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 73.2,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s55",
+   "name": "六分仪",
+   "faction": "敌方 · 三代人形",
+   "cls": "火力",
+   "weapon": "近战武器",
+   "brand": "Sextans",
+   "frame": "STR-01A247",
+   "side": "self",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "三代人形；以权限漏洞入侵他人心智、及时救援（2026-10-09 三评：六分仪心智曾被清空、被丹德莱突破防火墙——心智底层稳定性低）",
+   "s": [
+    73,
+    85,
+    78,
+    83,
+    56,
+    86
+   ],
+   "rank": 77.9,
+   "edges": [
+    {
+     "a": "六分仪",
+     "b": "蓝雪球",
+     "rel": "渗透",
+     "dim": 1,
+     "note": "利用在六分仪身上发现过的同类漏洞入侵了蓝雪球的心智",
+     "group": false
+    }
+   ],
+   "letters": [
+    "S",
+    "SS",
+    "SS",
+    "SS",
+    "A",
+    "SS"
+   ],
+   "tier": "SS",
+   "wSrc": "客户端配给文本",
+   "frameTier": "客户端",
+   "ev": 0,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 77.9,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s56",
+   "name": "贝丝蒂",
+   "faction": "待考（阵营未明）",
+   "cls": "支援",
+   "weapon": "手枪",
+   "brand": "Mk23",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "剧情称「一般做计划的都是贝丝蒂」，战术筹划为主",
+   "s": [
+    19,
+    53,
+    19,
+    24,
+    6,
+    52
+   ],
+   "rank": 27.7,
+   "edges": [],
+   "letters": [
+    "D",
+    "A",
+    "D",
+    "D",
+    "E",
+    "A"
+   ],
+   "tier": "C",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 462,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 27.7,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s57",
+   "name": "夏安",
+   "faction": "待考（阵营未明）",
+   "cls": "火力",
+   "weapon": "狙击枪",
+   "brand": "M200",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "火力核心型；与海伦协同复习安保战术",
+   "s": [
+    53,
+    35,
+    19,
+    24,
+    6,
+    44
+   ],
+   "rank": 30.5,
+   "edges": [],
+   "letters": [
+    "A",
+    "C",
+    "D",
+    "D",
+    "E",
+    "B"
+   ],
+   "tier": "C",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 243,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 30.5,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s58",
+   "name": "樱花",
+   "faction": "待考（阵营未明）",
+   "cls": "防卫",
+   "weapon": "冲锋枪",
+   "brand": "Type100",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "配给高性能冲锋枪；近身描写较多",
+   "s": [
+    53,
+    41,
+    69,
+    24,
+    52,
+    52
+   ],
+   "rank": 49.5,
+   "edges": [],
+   "letters": [
+    "A",
+    "B",
+    "S",
+    "D",
+    "A",
+    "A"
+   ],
+   "tier": "B",
+   "wSrc": "客户端配给文本",
+   "frameTier": "客户端",
+   "ev": 481,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 49.5,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s59",
+   "name": "翡图萨",
+   "faction": "待考（阵营未明）",
+   "cls": "火力",
+   "weapon": "近战武器",
+   "brand": "Phaetusa",
+   "frame": "DUAL_DSI_9",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "素体损伤后仍推进，输出型",
+   "s": [
+    48,
+    35,
+    39,
+    68,
+    34,
+    31
+   ],
+   "rank": 44.2,
+   "edges": [],
+   "letters": [
+    "B",
+    "C",
+    "B",
+    "S",
+    "C",
+    "C"
+   ],
+   "tier": "B",
+   "wSrc": "客户端配给文本",
+   "frameTier": "客户端",
+   "ev": 312,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 44.2,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s60",
+   "name": "刘易斯",
+   "faction": "待考（阵营未明）",
+   "cls": "火力",
+   "weapon": "机枪",
+   "brand": "Lewis",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "用弹盘掩护撤退、战术翻滚后撤",
+   "s": [
+    59,
+    41,
+    56,
+    24,
+    45,
+    52
+   ],
+   "rank": 46.6,
+   "edges": [],
+   "letters": [
+    "A",
+    "B",
+    "A",
+    "D",
+    "B",
+    "A"
+   ],
+   "tier": "B",
+   "wSrc": "客户端配给文本",
+   "frameTier": "客户端",
+   "ev": 388,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 46.6,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s61",
+   "name": "巴希达",
+   "faction": "待考（阵营未明）",
+   "cls": "火力",
+   "weapon": "机枪",
+   "brand": "（WIKI 卡片记 M1014，与客户端冲突，按用户裁定取客户端）",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "发声单元受损仍参战；与妮基塔合击茧（2026-10-09 八评：素体改按型号绝对线性 = 基线 64）",
+   "s": [
+    53,
+    35,
+    52,
+    24,
+    45,
+    44
+   ],
+   "rank": 42.6,
+   "edges": [],
+   "letters": [
+    "A",
+    "C",
+    "A",
+    "D",
+    "B",
+    "B"
+   ],
+   "tier": "B",
+   "wSrc": "客户端配给文本（用户裁定：以机枪为准）",
+   "frameTier": "客户端",
+   "ev": 638,
+   "frameSrc": "客户端 GunCharacterData.bytes（protobuf 直解）+ LangPackageTableCnData.bytes 名称对齐",
+   "total": 42.6,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s62",
+   "name": "阿斯缇亚",
+   "faction": "待考（阵营未明）",
+   "cls": "支援",
+   "weapon": "突击步枪",
+   "brand": "",
+   "frame": "SST_05A3_ST",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "与搭档白烨戈配合，战术动作被评价为「利用到极致」",
+   "s": [
+    34,
+    35,
+    39,
+    53,
+    34,
+    52
+   ],
+   "rank": 41.9,
+   "edges": [],
+   "letters": [
+    "C",
+    "C",
+    "B",
+    "A",
+    "C",
+    "A"
+   ],
+   "tier": "B",
+   "wSrc": "客户端配给文本",
+   "frameTier": "客户端",
+   "ev": 220,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 41.9,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s63",
+   "name": "芙铃",
+   "faction": "待考（阵营未明）",
+   "cls": "支援",
+   "weapon": "突击步枪",
+   "brand": "",
+   "frame": "SST-05",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "污染区出身，战斗风格激进；队内唯一可战者（2026-10-09 重评：『速度比子弹更快』按作者口径仅为战术人形通用反应水平（2070年代科技），不作为搏斗特长）",
+   "s": [
+    76,
+    71,
+    74,
+    32,
+    70,
+    74
+   ],
+   "rank": 65.2,
+   "edges": [
+    {
+     "a": "芙铃",
+     "b": "子弹",
+     "rel": "速度超越",
+     "dim": 2,
+     "note": "芙铃的速度也比子弹更快",
+     "group": false
+    }
+   ],
+   "letters": [
+    "SS",
+    "S",
+    "S",
+    "C",
+    "S",
+    "S"
+   ],
+   "tier": "S",
+   "wSrc": "客户端配给文本",
+   "frameTier": "客户端",
+   "ev": 618,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 65.2,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s64",
+   "name": "刘莳",
+   "faction": "待考（阵营未明）",
+   "cls": "支援",
+   "weapon": "狙击枪",
+   "brand": "",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "火力核心型；剧情中负责把人类部署在后方",
+   "s": [
+    65,
+    64,
+    39,
+    24,
+    45,
+    64
+   ],
+   "rank": 48,
+   "edges": [],
+   "letters": [
+    "S",
+    "S",
+    "B",
+    "D",
+    "B",
+    "S"
+   ],
+   "tier": "B",
+   "wSrc": "客户端配给文本",
+   "frameTier": "客户端",
+   "ev": 535,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 48,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s65",
+   "name": "米蒂尔",
+   "faction": "待考（阵营未明）",
+   "cls": "支援",
+   "weapon": "冲锋枪",
+   "brand": "",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "协助潜入行动；心智中留有旧记录（2026-10-09 三评：『米蒂尔已经找到了抵抗心智入侵的方法』——心智底层抗入侵能力顶尖（仅次于埃芙）（2026-10-09 八评：素体改按型号绝对线性 = 基线 64）",
+   "s": [
+    53,
+    71,
+    42,
+    24,
+    87,
+    56
+   ],
+   "rank": 50.5,
+   "edges": [],
+   "letters": [
+    "A",
+    "S",
+    "B",
+    "D",
+    "SS",
+    "A"
+   ],
+   "tier": "A",
+   "wSrc": "客户端配给文本",
+   "frameTier": "客户端",
+   "ev": 459,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 50.5,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s66",
+   "name": "伊格蕾塔",
+   "faction": "待考（阵营未明）",
+   "cls": "支援",
+   "weapon": "手枪",
+   "brand": "",
+   "frame": "SSD-62D",
+   "side": "self",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "火力型人形，同时承担探索报告与情报整理（2026-10-09 八评：素体改按型号绝对线性 = 基线 64）",
+   "s": [
+    34,
+    64,
+    6,
+    24,
+    19,
+    40
+   ],
+   "rank": 28,
+   "edges": [],
+   "letters": [
+    "C",
+    "S",
+    "E",
+    "D",
+    "D",
+    "B"
+   ],
+   "tier": "C",
+   "wSrc": "客户端配给文本",
+   "frameTier": "客户端",
+   "ev": 453,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 28,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s67",
+   "name": "茧",
+   "faction": "敌方 · 三代人形",
+   "cls": "未知",
+   "weapon": "鳞翅 / 高机动",
+   "brand": "Cocoon",
+   "frame": "三代素体",
+   "side": "foe",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "主要反派 · 三代人形；需巴希达与妮基塔合力攻击，剧情核心威胁；被巴希达+妮基塔压制）（2026-10-09 三评：心智底层存有『几乎无法洗去的幻影』『因为恐惧而瑟缩』）（2026-10-09 六评：搏斗 45→52——主线核心威胁，被巴希达＋妮基塔从两侧夹击后才落败（2026-10-09 八评：素体改按型号绝对线性 = 基线 87）",
+   "s": [
+    59,
+    87,
+    66,
+    87,
+    70,
+    86
+   ],
+   "rank": 74.9,
+   "edges": [
+    {
+     "a": "茧",
+     "b": "威玛西娜",
+     "rel": "相当",
+     "dim": -1,
+     "note": "能与那个状态下的威玛西娜旗鼓相当的对手，难道又是新的第三代人形",
+     "group": false
+    }
+   ],
+   "letters": [
+    "A",
+    "SS",
+    "S",
+    "SS",
+    "S",
+    "SS"
+   ],
+   "tier": "S",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端",
+   "ev": 0,
+   "frameSrc": "客户端 GunCharacterData / EventRoleTrialData",
+   "total": 74.9,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s68",
+   "name": "黑眼",
+   "faction": "敌方 · 三代人形",
+   "cls": "未知",
+   "weapon": "阳伞 / 近战",
+   "brand": "Black Eye",
+   "frame": "",
+   "side": "foe",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "沉默护卫型；对攻击毫不在意，近身与素体反应描写突出（2026-10-09 重评：三代人形；『以近乎秒杀的方式击败过』对手；电子战非其长）",
+   "s": [
+    81,
+    74,
+    85,
+    79,
+    74,
+    76
+   ],
+   "rank": 79.3,
+   "edges": [
+    {
+     "a": "黑眼",
+     "b": "海伦",
+     "rel": "秒杀",
+     "dim": -1,
+     "note": "这个人形，在不久前才被黑眼以近乎秒杀的方式击败过",
+     "group": false
+    },
+    {
+     "a": "黑眼",
+     "b": "六分仪",
+     "rel": "复原更快",
+     "dim": 3,
+     "note": "黑眼的身体复原的速度要比六分仪更快",
+     "group": false
+    }
+   ],
+   "letters": [
+    "SS",
+    "S",
+    "SS",
+    "SS",
+    "S",
+    "SS"
+   ],
+   "tier": "SS",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端未收录",
+   "ev": 549,
+   "frameSrc": "",
+   "total": 79.3,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s69",
+   "name": "蓝雪球",
+   "faction": "敌方 · 三代人形",
+   "cls": "未知",
+   "weapon": "重装 / 再生",
+   "brand": "Blue Snowball",
+   "frame": "",
+   "side": "foe",
+   "src": "追放主线",
+   "conf": "待考",
+   "basis": "与黑眼并列的敌方人形，袭击可露凯小队；素体可自行恢复损伤；素体过硬可规避致命子弹）（2026-10-09 三评：『如果你想把我当成和蓝雪球一样蠢的人形』——心智（成熟度）低）（2026-10-09 五评：用户裁定——看起来呆傻、没有过多感情，心智压到 B 级 40）",
+   "s": [
+    87,
+    80,
+    87,
+    85,
+    28,
+    78
+   ],
+   "rank": 78.5,
+   "edges": [
+    {
+     "a": "蓝雪球",
+     "b": "计量官",
+     "rel": "逼退",
+     "dim": 2,
+     "note": "逼退步步紧逼计量官的蓝雪球",
+     "group": false
+    },
+    {
+     "a": "蓝雪球",
+     "b": "自身损伤",
+     "rel": "再生",
+     "dim": 3,
+     "note": "蓝雪球也缓缓恢复着自身的损伤",
+     "group": false
+    }
+   ],
+   "letters": [
+    "SS",
+    "SS",
+    "SS",
+    "SS",
+    "C",
+    "SS"
+   ],
+   "tier": "SS",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端未收录",
+   "ev": 240,
+   "frameSrc": "",
+   "total": 78.5,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s71",
+   "name": "星渊",
+   "faction": "敌方 · 生骸 / 伯介姆",
+   "cls": "未知",
+   "weapon": "异质素体 / 高速规避",
+   "brand": "",
+   "frame": "",
+   "side": "foe",
+   "src": "追放主线（最新剧情）",
+   "conf": "官方",
+   "basis": "被称「完全异质」；据最新剧情为当前战力断档天花板，可轻易规避对手全部弹道。客户端文本表仅存前者，天花板定位由用户提供。无电子战；长刀荡开连续斩击、长矛贯穿断罪者装甲；以无数伯介姆着装自身）（2026-10-09 三评：星渊是「小屁孩」，拒绝吞噬他人是个人选择而非心智强度；临战冷静同属战术范畴，两项一并下调）（2026-10-09 五评：战术按『强者一般水平』给 70——她够强但未表现战术能力；心智维持 40，无底层抗攻击描写）",
+   "s": [
+    28,
+    6,
+    120,
+    120,
+    28,
+    74
+   ],
+   "rank": 97,
+   "edges": [
+    {
+     "a": "星渊",
+     "b": "敌人弹道",
+     "rel": "规避",
+     "dim": 2,
+     "note": "星渊知道自己依然能够轻易躲开对方所有武器的弹道",
+     "group": false
+    }
+   ],
+   "letters": [
+    "C",
+    "E",
+    "ULTRA",
+    "ULTRA",
+    "C",
+    "S"
+   ],
+   "tier": "SS",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端未收录",
+   "ev": 410,
+   "verdict": "据最新剧情定位为当前战力断档天花板（用户提供，不在本机文本表内）",
+   "vSrc": "用户判定",
+   "frameSrc": "",
+   "total": 97,
+   "use": [
+    false,
+    false,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s72",
+   "name": "喀什玛",
+   "faction": "敌方 · 生骸 / 伯介姆",
+   "cls": "未知",
+   "weapon": "利刃 / 触手 / 数据重组",
+   "brand": "",
+   "frame": "",
+   "side": "foe",
+   "src": "追放主线",
+   "conf": "官方",
+   "basis": "剧情明写「连可露凯都打不过她」「可露凯和米什缇被她打败了」；触手可数据重组并复活（2026-10-09 重评：生骸指挥体，利刃+触手+数据重组；『喀什玛敌不过六人猛烈的火力』；被六人集火压制）",
+   "s": [
+    73,
+    82,
+    85,
+    81,
+    74,
+    76
+   ],
+   "rank": 79.2,
+   "edges": [
+    {
+     "a": "喀什玛",
+     "b": "可露凯",
+     "rel": "击败",
+     "dim": -1,
+     "note": "连可露凯都打不过她",
+     "group": false
+    },
+    {
+     "a": "喀什玛",
+     "b": "米什缇",
+     "rel": "击败",
+     "dim": -1,
+     "note": "可露凯和米什缇被她打败了",
+     "group": false
+    }
+   ],
+   "letters": [
+    "S",
+    "SS",
+    "SS",
+    "SS",
+    "S",
+    "SS"
+   ],
+   "tier": "SS",
+   "wSrc": "WIKI 角色页",
+   "frameTier": "客户端未收录",
+   "ev": 43,
+   "verdict": "用户裁定（剧情未核）：维持总序 99；六维已随「每维铺满 E→ULTRA」重标定为 [73,82,85,81,74,76]（原判定 [62,74,86,84,70,72]），待剧情核校",
+   "vSrc": "用户判定",
+   "frameSrc": "",
+   "total": 79.2,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "id": "s73",
+   "name": "针",
+   "faction": "敌方 · 三代人形",
+   "cls": "未知",
+   "weapon": "猩红剑刃 / 匕首 / 手枪",
+   "brand": "异化体",
+   "frame": "三代素体",
+   "side": "foe",
+   "src": "追放剧情",
+   "conf": "官方",
+   "basis": "『连威玛西娜都不是她的对手』；与威玛西娜在奇洛薇格的实验室酣战至实验室化为废墟；『三代人形所拥有的良好战斗性能令针几乎能够躲避所有的远距离战斗袭击』；心智底层数据碎片不受控涌出（心智稳定性差）（2026-10-09 七评：同段出现的『方程式』经用户说明是 2026 夏活《伊利昂之围》里财团针对人形开发的『反方程式』病毒——AK-12 潜伏窃取数据时被感染、心智受侵袭，导致后续失联与追逃；它不是人形，故『她』只能指针，指认成立（2026-10-09 八评：素体改按型号绝对线性 = 基线 87）",
+   "s": [
+    78,
+    47,
+    83,
+    87,
+    42,
+    76
+   ],
+   "rank": 73.4,
+   "edges": [],
+   "letters": [
+    "SS",
+    "B",
+    "SS",
+    "SS",
+    "B",
+    "SS"
+   ],
+   "tier": "S",
+   "wSrc": "客户端原文",
+   "frameTier": "客户端未收录",
+   "ev": 0,
+   "frameSrc": "",
+   "total": 73.4,
+   "use": [
+    true,
+    true,
+    true,
+    true,
+    true,
+    true
+   ]
+  }
+ ],
+ "edges": [
+  {
+   "a": "喀什玛",
+   "b": "可露凯",
+   "rel": "击败",
+   "dim": -1,
+   "note": "连可露凯都打不过她",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "喀什玛",
+   "b": "米什缇",
+   "rel": "击败",
+   "dim": -1,
+   "note": "可露凯和米什缇被她打败了",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "黑眼",
+   "b": "海伦",
+   "rel": "秒杀",
+   "dim": -1,
+   "note": "这个人形，在不久前才被黑眼以近乎秒杀的方式击败过",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "海伦",
+   "b": "茧",
+   "rel": "近身压制",
+   "dim": 2,
+   "note": "她很难想象自己居然会被一个二代人形在近身战中暂时压制（情境性偷袭，不计入常态战力）",
+   "group": false,
+   "kind": "情境",
+   "src": "客户端原文"
+  },
+  {
+   "a": "蓝雪球",
+   "b": "404一队（4人）",
+   "rel": "单挑被压制",
+   "dim": -1,
+   "note": "蓝雪球一个人单挑404一队4个人；OTs-14和404小队毫无疑问全面压制着蓝雪球（战后被联合压制，非单人对等）",
+   "group": true,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "蓝雪球",
+   "b": "计量官",
+   "rel": "逼退",
+   "dim": 2,
+   "note": "逼退步步紧逼计量官的蓝雪球",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "索普",
+   "b": "洛贝拉",
+   "rel": "压制",
+   "dim": -1,
+   "note": "我们两个加起来恐怕都打不过索普你哦（台词戏言，非实战战绩）",
+   "group": false,
+   "kind": "戏言",
+   "src": "客户端原文"
+  },
+  {
+   "a": "维克托",
+   "b": "可露凯",
+   "rel": "相当",
+   "dim": -1,
+   "note": "维克托可是最强的，认真起来和可露凯也不相上下",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "索普+埃芙",
+   "b": "三代原型机",
+   "rel": "战胜",
+   "dim": -1,
+   "note": "索普和埃芙战胜了三代原型机",
+   "group": true,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "茧",
+   "b": "威玛西娜",
+   "rel": "相当",
+   "dim": -1,
+   "note": "能与那个状态下的威玛西娜旗鼓相当的对手，难道又是新的第三代人形",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "六分仪",
+   "b": "蓝雪球",
+   "rel": "渗透",
+   "dim": 1,
+   "note": "利用在六分仪身上发现过的同类漏洞入侵了蓝雪球的心智",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "海伦+六分仪",
+   "b": "茧",
+   "rel": "封锁支援",
+   "dim": -1,
+   "note": "六分仪和海伦联手封锁了茧的支援路线",
+   "group": true,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "巴希达+妮基塔",
+   "b": "茧",
+   "rel": "夹击",
+   "dim": -1,
+   "note": "巴希达和妮基塔分别从两侧对茧发动了攻击",
+   "group": true,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "希丽雅",
+   "b": "桑朵莱希",
+   "rel": "交手",
+   "dim": 2,
+   "note": "希丽雅跃起试图飞踢击退桑朵莱希",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "桑朵莱希+希丽雅",
+   "b": "玛绮朵",
+   "rel": "保护",
+   "dim": -1,
+   "note": "桑朵莱希和希丽雅联手挡在了倒地的玛绮朵与希娅之间",
+   "group": true,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "芙铃+贝丝蒂",
+   "b": "无名人形×2",
+   "rel": "压制",
+   "dim": -1,
+   "note": "那两个之前才被自己和贝丝蒂压制的人形",
+   "group": true,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "夏克里+玛绮朵",
+   "b": "闪电",
+   "rel": "拦阻",
+   "dim": -1,
+   "note": "夏克里与玛绮朵联手拦住了闪电的去路",
+   "group": true,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "桑朵莱希+玛绮朵",
+   "b": "敌方单位",
+   "rel": "压制",
+   "dim": -1,
+   "note": "在桑朵莱希和玛绮朵的压制下",
+   "group": true,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "佩里缇亚",
+   "b": "傀儡人形",
+   "rel": "入侵烧毁",
+   "dim": 1,
+   "note": "被佩里缇亚入侵心智后直接烧掉的低级傀儡人形",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "杜莎妮",
+   "b": "机甲",
+   "rel": "心智操控",
+   "dim": 4,
+   "note": "强行以自己的心智去控制机甲的肢体和武器（一次性爆发状态）",
+   "group": false,
+   "kind": "一次性",
+   "src": "客户端原文"
+  },
+  {
+   "a": "索普+洛贝拉",
+   "b": "血触手",
+   "rel": "击溃",
+   "dim": -1,
+   "note": "洛贝拉和索普的子弹将血红色的触手击溃",
+   "group": true,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "莱娅+莱娜",
+   "b": "机械群",
+   "rel": "击退",
+   "dim": -1,
+   "note": "又被追在后方的莱娜和莱娅一一击退",
+   "group": true,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "克罗丽科",
+   "b": "长袍人",
+   "rel": "击败",
+   "dim": -1,
+   "note": "克罗丽科击败了眼前的几个穿着长袍的人",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "朝晖",
+   "b": "可疑男子",
+   "rel": "压制",
+   "dim": -1,
+   "note": "朝晖以迅雷之势压制住了躲在墙后的可疑男子",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "黑眼",
+   "b": "六分仪",
+   "rel": "复原更快",
+   "dim": 3,
+   "note": "黑眼的身体复原的速度要比六分仪更快",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "维尔德",
+   "b": "敌方集群",
+   "rel": "不敌",
+   "dim": -1,
+   "note": "敌方人数众多，正面战斗的话，维尔德可能不是对手",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "索米",
+   "b": "敌方集群",
+   "rel": "被围攻",
+   "dim": -1,
+   "note": "索米遭到了敌人围攻",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "蓝雪球",
+   "b": "自身损伤",
+   "rel": "再生",
+   "dim": 3,
+   "note": "蓝雪球也缓缓恢复着自身的损伤",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "星渊",
+   "b": "全体人形",
+   "rel": "断档领先",
+   "dim": -1,
+   "kind": "定位",
+   "note": "最新剧情定位为当前战力断档天花板",
+   "src": "用户判定（最新剧情）"
+  },
+  {
+   "a": "蓝雪球",
+   "b": "可露凯小队",
+   "rel": "全灭未遂",
+   "dim": -1,
+   "note": "那个差点把可露凯她们全灭的蓝雪球",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "索普+洛贝拉",
+   "b": "黑眼",
+   "rel": "逼退",
+   "dim": -1,
+   "note": "黑眼也被索普和洛贝拉逼得节节败退；拟态图谱给索普带来的力量远比黑眼预估的强太多",
+   "group": true,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "闪电",
+   "b": "六分仪",
+   "rel": "入侵心智",
+   "dim": 1,
+   "note": "上次闪电入侵六分仪的底层心智时（OTs-14具备二级平层入侵能力）",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "闪电+六分仪",
+   "b": "敌方",
+   "rel": "剥离战术",
+   "dim": -1,
+   "note": "都是OTs-14与六分仪精心计算好的剥离战术",
+   "group": true,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "可露凯+米什缇",
+   "b": "生骸",
+   "rel": "击溃",
+   "dim": -1,
+   "note": "可露凯和米什缇毫发无损地击溃了生骸",
+   "group": true,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "威玛西娜",
+   "b": "正面弹幕",
+   "rel": "硬抗",
+   "dim": 2,
+   "note": "她正面接下了威玛西娜打出的所有子弹／威玛西娜独自扛下了所有火力",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "可露凯",
+   "b": "蓝雪球",
+   "rel": "不敌",
+   "dim": -1,
+   "note": "蓝雪球单人单挑404一队；『那个差点把可露凯她们全灭的蓝雪球』",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文+用户判定"
+  },
+  {
+   "a": "茧",
+   "b": "巴希达+妮基塔",
+   "rel": "被夹击",
+   "dim": -1,
+   "note": "巴希达和妮基塔分别从两侧对茧发动了攻击；茧为电子战特化，火力/近战非强项",
+   "group": true,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "针",
+   "b": "威玛西娜",
+   "rel": "压制",
+   "dim": -1,
+   "note": "连威玛西娜都不是她的对手；威玛西娜与针的战斗仍然在继续（威玛西娜以绝对守护姿态阻拦）",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文+用户判定"
+  },
+  {
+   "a": "希丽雅",
+   "b": "针",
+   "rel": "架住",
+   "dim": -1,
+   "note": "堪堪架住了针的一剑",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "维克托",
+   "b": "针",
+   "rel": "牵制",
+   "dim": -1,
+   "note": "维克托牢牢地将自己固定在了针的手臂上",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  },
+  {
+   "a": "针",
+   "b": "威玛西娜",
+   "rel": "本体被拖出",
+   "dim": 2,
+   "note": "针的本体被威玛西娜从躯壳中拖出",
+   "group": false,
+   "kind": "实战",
+   "src": "客户端原文"
+  }
+ ],
+ "frameModels": [
+  "AGENT",
+  "CSD_09B4M",
+  "DOPPELGAENGER",
+  "DUAL_DSI_8",
+  "DUAL_DSI_9",
+  "GOL_Loki_00",
+  "OBSRV_PRT_00",
+  "PPD_02",
+  "SSD-62D",
+  "SSD-62F",
+  "SSD-62G",
+  "SST-05",
+  "SST-05A2",
+  "SST_05A2_X",
+  "SST_05A3_SEP",
+  "SST_05A3_ST",
+  "STR-01A247"
+ ],
+ "frameSrcNote": "素体型号来自本机客户端表 GunCharacterData.bytes 的 protobuf 字段 f17（<CODE>→型号），角色名由同记录的 LangPackage 文本 id 对齐（LangPackageTableCnData.bytes）；EventRoleTrialData.bytes 的 ActivityChrTryItemBg_<CODE> / Img_Activity_ChrTryNumber_<型号> 为第二独立来源，两表全量一致。不使用任何网络资料。",
+ "dimDefs": {
+  "火力": "远程火力投放能力 / 单发威力（剧情判定优先；武器类型与改装是主要参考——「只要改装，扫地机器人也能拥有强大火力」，重武器使用者一般更猛，但用突击步枪不代表不猛；与素体型号半相关）",
+  "电子战": "电子攻防能力 / 入侵与反入侵（电子战特化人形可在本维度很高，但其火力与搏斗相应偏低）",
+  "搏斗": "近身战斗能力（剧情判定优先；与素体强度强相关——素体越强近战越强，特化定位可例外，如电子战特化的茧）",
+  "素体": "素体强度 —— 与客户端素体型号绝对线性：同型号同分；无客户端型号者单独裁定",
+  "速度": "速度 —— 【2026-10-10 作者裁定：本维原名「心智」，维度名改称「速度」】**该维 73 条数值沿用原「心智」评分、尚未按速度口径重评**（原口径：心智底层被攻击时能否保持稳定 ＋ 思想是否成熟；临战冷静属【战术】，个人选择不算）",
+  "战术": "战场经验 / 战术运用 / 以弱胜强（剧情判定优先；主要看战斗经验与是否担任指挥位，含临战冷静与判断力）"
+ },
+ "ultraRule": {
+  "火力": "威玛西娜",
+  "电子战": "莱娅",
+  "搏斗": "星渊",
+  "素体": "星渊",
+  "速度": "埃芙",
+  "战术": "闪电"
+ },
+ "ultraNote": "规则：**字母档＝数值分带**——E <12.5 ≤ D <25 ≤ C <37.5 ≤ B <50 ≤ A <62.5 ≤ S <75 ≤ **SS ≤100 < ULTRA**。**ULTRA 只有一个条件：数值 > 100**（顶点暂设 200），是留给少数人形的；SS 的顶点就是 100。**总分＝六维加权**：搏斗 25%／素体 20%／火力 18%／战术 15%／电子战 12%／速度 10%；**打 0 分的维度不参与计算**（按剩余权重归一）。",
+ "frameBaseline": {
+  "SSD-62D": 24,
+  "SSD-62F": 24,
+  "SSD-62G": 24,
+  "SST-05": 32,
+  "SST-05A2": 45,
+  "SST_05A2_X": 87,
+  "SST_05A3_ST": 53,
+  "SST_05A3_SEP": 58,
+  "三代素体": 87,
+  "OBSRV_PRT_00": 79,
+  "DOPPELGAENGER": 64,
+  "DUAL_DSI_8": 70,
+  "DUAL_DSI_9": 68,
+  "GOL_Loki_00": 72,
+  "PPD_02": 32,
+  "CSD_09B4M": 85,
+  "AGENT": 78,
+  "STR-01A247": 83
+ },
+ "frameBaselineNote": "素体强度＝**型号的纯函数**（同型号同分）。**SSD-62 系列（未改装）统一为 D 档最高分 24**；**SST 系列（普通型号）按剧情在 C–A 区间按型号给值**：SST-05（标准军用）32 C ／ SST-05A2（改进型）45 B ／ SST_05A3_ST（A3 特化）53 A ／ SST_05A3_SEP（A3 特种强化）58 A。**SST-05A2_X（A2 三代改造·黑闪电）＝87 SS**：作者 2026-10-09 裁定——**不是普通 SST 改**，强度对标针、超过威玛西娜 85，**不受 C–A 约束**，并入下列特殊型号。特殊型号（PPD_02 32、DOPPELGAENGER 64、DUAL_DSI_8 70、DUAL_DSI_9 68、GOL_Loki_00 72、AGENT 78、OBSRV_PRT_00 79、STR-01A247 83、CSD_09B4M 85、SST_05A2_X 87、三代素体 87）为现值，**待作者排定**；无型号者（星渊 120、蓝雪球 85、喀什玛 81、黑眼 79）单独裁定。",
+ "techNote": "调律：战术人形的反应速度普遍足以应对弹道——这是 2070 年代的通用科技水平，不作为任何个体的特长加分。（2026-10-10 注：本维已改名「速度」，但**现值不来自反应速度**，而是沿用原「心智」评分。）",
+ "dimRenameNote": "2026-10-10 作者裁定：第六个维度的名称由「心智」改为「速度」。**仅改名，数值未动**——该维 73 条分数仍沿用 2026-10-09 的「心智」评分（心智底层抗攻击稳定性 ＋ 成熟度），ULTRA 锚仍是埃芙 120，权重 0.10、总分与排序全部不变；速度口径尚未重评。",
+ "weights": {
+  "搏斗": 0.25,
+  "素体": 0.2,
+  "火力": 0.18,
+  "战术": 0.15,
+  "电子战": 0.12,
+  "速度": 0.1
+ },
+ "formVariants": {
+  "note": "双形态缩略图数据（威玛西娜 带断罪者／本体、六分仪 入队时／当反派时）：同一张六维图叠两形态，切换形态＝只改对比度。带「主表现值」标记的那一态实时取 entries 里同名人形，另一态是助手提案。",
+  "createdAt": "2026-10-10",
+  "principle": "同一张六维图里同时画两形态：两条折线永远都在，切换形态只改对比度——选中的那条高对比（实线＋顶点＋数值），另一条压暗成底纹。数值两列并排，两态都能直接读。",
+  "rules": [
+   "字母档＝数值分带：E <12.5 ≤ D <25 ≤ C <37.5 ≤ B <50 ≤ A <62.5 ≤ S <75 ≤ SS ≤100 < ULTRA（>100 即 ULTRA，顶点 200）",
+   "总分＝六维加权：搏斗 25／素体 20／火力 18／战术 15／电子战 12／速度 10",
+   "素体＝型号的纯函数：威玛西娜 CSD_09B4M＝85、六分仪 STR-01A247＝83——两形态都不变（外骨骼／机房不是素体）",
+   "第六维「速度」沿用主表口径（＝原「心智」分，同一人不随形态变），尚未按真·速度重评"
+  ],
+  "notes": [
+   "主表 73 条一行未动：每张套图里带「主表现值」标记的那一态，就是 少前2_人形六维数据.json 里原有的那条（威玛西娜 89.4 SS / 火力 120 的 ULTRA 锚、六分仪 77.9 SS 都原样保留）。",
+   "另一态是**助手提案**（新增数值，不动主表与锚位），待作者给数。",
+   "威玛西娜：主表依据写的是长刀步战，但「下挂突击步枪」是挂在断罪者上的、火力 120 的锚也在这一侧，故主表现值归入**带断罪者**；本体单独下调。若你要反过来（主表＝本体、带断罪者上调），改 数据.json 里两个 forms 的 values 即可。",
+   "六分仪：语料明写她入队时「机房数量减少，实力变得大不如前」，故**入队时＝主表现值**（弱化态）、**当反派时**＝前线总执行人的完整实力（上调）。",
+   "六分仪第六维两态同值（56）：按上一轮裁定，这一维沿用原「心智」分且同一人不随形态变——所以「入队时心智被清空 vs 反派时完整」这层差异目前没有体现，若你要体现，单独说一声。",
+   "语料：_tools/gf2_lang_cn.txt（客户端 LangPackageTableCnData 去重可读串 600,274 条），括号里给的是该文件的原始行号。"
+  ],
+  "chars": [
+   {
+    "id": "wmx",
+    "name": "威玛西娜",
+    "meta": "忤逆小队 · CSD_09B4M · 突击步枪 AK-15 ＋ 断罪者外骨骼",
+    "accent": "#e5a13c",
+    "note": "断罪者是「设计之初就是为人形提供的外骨骼……就是为我而定制的」——两态差别全在这套外骨骼上。",
+    "forms": [
+     {
+      "label": "带断罪者",
+      "tag": "主表现值（原样未动）",
+      "values": [
+       120,
+       77,
+       85,
+       85,
+       77,
+       84
+      ],
+      "total": 89.4,
+      "tier": "SS",
+      "letters": [
+       "ULTRA",
+       "SS",
+       "SS",
+       "SS",
+       "SS",
+       "SS"
+      ],
+      "evidence": [
+       {
+        "q": "负罪者设计之初就是为人形提供的外骨骼……就是为我而定制的",
+        "ref": "语料 582767–582768"
+       },
+       {
+        "q": "威玛西娜，立刻启动断罪者进行空中拦截。调度重火力部队",
+        "ref": "语料 204053–204055"
+       },
+       {
+        "q": "即便断罪者有着极高的空中机动力，比起巨龙也更加灵活",
+        "ref": "语料 284746–284747"
+       },
+       {
+        "q": "仅凭借断罪者和下挂突击步枪的火力",
+        "ref": "语料 284749 —— AK-15 是挂在断罪者上的"
+       },
+       {
+        "q": "星渊手中的长矛精准而残暴地贯穿了断罪者的左臂装甲",
+        "ref": "语料 417580 —— 被打穿的是机甲装甲，不是素体"
+       }
+      ]
+     },
+     {
+      "label": "本体",
+      "tag": "助手提案（新增）",
+      "values": [
+       88,
+       77,
+       80,
+       85,
+       77,
+       84
+      ],
+      "total": 82.4,
+      "tier": "SS",
+      "letters": [
+       "SS",
+       "SS",
+       "SS",
+       "SS",
+       "SS",
+       "SS"
+      ],
+      "evidence": [
+       {
+        "q": "威玛西娜左手中的长刀在下一次的格挡中发出了不祥的金属疲劳声",
+        "ref": "语料 1441"
+       },
+       {
+        "q": "威玛西娜的长刀应声断裂",
+        "ref": "语料 1443"
+       },
+       {
+        "q": "长刀格挡、刀刃断裂仍死战；火力掩护四人突围",
+        "ref": "主表 威玛西娜 basis（本体步战）"
+       },
+       {
+        "q": "无外骨骼：手持突击步枪 ＋ 长刀，装甲与空中机动都得靠自己",
+        "ref": "故火力 120→88、搏斗 85→80"
+       }
+      ]
+     }
+    ]
+   },
+   {
+    "id": "lsy",
+    "name": "六分仪",
+    "meta": "奥尔劳格「完全免疫体获取计划」产物 · STR-01A247 · 近战武器 Sextans",
+    "accent": "#5fb3b0",
+    "note": "入队时被清空过心智、只靠美玲的小型机房运作；当反派时是全计划的总执行人。",
+    "forms": [
+     {
+      "label": "入队时",
+      "tag": "主表现值（原样未动）",
+      "values": [
+       73,
+       85,
+       78,
+       83,
+       56,
+       86
+      ],
+      "total": 77.9,
+      "tier": "SS",
+      "letters": [
+       "S",
+       "SS",
+       "SS",
+       "SS",
+       "A",
+       "SS"
+      ],
+      "evidence": [
+       {
+        "q": "实验失败后，清空心智的六分仪被丢弃至黄区……在机缘巧合下被闪电小队捡到",
+        "ref": "语料 95296–95298"
+       },
+       {
+        "q": "依托于美玲制造的小型机房，六分仪恢复到了可以正常运作的状态。但也因为机房数量减少，她的实力变得大不如前。",
+        "ref": "语料 95303–95306"
+       },
+       {
+        "q": "六分仪·入队",
+        "ref": "语料 535508"
+       },
+       {
+        "q": "虽然六分仪的心智被完全清空过",
+        "ref": "语料 440246"
+       },
+       {
+        "q": "以六分仪的权限无法直接获取到对方的具体位置",
+        "ref": "语料 3332 —— 入队后权限受限、要借艾莫号的设备才算得动"
+       }
+      ]
+     },
+     {
+      "label": "当反派时",
+      "tag": "助手提案（新增）",
+      "values": [
+       82,
+       95,
+       84,
+       83,
+       56,
+       92
+      ],
+      "total": 83.2,
+      "tier": "SS",
+      "letters": [
+       "SS",
+       "SS",
+       "SS",
+       "SS",
+       "A",
+       "SS"
+      ],
+      "evidence": [
+       {
+        "q": "作为奥尔劳格财团完全免疫体获取计划的总执行人在前线指挥作战",
+        "ref": "语料 95295 —— 反派期＝完整实力＋前线总指挥"
+       },
+       {
+        "q": "一边艰难地抵抗六分仪状似随意的攻击",
+        "ref": "语料 134170 —— 随手打，闪电小队只能苦撑"
+       },
+       {
+        "q": "在映射空间04中击杀六分仪",
+        "ref": "语料 81234 —— 反派期是需要专门击杀的 BOSS"
+       },
+       {
+        "q": "六分仪停止了攻击",
+        "ref": "语料 85563 —— 反派期她主动进攻"
+       },
+       {
+        "q": "现在她的权限已经归属艾莫号",
+        "ref": "语料 144645 —— 权限在入队后才归艾莫号，反推反派期权限／机房完整"
+       }
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}
