@@ -137,8 +137,9 @@ svg.radar{display:block;width:100%;height:auto;overflow:visible}
 .ring.halo{stroke:rgba(226,232,235,.11);stroke-dasharray:4 6}
 .axis{stroke:rgba(226,232,235,.085);stroke-width:1}
 .node{fill:rgba(226,232,235,.22)}
-.albl{font:400 9.5px var(--txt);fill:var(--paper-faint);letter-spacing:.03em}
+.albl{font:600 10px var(--txt);fill:var(--paper-2);letter-spacing:.03em;paint-order:stroke;stroke:var(--ink-900);stroke-width:3.2px;stroke-linejoin:round}
 .agl.big{font-size:14.5px;stroke-width:3.8px}
+.fval{fill:var(--paper-2);font:600 10.5px var(--dsp);font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--ink-900);stroke-width:3px;stroke-linejoin:round}
 .agl{font:700 10.5px var(--dsp);letter-spacing:.01em;paint-order:stroke;stroke:var(--ink-900);stroke-width:3px;stroke-linejoin:round}
 .evidence{font-size:11.5px;line-height:1.55;color:var(--paper-dim);border-left:1px solid var(--line-hard);padding-left:9px}
 .ledger{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;border-top:1px solid var(--line-soft);padding-top:8px}
@@ -291,7 +292,6 @@ svg.net{display:block;width:100%;height:auto}
 .btn.big{padding:10px 20px;font-size:14px}
 /* ===== 拖动改数值 / 手动保存 ===== */
 .dragv{cursor:grab;pointer-events:all}
-.dragv:hover{fill:rgba(229,161,60,.13);stroke:rgba(229,161,60,.6);stroke-width:1.5}
 .dragv:active{cursor:grabbing}
 .plate.noanim{animation:none}
 #btnSave.dirty{border-color:var(--amber);color:var(--amber)}
@@ -549,9 +549,11 @@ function radar(series, size, opt){
   var gpre = 'rg' + (++radarSeq) + '_';
   parts.push(gradDefs(gpre));
   function rOf(v){ return R * Math.max(0, Math.min(MAXV, v)) / 100; }   // >100 即画到 100 环外
-  var W = { E:9,D:9,C:9,B:9,A:9,S:9,SS:17,ULTRA:48 };   // 各档字母占位宽（ULTRA 字号大，最宽）
-  /* 档位字母的半径：贴着该维顶点，但**保证不越到维度名的地盘**（名字在 cx-4 外沿）*/
-  function letterRadius(v, grade){ var w = W[grade] || 9; return Math.min(Math.max(R, v) + 10, cx - 4 - w - 8); }
+  /* 两条固定环带，位置不随数值移动——这样标签之间永远不可能打架：
+       ① 维度名贴 100 环**内**沿（朝圆心一侧排）② 档位字贴 100 环**外**沿（朝外排）*/
+  var NAME_R = R - 9, GRADE_R = R + 11;
+  function inwardAnchor(x){ return Math.abs(x - cx) < 1.5 ? 'middle' : (x > cx ? 'end' : 'start'); }
+  function outwardAnchor(x){ return Math.abs(x - cx) < 1.5 ? 'middle' : (x > cx ? 'start' : 'end'); }
   /* 常规网格只到 100：默认情况下 100 环就是图的顶点 */
   for (var k=1;k<=8;k++){
     var rr = R*k/8, pts = [];
@@ -590,15 +592,15 @@ function radar(series, size, opt){
       if (series.length > 1 && opt.gradesAll === true){
         for (var j2=0;j2<6;j2++){
           var Lg = se.letters ? se.letters[j2] : letterOf(se.vals[j2]);
-          var plg = polar(cx,cy,letterRadius(rOf(se.vals[j2]), Lg),j2);
-          var alg = Math.abs(plg[0]-cx) < 1.5 ? 'middle' : (plg[0] > cx ? 'start' : 'end');
+          var plg = polar(cx,cy,GRADE_R,j2);
+          var alg = outwardAnchor(plg[0]);
           parts.push('<text class="agl'+(Lg==='ULTRA'?' big':'')+'" x="'+f1(plg[0])+'" y="'+f1(plg[1]+4)+'" text-anchor="'+alg+'" fill="'+gradeFill(Lg, gpre)+'">'+Lg+'</text>');
         }
       }
     }
     if (opt.values){
       for (var m=0;m<6;m++){
-        var lr = Math.min(vt[m][1] + 13 + si*11, cx - 4 - 26), lp = polar(cx,cy,lr,m);
+        var lr = Math.min(vt[m][1] + 13 + si*11, R - 16), lp = polar(cx,cy,lr,m);
         var anv = Math.abs(lp[0]-cx) < 1.5 ? 'middle' : (lp[0] > cx ? 'start' : 'end');
         parts.push('<text class="fval" x="'+f1(lp[0])+'" y="'+f1(lp[1]+3.5)+'" text-anchor="'+anv+'">'+se.vals[m]+'</text>');
       }
@@ -618,15 +620,12 @@ function radar(series, size, opt){
       var wid = 0;
       if (multi) for (var q=0;q<series.length;q++){ var lq = series[q].letters ? series[q].letters[i] : letterOf(series[q].vals[i]); wid = Math.max(wid, W[lq]||9); }
       /* 档位字母贴着该维顶点（数值 >100 时跟着出了 100 环），轴名再往外让开 */
-      var vR = series[0] ? rOf(series[0].vals[i]) : R;
-      var letterR = lg ? letterRadius(vR, lg) : Math.min(Math.max(R, vR) + 10, cx - 4 - wid - 8);
-      var lr = Math.min(letterR + (lg ? (W[lg]||9) + 10 : (multi ? wid + 10 : 0)), cx - 4);
-      var pn = polar(cx,cy,lr,i);
-      var an = Math.abs(pn[0]-cx) < 1.5 ? 'middle' : (pn[0] > cx ? 'start' : 'end');
+      var pn = polar(cx,cy,NAME_R,i);            /* 维度名：100 环内沿，朝圆心排 */
+      var an = inwardAnchor(pn[0]);
       parts.push('<text class="albl" x="'+f1(pn[0])+'" y="'+f1(pn[1]+3)+'" text-anchor="'+an+'">'+DSHORT[i]+'</text>');
       if (lg){
-        var pl = polar(cx,cy,letterR,i);
-        var al = Math.abs(pl[0]-cx) < 1.5 ? 'middle' : (pl[0] > cx ? 'start' : 'end');
+        var pl = polar(cx,cy,GRADE_R,i);         /* 档位字：100 环外沿，朝外排 */
+        var al = outwardAnchor(pl[0]);
         parts.push('<text class="agl'+(lg==='ULTRA'?' big':'')+'" x="'+f1(pl[0])+'" y="'+f1(pl[1]+4)+'" text-anchor="'+al+'" fill="'+gradeFill(lg, gpre)+'">'+lg+'</text>');
       }
     }
