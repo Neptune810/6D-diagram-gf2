@@ -223,14 +223,14 @@ function cardHTML(c){
     }).join('')+'</div></article>';
 }
 var KNOBS = [
-  ['雷达几何', [['radar.R100','100 环半径',40,130,1],['radar.gridRings','网格圈数',4,16,1],
-    ['radar.overflow','越界区','select',['auto','always','never']],['radar.ringAlpha','网格亮度',0,.5,.005],
-    ['radar.ringMajorAlpha','100 环亮度',0,.8,.005],['radar.axisAlpha','轴线亮度',0,.4,.005],['radar.overflowAlpha','越界线亮度',0,.4,.005]]],
-  ['数据图形', [['radar.polyStroke','多边形描边宽',0,6,.1],['radar.polyFill','多边形填充',0,.8,.01]]],
-  ['标签', [['radar.labelPad','标签离基准',0,40,1],['radar.nameSize','维度名字号',7,18,.5],['radar.nameWeight','维度名字重',400,800,100],
-    ['radar.nameStroke','维度名描边',0,8,.2],['radar.gradeSize','档位字号',7,20,.5],['radar.ultraSize','ULTRA 字号',8,26,.5],
-    ['radar.gradeStroke','档位描边',0,8,.2],['radar.ultraStroke','ULTRA 描边',0,8,.2]]],
-  ['卡片版式', [['card.minW','卡片最小宽',200,460,2],['card.gap','卡片间距',0,16,1],['card.pad','卡片内边距',6,34,1],['card.innerGap','卡片内间距',4,28,1]]],
+  ['雷达几何', [['radar.R100','100 环半径','range',40,130,1],['radar.gridRings','网格圈数','range',4,16,1],
+    ['radar.overflow','越界区','select',['auto','always','never']],['radar.ringAlpha','网格亮度','range',0,.5,.005],
+    ['radar.ringMajorAlpha','100 环亮度','range',0,.8,.005],['radar.axisAlpha','轴线亮度','range',0,.4,.005],['radar.overflowAlpha','越界线亮度','range',0,.4,.005]]],
+  ['数据图形', [['radar.polyStroke','多边形描边宽','range',0,6,.1],['radar.polyFill','多边形填充','range',0,.8,.01]]],
+  ['标签', [['radar.labelPad','标签离基准','range',0,40,1],['radar.nameSize','维度名字号','range',7,18,.5],['radar.nameWeight','维度名字重','range',400,800,100],
+    ['radar.nameStroke','维度名描边','range',0,8,.2],['radar.gradeSize','档位字号','range',7,20,.5],['radar.ultraSize','ULTRA 字号','range',8,26,.5],
+    ['radar.gradeStroke','档位描边','range',0,8,.2],['radar.ultraStroke','ULTRA 描边','range',0,8,.2]]],
+  ['卡片版式', [['card.minW','卡片最小宽','range',200,460,2],['card.gap','卡片间距','range',0,16,1],['card.pad','卡片内边距','range',6,34,1],['card.innerGap','卡片内间距','range',4,28,1]]],
   ['背景', [['theme.bg','页面底色','color'],['theme.bgGlow','左侧光晕','color'],['theme.bgGlow2','右侧光晕','color'],['theme.bgGrid','背景网格','color']]],
   ['卡片配色', [['theme.panelTop','卡片底色(上)','color'],['theme.panelBot','卡片底色(下)','color'],['theme.line','分隔线','color'],['theme.lineSoft','细分隔线','color']]],
   ['文字配色', [['theme.text','主文字','color'],['theme.nameText','维度名','color'],['theme.textDim','次要文字','color'],['theme.textFaint','极弱文字','color'],['theme.accent','强调色(按钮)','color']]],
