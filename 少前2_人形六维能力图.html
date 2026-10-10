@@ -137,9 +137,8 @@ input:focus,select:focus{border-color:var(--amber);background:rgba(229,161,60,.0
 .scope{fill:none;stroke:rgba(226,232,235,.11);stroke-dasharray:3 5}
 svg.radar{display:block;width:100%;height:auto;overflow:visible}
 .ring{fill:none;stroke:rgba(226,232,235,.065);stroke-width:1}
-.ring.major{stroke:rgba(226,232,235,.14)}
-.ring.ultra{stroke:rgba(226,232,235,.042)}
-.ring.halo{stroke:rgba(226,232,235,.24)}
+.ring.major{stroke:rgba(226,232,235,.20)}
+.ring.halo{stroke:rgba(226,232,235,.11);stroke-dasharray:4 6}
 .axis{stroke:rgba(226,232,235,.085);stroke-width:1}
 .node{fill:rgba(226,232,235,.22)}
 .albl{font:400 9.5px var(--txt);fill:var(--paper-faint);letter-spacing:.03em}
@@ -520,13 +519,23 @@ function radar(series, size, opt){
   var R = outer * 100 / MAXV;                // 100 的半径（六维图上限）
   parts.push('<svg class="radar" viewBox="0 0 '+size+' '+size+'" aria-hidden="true">');
   function rOf(v){ return R * Math.max(0, Math.min(MAXV, v)) / 100; }   // >100 即画到 100 环外
-  /* 网格按 12.5 分带铺到 200：0–100 正常亮，100–200（ULTRA 区）压暗，最外圈 200＝虚线六边形边界 */
-  for (var k=1;k<=16;k++){
+  /* 常规网格只到 100：默认情况下 100 环就是图的顶点 */
+  for (var k=1;k<=8;k++){
     var rr = R*k/8, pts = [];
     for (var i=0;i<6;i++){ var p = polar(cx,cy,rr,i); pts.push(f1(p[0])+','+f1(p[1])); }
-    parts.push('<polygon class="ring'+(k===8?' major':'')+(k>8?' ultra':'')+(k===16?' halo':'')+'" points="'+pts.join(' ')+'"/>');
+    parts.push('<polygon class="ring'+(k===8?' major':'')+'" points="'+pts.join(' ')+'"/>');
   }
-  for (var i2=0;i2<6;i2++){ var pa = polar(cx,cy,outer,i2);
+  /* 只有当这一图里真的出现 >100 的数值时，才延长轴、并补一条很淡的越界上限虚线（200） */
+  var vmax = 0;
+  series.forEach(function(se){ se.vals.forEach(function(v){ if (v > vmax) vmax = v; }); });
+  var over = vmax > 100;
+  var axisR = over ? outer : R;
+  if (over){
+    var p200 = [];
+    for (var i9=0;i9<6;i9++){ var q9 = polar(cx,cy,outer,i9); p200.push(f1(q9[0])+','+f1(q9[1])); }
+    parts.push('<polygon class="ring halo" points="'+p200.join(' ')+'"/>');
+  }
+  for (var i2=0;i2<6;i2++){ var pa = polar(cx,cy,axisR,i2);
     parts.push('<line class="axis" x1="'+cx+'" y1="'+cy+'" x2="'+f1(pa[0])+'" y2="'+f1(pa[1])+'"/>'); }
   parts.push('<circle class="scope" cx="'+cx+'" cy="'+cy+'" r="'+R+'"/>');
   series.forEach(function(se, si){
