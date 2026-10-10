@@ -5,77 +5,64 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>六维图 · 排版调参器</title>
 <style>
-:root{
-  --ink-900:#0a1219; --ink-850:#0d1822; --ink-800:#111d28; --ink-750:#16242f;
-  --paper:#eae5da; --paper-2:#c3cdd4; --paper-dim:#8ea3b1; --paper-faint:#67808f;
-  --line:rgba(226,232,235,.14); --line-soft:rgba(226,232,235,.07); --line-hard:rgba(226,232,235,.24);
-  --amber:#ffb84d; --teal:#5fb3b0; --crimson:#ff6f75;
+:root{--ui-bg:#0a1219;--ui-line:rgba(226,232,235,.14);--ui-line-soft:rgba(226,232,235,.07);
+  --ui-text:#eae5da;--ui-dim:#8ea3b1;--ui-faint:#67808f;--ui-amber:#ffb84d;
   --dsp:'Bahnschrift SemiCondensed','Bahnschrift','DIN Alternate','Microsoft YaHei UI',sans-serif;
-  --txt:'Segoe UI Variable Text','Segoe UI','Microsoft YaHei UI','PingFang SC',sans-serif;
-}
+  --txt:'Segoe UI Variable Text','Segoe UI','Microsoft YaHei UI','PingFang SC',sans-serif}
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
-body{min-height:100vh;color:var(--paper);font:400 13px/1.6 var(--txt);background-color:var(--ink-900);
-  background-image:radial-gradient(1250px 640px at 13% -10%,rgba(95,179,176,.07) 0,rgba(10,18,25,0) 62%),
-    repeating-linear-gradient(0deg,rgba(226,232,235,.03) 0 1px,rgba(0,0,0,0) 1px 72px),
-    repeating-linear-gradient(90deg,rgba(226,232,235,.03) 0 1px,rgba(0,0,0,0) 1px 72px);}
+body{min-height:100vh;color:var(--ui-text);font:400 13px/1.6 var(--txt);background-color:var(--ui-bg)}
 h1,h2,h3,p{margin:0}
 button,input,select,textarea{font:inherit;color:inherit}
-.shell{max-width:1600px;margin:0 auto;padding:22px 24px 60px}
-.top{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.shell{max-width:1660px;margin:0 auto;padding:22px 24px 60px}
+.top{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;justify-content:space-between;padding-bottom:14px;border-bottom:1px solid var(--ui-line)}
 h1{font-family:var(--dsp);font-size:26px;font-weight:600;letter-spacing:-.01em}
-h1 em{font-style:normal;color:var(--amber)}
-.lede{margin-top:6px;color:var(--paper-dim);font-size:12.5px;max-width:78ch}
+h1 em{font-style:normal;color:var(--ui-amber)}
+.lede{margin-top:6px;color:var(--ui-dim);font-size:12.5px;max-width:82ch}
 .actions{display:flex;flex-wrap:wrap;gap:8px}
-.btn{cursor:pointer;padding:7px 12px;border:1px solid var(--line);border-radius:2px;background:rgba(226,232,235,.03);color:var(--paper-2);font-size:12.5px}
-.btn:hover{border-color:var(--line-hard);color:var(--paper)}
-.btn.solid{border-color:var(--amber);color:var(--paper);background:rgba(255,184,77,.10)}
-.btn.on{border-color:var(--amber);color:var(--amber)}
-.wrap{display:grid;grid-template-columns:344px minmax(0,1fr);gap:22px;margin-top:18px}
+.btn{cursor:pointer;padding:7px 12px;border:1px solid var(--ui-line);border-radius:2px;background:rgba(226,232,235,.03);color:var(--ui-text);font-size:12.5px}
+.btn:hover{border-color:rgba(226,232,235,.3)}
+.btn.solid{border-color:var(--ui-amber);background:rgba(255,184,77,.10)}
+.btn.on{border-color:var(--ui-amber);color:var(--ui-amber)}
+.wrap{display:grid;grid-template-columns:352px minmax(0,1fr);gap:22px;margin-top:18px}
 .panel{max-height:calc(100vh - 150px);overflow:auto;padding-right:10px}
-.grp{margin-bottom:16px;border:1px solid var(--line-soft);border-radius:3px;padding:10px 12px 12px;background:rgba(226,232,235,.02)}
-.grp h2{font-family:var(--dsp);font-size:12px;letter-spacing:.08em;color:var(--paper-dim);margin-bottom:8px}
-.row{display:grid;grid-template-columns:1fr 62px;gap:8px;align-items:center;margin-bottom:7px}
-.row label{font-size:12px;color:var(--paper-2)}
-.row label i{display:block;font-style:normal;color:var(--paper-faint);font-size:10px}
-.row input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--amber)}
-.row input[type=number]{width:100%;padding:3px 6px;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:2px;font-variant-numeric:tabular-nums}
-.row select{grid-column:1/-1;width:100%;padding:4px 6px;background:rgba(0,0,0,.25);border:1px solid var(--line);border-radius:2px}
-.row.wide{grid-template-columns:1fr}
+.grp{margin-bottom:14px;border:1px solid var(--ui-line-soft);border-radius:3px;padding:10px 12px 12px;background:rgba(226,232,235,.02)}
+.grp h2{font-family:var(--dsp);font-size:12px;letter-spacing:.08em;color:var(--ui-dim);margin-bottom:8px}
+.row{display:grid;grid-template-columns:1fr 74px;gap:8px;align-items:center;margin-bottom:7px}
+.row label{font-size:12px;color:var(--ui-text)}
+.row input[type=range]{grid-column:1/-1;width:100%;accent-color:var(--ui-amber)}
+.row input[type=number]{width:100%;padding:3px 6px;background:rgba(0,0,0,.25);border:1px solid var(--ui-line);border-radius:2px;font-variant-numeric:tabular-nums}
+.row input[type=color]{width:100%;height:26px;padding:0;background:rgba(0,0,0,.25);border:1px solid var(--ui-line);border-radius:2px}
+.row select{grid-column:1/-1;width:100%;padding:4px 6px;background:rgba(0,0,0,.25);border:1px solid var(--ui-line);border-radius:2px}
 .stage{min-width:0}
-.stagebar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--line);font-size:12.5px;color:var(--paper-dim)}
-.cards{display:grid;gap:var(--cardgap,1px);background:var(--line-soft);margin-top:2px;grid-template-columns:repeat(auto-fill,minmax(var(--cardminw,292px),1fr))}
-.plate{position:relative;background:linear-gradient(180deg,var(--ink-850),var(--ink-900) 78%);padding:var(--cardpad,16px);display:flex;flex-direction:column;gap:var(--cardigap,12px)}
-.plate.self{border-left:2px solid rgba(255,184,77,.7)}
-.plate.foe{border-left:2px solid rgba(255,111,117,.7)}
+.stagebar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;padding-bottom:12px;border-bottom:1px solid var(--ui-line);font-size:12.5px;color:var(--ui-dim)}
+.cards{display:grid;gap:var(--cardgap,1px);background:var(--ui-line-soft);margin-top:2px;grid-template-columns:repeat(auto-fill,minmax(var(--cardminw,292px),1fr))}
+.plate{position:relative;background:linear-gradient(180deg,var(--pantop),var(--panbot) 78%);padding:var(--cardpad,16px);
+  display:flex;flex-direction:column;gap:var(--cardigap,12px);border-left:2px solid var(--panside,transparent)}
 .ptop{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
-.pname{font-family:var(--dsp);font-size:20px;line-height:1.15}
-.frm{font-size:11px;color:var(--paper-faint);margin-top:3px}
-.rankno{font-family:var(--dsp);font-size:23px;line-height:1.05;font-variant-numeric:tabular-nums;text-align:right}
-.rankno small{font-family:var(--txt);font-size:10px;color:var(--paper-faint);margin-left:4px}
+.pname{font-family:var(--dsp);font-size:20px;line-height:1.15;color:var(--t-text)}
+.frm{font-size:11px;color:var(--t-faint);margin-top:3px}
+.rankno{font-family:var(--dsp);font-size:23px;line-height:1.05;font-variant-numeric:tabular-nums;text-align:right;color:var(--t-text)}
+.rankno small{font-family:var(--txt);font-size:10px;color:var(--t-faint);margin-left:4px}
 .tier{font-family:var(--dsp);font-size:12px;letter-spacing:.06em;text-align:right}
 .chart{display:grid;place-items:center}
-svg.radar{display:block;width:100%;height:auto;overflow:visible}
-.ring{fill:none;stroke-width:1}
-.ring.major{fill:none}
-.ring.halo{fill:none}
-.axis{stroke-width:1}
-.scope{fill:none;stroke-dasharray:3 5}
-.albl{font-family:var(--txt);letter-spacing:.03em;paint-order:stroke;stroke:var(--ink-900);stroke-linejoin:round}
-.fval{font-family:var(--dsp);font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--ink-900);stroke-linejoin:round}
-.ledger{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;border-top:1px solid var(--line-soft);padding-top:8px}
-.led{display:flex;justify-content:space-between;gap:8px;align-items:baseline;padding:3px 0;border-bottom:1px solid var(--line-soft)}
-.led span{font-size:11px;color:var(--paper-faint)}
-.led b{font-family:var(--dsp);font-size:14.5px;font-variant-numeric:tabular-nums}
-.out{margin-top:20px;border-top:1px solid var(--line);padding-top:14px}
-.out h2{font-family:var(--dsp);font-size:12.5px;letter-spacing:.06em;color:var(--paper-dim);margin-bottom:8px}
-textarea{width:100%;height:210px;padding:10px 12px;background:rgba(0,0,0,.32);border:1px solid var(--line);border-radius:3px;
-  color:var(--paper-2);font:12px/1.55 Consolas,'Cascadia Mono',monospace;resize:vertical}
-.hint{margin-top:8px;color:var(--paper-faint);font-size:11.5px}
-.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);padding:8px 16px;border:1px solid var(--amber);
-  border-radius:3px;background:rgba(10,18,25,.95);color:var(--paper);font-size:12.5px;opacity:0;transition:opacity .3s;pointer-events:none}
+svg.radar{display:block;width:100%;height:auto;overflow:visible;position:relative;z-index:1}
+.ring{fill:none;stroke-width:1}.ring.major{fill:none}.ring.halo{fill:none}.axis{stroke-width:1}
+.albl{font-family:var(--txt);letter-spacing:.03em;paint-order:stroke;stroke:var(--pantop);stroke-linejoin:round}
+.fval{font-family:var(--dsp);font-variant-numeric:tabular-nums;paint-order:stroke;stroke:var(--pantop);stroke-linejoin:round}
+.ledger{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;border-top:1px solid var(--t-line);padding-top:8px}
+.led{display:flex;justify-content:space-between;gap:8px;align-items:baseline;padding:3px 0;border-bottom:1px solid var(--t-line)}
+.led span{font-size:11px;color:var(--t-faint)}
+.led b{font-family:var(--dsp);font-size:14.5px;font-variant-numeric:tabular-nums;color:var(--t-text)}
+.out{margin-top:20px;border-top:1px solid var(--ui-line);padding-top:14px}
+.out h2{font-family:var(--dsp);font-size:12.5px;letter-spacing:.06em;color:var(--ui-dim);margin-bottom:8px}
+textarea{width:100%;height:220px;padding:10px 12px;background:rgba(0,0,0,.32);border:1px solid var(--ui-line);border-radius:3px;
+  color:var(--ui-dim);font:12px/1.55 Consolas,'Cascadia Mono',monospace;resize:vertical}
+.hint{margin-top:8px;color:var(--ui-faint);font-size:11.5px}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);padding:8px 16px;border:1px solid var(--ui-amber);border-radius:3px;
+  background:rgba(10,18,25,.95);color:var(--ui-text);font-size:12.5px;opacity:0;transition:opacity .3s;pointer-events:none}
 .toast.on{opacity:1}
-@media(max-width:1040px){.wrap{grid-template-columns:1fr}.panel{max-height:none}}
+@media(max-width:1080px){.wrap{grid-template-columns:1fr}.panel{max-height:none}}
 </style>
 </head>
 <body>
@@ -83,15 +70,14 @@ textarea{width:100%;height:210px;padding:10px 12px;background:rgba(0,0,0,.32);bo
   <div class="top">
     <div>
       <h1>六维图 · <em>排版调参器</em></h1>
-      <p class="lede">左边拖滑条，右边 4 张样本卡实时重画。调好后点「导出配置」，把下面那段 JSON 发我——参数名和正式页面里的变量一一对应，我照着落进 <code>少前2_人形六维能力图.html</code>。（顶点圆点与档位弧已删除；标签已合并成「维度名＋档位」一个，贴着各自顶点走。）</p>
+      <p class="lede">左边拖动／改色，右边 4 张样本卡实时重画。改完点「复制配置」，把下面那段 JSON 发我，我逐项落进 <code>少前2_人形六维能力图.html</code>——键名与页面里的 <code>LAYOUT</code>／<code>THEME</code> 一一对应。顶点圆点与档位弧已删除；标签为「维度名＋档位」合并式：低于 100 的一律牵在 100 环外沿，高于 100 的沿轴外扩。</p>
     </div>
     <div class="actions">
-      <button class="btn" id="btnReset">恢复当前线上值</button>
+      <button class="btn" id="btnReset">恢复线上当前值</button>
       <button class="btn solid" id="btnCopy">复制配置</button>
       <button class="btn" id="btnDl">下载 JSON</button>
     </div>
   </div>
-
   <div class="wrap">
     <aside class="panel" id="panel"></aside>
     <main class="stage">
@@ -100,120 +86,114 @@ textarea{width:100%;height:210px;padding:10px 12px;background:rgba(0,0,0,.32);bo
         <button class="btn on" data-set="0">常规</button>
         <button class="btn" data-set="1">含 ULTRA</button>
         <button class="btn" data-set="2">极值</button>
-        <span style="margin-left:14px">卡片最小宽</span>
-        <input type="range" id="cardw" min="220" max="460" step="2" style="width:130px;accent-color:var(--amber)">
-        <output id="cardwv">292</output>
       </div>
       <div class="cards" id="cards"></div>
+      <section class="out">
+        <h2>导出的配置（改任何控件都会实时更新）</h2>
+        <textarea id="cfg" spellcheck="false"></textarea>
+        <p class="hint">单位：<code>R100 / labelPad / nameSize</code> 等都是 300×300 viewBox 里的值；<code>theme.*</code> 是颜色，SS 与 ULTRA 仍走渐变（改它们只影响单色回退）。</p>
+      </section>
     </main>
   </div>
-
-  <section class="out">
-    <h2>导出的配置（改滑条会实时更新）</h2>
-    <textarea id="cfg" spellcheck="false"></textarea>
-    <p class="hint">用法：把这段 JSON 粘给我，我逐项写进页面；或者你自己对照 <code>radar()</code> 里的常量改。<code>R100 / nameR / gradeR</code> 都是 300×300 viewBox 里的单位。</p>
-  </section>
 </div>
 <div class="toast" id="toast"></div>
 <script>
-/* ===== 默认值 = 当前线上页面的实际取值（改这里以对齐线上） ===== */
 var DEFAULTS = {
-  radar: {
-    sizeCard: 300, R100: 72, gridRings: 8, overflow: 'always',
-    overflowAlpha: 0, ringAlpha: 0.145, ringMajorAlpha: 0.5, axisAlpha: 0,
-    polyStroke: 0.5, polyFill: 0.35,
-    labelPad: 12, labelMinR: 28,
-    nameSize: 8, nameWeight: 600, nameStroke: 0,
-    gradeSize: 9, ultraSize: 12, gradeStroke: 0, ultraStroke: 0
-  },
-  card: { minW: 276, gap: 0, pad: 12, innerGap: 4 }
+  radar: { sizeCard:300, R100:72, gridRings:8, overflow:'always', overflowAlpha:0, ringAlpha:0.145, ringMajorAlpha:0.5, axisAlpha:0,
+    polyStroke:0.5, polyFill:0.35, labelPad:12,
+    nameSize:8, nameWeight:600, nameStroke:0, gradeSize:9, ultraSize:12, gradeStroke:0, ultraStroke:0 },
+  card: { minW:276, gap:0, pad:12, innerGap:4 },
+  theme: { bg:'#0a1219', bgGlow:'rgba(95,179,176,.085)', bgGlow2:'rgba(229,161,60,.055)', bgGrid:'rgba(226,232,235,.032)',
+    panelTop:'#0d1822', panelBot:'#0a1219', line:'rgba(226,232,235,.14)', lineSoft:'rgba(226,232,235,.07)',
+    text:'#eae5da', nameText:'#c3cdd4', textDim:'#8ea3b1', textFaint:'#67808f', accent:'#ffb84d',
+    grid:'#e2e8eb', gridMajor:'#e2e8eb', axis:'#e2e8eb', overflowLine:'#e2e8eb',
+    self:'#ffb84d', foe:'#ff6f75',
+    tier:['#9c9c9c','#9c9c9c','#9c9c9c','#f0c53f','#f0c53f','#f0c53f','#f0c53f','#e08cff'] }
 };
 var P = JSON.parse(JSON.stringify(DEFAULTS));
-
-/* ===== 与正式页一致的档位配色 ===== */
+function get(path){ var a = path.split('.'), o = P; for (var i=0;i<a.length;i++) o = o[a[i]]; return o; }
+function set(path, val){ var a = path.split('.'), o = P; for (var i=0;i<a.length-1;i++) o = o[a[i]]; o[a[a.length-1]] = val; }
+function parseColor(s){
+  if (typeof s !== 'string') return { hex:'#888888', a:1 };
+  if (s.charAt(0) === '#'){
+    var h = s.length === 4 ? '#'+s.charAt(1)+s.charAt(1)+s.charAt(2)+s.charAt(2)+s.charAt(3)+s.charAt(3) : s;
+    return { hex:h, a:1 };
+  }
+  var m = /rgba?\(([^)]+)\)/.exec(s);
+  if (!m) return { hex:'#888888', a:1 };
+  var p = m[1].split(',').map(function(x){ return parseFloat(x); });
+  return { hex: rgb2hex(p[0],p[1],p[2]), a: p.length>3 ? p[3] : 1 };
+}
+function rgb2hex(r,g,b){ return '#' + [r,g,b].map(function(v){ var s = Math.max(0,Math.min(255,Math.round(v))).toString(16); return s.length<2?'0'+s:s; }).join(''); }
+function hex2rgb(h){ if (h.length===4) h = '#'+h.charAt(1)+h.charAt(1)+h.charAt(2)+h.charAt(2)+h.charAt(3)+h.charAt(3); return [parseInt(h.slice(1,3),16), parseInt(h.slice(3,5),16), parseInt(h.slice(5,7),16)]; }
+function colorWithAlpha(hex, a){ if (a >= 1) return hex; var c = hex2rgb(hex); return 'rgba('+c[0]+','+c[1]+','+c[2]+','+a+')'; }
+function themeOf(path){ return parseColor(get(path)); }
+function setColor(path, hex){ var cur = themeOf(path); set(path, colorWithAlpha(hex, cur.a)); }
+function withA(path, a){ return colorWithAlpha(themeOf(path).hex, a); }
 var GRADES = ['E','D','C','B','A','S','SS','ULTRA'];
-var GCOLOR = ['#9a9088','#c08a5e','#b3c0cf','#5cc4c9','#7fa8e8','#b070e0','#f0c53f','#e08cff'];
-var ACC = { self:'#ffb84d', foe:'#ff6f75' };
-var GGRAD = {
-  S:     ['#dca8ff','#b070e0','#7a3fb0'],
-  SS:    ['#fffbe0','#ffd23f','#f2a51a'],
-  ULTRA: ['#ff4d6d','#ffb84d','#ffe95c','#5fe0a0','#5fc7ff','#b06bff']
-};
-var GGRAD_ANGLE = { S:'120deg', SS:'105deg', ULTRA:'80deg' };
-var DIMS = ['火力','电子战','搏斗','素体','速度','战术'];
-var DSHORT = ['火力','电子战','搏斗','素体','速度','战术'];
-var W = { E:9,D:9,C:9,B:9,A:9,S:9,SS:17,ULTRA:48 };
-function letterOf(v){ return v > 100 ? 'ULTRA' : GRADES[Math.max(0, Math.min(6, Math.floor(v / 12.5)))]; }
-function gradeColor(g){ return GCOLOR[GRADES.indexOf(g)]; }
-function gradeCss(g){ return GGRAD[g]
-  ? 'color:' + gradeColor(g) + ';background-image:linear-gradient(' + (GGRAD_ANGLE[g]||'110deg') + ',' + GGRAD[g].join(',') + ');-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent'
-  : 'color:' + gradeColor(g); }
-function gradeBg(g){ return GGRAD[g] ? 'background-image:linear-gradient(' + (GGRAD_ANGLE[g]||'110deg') + ',' + GGRAD[g].join(',') + ')' : 'background:' + gradeColor(g); }
+var GGRAD = { SS:['#fffbe0','#ffd23f','#f2a51a'], ULTRA:['#ff4d6d','#ffb84d','#ffe95c','#5fe0a0','#5fc7ff','#b06bff'] };
+var GGRAD_ANGLE = { SS:'105deg', ULTRA:'80deg' };
+function tierColor(i){ return get('theme.tier.'+i); }
+function letterOf(v){ return v > 100 ? 'ULTRA' : GRADES[Math.max(0,Math.min(6,Math.floor(v/12.5)))]; }
+function gradeColor(g){ return tierColor(GRADES.indexOf(g)); }
+function gradeCss(g){ var c = gradeColor(g); return GGRAD[g]
+  ? 'color:'+c+';background-image:linear-gradient('+(GGRAD_ANGLE[g]||'110deg')+','+GGRAD[g].join(',')+');-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent'
+  : 'color:'+c; }
+function gradeFill(g, pre){ return GGRAD[g] ? 'url(#'+pre+g+')' : gradeColor(g); }
 var seq = 0;
-function gradeFill(g, pre){ return GGRAD[g] ? 'url(#' + pre + g + ')' : gradeColor(g); }
 function gradDefs(pre){
   return '<defs>' + Object.keys(GGRAD).map(function(g){
     var n = GGRAD[g].length;
-    return '<linearGradient id="' + pre + g + '" x1="0" y1="0" x2="1" y2="1">' +
-      GGRAD[g].map(function(c, i){ return '<stop offset="' + Math.round(i/(n-1)*100) + '%" stop-color="' + c + '"/>'; }).join('') +
-      '</linearGradient>';
+    return '<linearGradient id="'+pre+g+'" x1="0" y1="0" x2="1" y2="1">' +
+      GGRAD[g].map(function(c,i){ return '<stop offset="'+Math.round(i/(n-1)*100)+'%" stop-color="'+c+'"/>'; }).join('') + '</linearGradient>';
   }).join('') + '</defs>';
 }
+var DIMS = ['火力','电子战','搏斗','素体','速度','战术'];
 function polar(cx,cy,r,i){ var a = -Math.PI/2 + i*Math.PI/3; return [cx + r*Math.cos(a), cy + r*Math.sin(a)]; }
 function f1(n){ return Math.round(n*100)/100; }
 function esc(s){ return String(s).replace(/[&<>"]/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]; }); }
-
-/* ===== 雷达：与正式页同一套画法，几何全部读 P.radar ===== */
 function radar(vals, color){
   var R = P.radar, size = R.sizeCard, cx = size/2, cy = size/2, MAXV = 200;
-  var outer = R.R100 * MAXV / 100;                 // 200 的半径
-  var o = [], gpre = 'tg' + (++seq) + '_';
+  var outer = R.R100 * MAXV / 100, o = [], gpre = 'tg' + (++seq) + '_';
   function rOf(v){ return R.R100 * Math.max(0, Math.min(MAXV, v)) / 100; }
   var vmax = 0; vals.forEach(function(v){ if (v > vmax) vmax = v; });
   var over = R.overflow === 'always' || (R.overflow === 'auto' && vmax > 100);
-  var axisR = over ? outer : R.R100;
-
-  o.push('<svg class="radar" viewBox="0 0 ' + size + ' ' + size + '" aria-hidden="true">');
+  o.push('<svg class="radar" viewBox="0 0 '+size+' '+size+'" aria-hidden="true">');
   o.push(gradDefs(gpre));
   for (var k = 1; k <= R.gridRings; k++){
     var rr = R.R100 * k / R.gridRings, pts = [];
-    for (var i = 0; i < 6; i++){ var p = polar(cx,cy,rr,i); pts.push(f1(p[0]) + ',' + f1(p[1])); }
-    o.push('<polygon class="ring' + (k === R.gridRings ? ' major' : '') + '" points="' + pts.join(' ') +
-      '" style="stroke:rgba(226,232,235,' + (k === R.gridRings ? R.ringMajorAlpha : R.ringAlpha) + ')"/>');
+    for (var i = 0; i < 6; i++){ var p = polar(cx,cy,rr,i); pts.push(f1(p[0])+','+f1(p[1])); }
+    o.push('<polygon class="ring'+(k===R.gridRings?' major':'')+'" points="'+pts.join(' ')+'" style="stroke:'+
+      withA(k===R.gridRings?'theme.gridMajor':'theme.grid', k===R.gridRings?R.ringMajorAlpha:R.ringAlpha)+'"/>');
   }
-  if (over){
+  if (over && R.overflowAlpha > 0){
     var p2 = [];
-    for (var i2 = 0; i2 < 6; i2++){ var q = polar(cx,cy,outer,i2); p2.push(f1(q[0]) + ',' + f1(q[1])); }
-    o.push('<polygon class="ring halo" points="' + p2.join(' ') + '" style="stroke:rgba(226,232,235,' + R.overflowAlpha + ');stroke-dasharray:4 6"/>');
+    for (var i2 = 0; i2 < 6; i2++){ var q = polar(cx,cy,outer,i2); p2.push(f1(q[0])+','+f1(q[1])); }
+    o.push('<polygon class="ring halo" points="'+p2.join(' ')+'" style="stroke:'+withA('theme.overflowLine', R.overflowAlpha)+'"/>');
   }
-  for (var i3 = 0; i3 < 6; i3++){ var pa = polar(cx,cy,axisR,i3);
-    o.push('<line class="axis" x1="' + cx + '" y1="' + cy + '" x2="' + f1(pa[0]) + '" y2="' + f1(pa[1]) + '" style="stroke:rgba(226,232,235,' + R.axisAlpha + ')"/>'); }
-
+  if (R.axisAlpha > 0){
+    var axisR = over ? outer : R.R100;
+    for (var i3 = 0; i3 < 6; i3++){ var pa = polar(cx,cy,axisR,i3);
+      o.push('<line class="axis" x1="'+cx+'" y1="'+cy+'" x2="'+f1(pa[0])+'" y2="'+f1(pa[1])+'" style="stroke:'+withA('theme.axis', R.axisAlpha)+'"/>'); }
+  }
   var vp = [], vv = [];
-  for (var i4 = 0; i4 < 6; i4++){ var rv = rOf(vals[i4]); vv.push(rv); var pt = polar(cx,cy,rv,i4); vp.push(f1(pt[0]) + ',' + f1(pt[1])); }
-  o.push('<polygon points="' + vp.join(' ') + '" fill="' + color + '" fill-opacity="' + R.polyFill + '" stroke="' + color + '" stroke-width="' + R.polyStroke + '"/>');
+  for (var i4 = 0; i4 < 6; i4++){ var rv = rOf(vals[i4]); vv.push(rv); var pt = polar(cx,cy,rv,i4); vp.push(f1(pt[0])+','+f1(pt[1])); }
+  o.push('<polygon points="'+vp.join(' ')+'" fill="'+color+'" fill-opacity="'+R.polyFill+'" stroke="'+color+'" stroke-width="'+R.polyStroke+'"/>');
   for (var j = 0; j < 6; j++){
     var L = letterOf(vals[j]);
-    var w = DSHORT[j].length * R.nameSize + 4 + L.length * (L === 'ULTRA' ? R.ultraSize : R.gradeSize) * 0.62;
+    var w = DIMS[j].length * R.nameSize + 4 + L.length * (L==='ULTRA'?R.ultraSize:R.gradeSize) * 0.62;
     var ang = -Math.PI/2 + j*Math.PI/3;
-    var half = Math.max(R.nameSize * 0.6, (w/2) * Math.abs(Math.cos(ang)));
-    var lr = Math.min(Math.max(vv[j], R.labelMinR) + R.labelPad + half, cx - 6 - half);
-    var lp2 = polar(cx,cy,lr,j);
-    o.push('<text class="albl" x="' + f1(lp2[0]) + '" y="' + f1(lp2[1] + 3) + '" text-anchor="middle"' +
-      ' font-size="' + R.nameSize + '" font-weight="' + R.nameWeight + '">' +
-      '<tspan style="fill:var(--paper-2);stroke-width:' + R.nameStroke + '">' + DSHORT[j] + '</tspan>' +
-      '<tspan fill="' + gradeFill(L, gpre) + '" style="font-size:' + (L === 'ULTRA' ? R.ultraSize : R.gradeSize) + ';font-weight:700;stroke-width:' + (L === 'ULTRA' ? R.ultraStroke : R.gradeStroke) + '"> ' + L + '</tspan>' +
-      '</text>');
+    var half = Math.max(R.nameSize*0.6, (w/2) * Math.abs(Math.cos(ang)));
+    var base = Math.max(vv[j], R.R100);
+    var lr = Math.min(base + R.labelPad + half, cx + 30 - half);
+    var lp = polar(cx,cy,lr,j);
+    o.push('<text class="albl" x="'+f1(lp[0])+'" y="'+f1(lp[1]+3)+'" text-anchor="middle" font-size="'+R.nameSize+'" font-weight="'+R.nameWeight+'">' +
+      '<tspan style="fill:'+themeOf('theme.nameText').hex+';stroke-width:'+R.nameStroke+'">'+DIMS[j]+'</tspan>' +
+      '<tspan fill="'+gradeFill(L,gpre)+'" style="font-size:'+(L==='ULTRA'?R.ultraSize:R.gradeSize)+';font-weight:700;stroke-width:'+(L==='ULTRA'?R.ultraStroke:R.gradeStroke)+'"> '+L+'</tspan></text>');
   }
   o.push('</svg>');
   return o.join('');
 }
-function labelAnchor(x){                     // 标签一律朝外排，绝不压回图里
-  if (Math.abs(x - P.radar.sizeCard/2) < 1.5) return 'middle';
-  return x > P.radar.sizeCard/2 ? 'start' : 'end';
-}
-
-/* ===== 样本 ===== */
 var SETS = [
   [ { n:'样本·甲', s:'self', f:'CSD_09B4M', v:[88,77,85,85,77,84] },
     { n:'样本·乙', s:'foe',  f:'STR-01A247', v:[73,85,78,83,56,86] },
@@ -229,131 +209,108 @@ var SETS = [
     { n:'样本·丁', s:'foe',  f:'', v:[50,88,66,72,58,80] } ]
 ];
 var curSet = 0;
-function totalOf(v){ var num = 0, den = 0, WT = [0.18,0.12,0.25,0.20,0.10,0.15];
-  v.forEach(function(x,i){ num += WT[i]*x; den += WT[i]; }); return Math.round(num/den*10)/10; }
+function totalOf(v){ var W = [0.18,0.12,0.25,0.20,0.10,0.15], n = 0; v.forEach(function(x,i){ n += W[i]*x; }); return Math.round(n*10)/10; }
+function sideColor(s){ return themeOf(s === 'foe' ? 'theme.foe' : 'theme.self').hex; }
 function cardHTML(c){
   var t = totalOf(c.v), L = letterOf(t);
-  return '<article class="plate ' + (c.s === 'foe' ? 'foe' : 'self') + '">' +
-    '<div class="ptop"><div><h3 class="pname">' + esc(c.n) + '</h3><div class="frm">素体 ' + (c.f || '无型号') + '</div></div>' +
-    '<div><div class="rankno">' + t + '<small>总分</small></div><div class="tier" style="' + gradeCss(L) + '">' + L + '</div></div></div>' +
-    '<div class="chart">' + radar(c.v, ACC[c.s]) + '</div>' +
-    '<div class="ledger">' + DIMS.map(function(d,i){
+  return '<article class="plate" style="--panside:'+sideColor(c.s)+'">' +
+    '<div class="ptop"><div><h3 class="pname">'+esc(c.n)+'</h3><div class="frm">素体 '+(c.f||'无型号')+'</div></div>' +
+    '<div><div class="rankno">'+t+'<small>总分</small></div><div class="tier" style="'+gradeCss(L)+'">'+L+'</div></div></div>' +
+    '<div class="chart">'+radar(c.v, sideColor(c.s))+'</div>' +
+    '<div class="ledger">'+DIMS.map(function(d,i){
       var g = letterOf(c.v[i]);
-      return '<div class="led"><span>' + d + '</span><b class="num">' + c.v[i] + '<i style="' + gradeCss(g) + ';font-style:normal;font-size:10px;margin-left:6px">' + g + '</i></b></div>';
-    }).join('') + '</div></article>';
+      return '<div class="led"><span>'+d+'</span><b>'+c.v[i]+'<i style="'+gradeCss(g)+';font-style:normal;font-size:10px;margin-left:6px">'+g+'</i></b></div>';
+    }).join('')+'</div></article>';
 }
-
-/* ===== 控件定义：每一项都标注了正式页面里的对应变量 ===== */
 var KNOBS = [
-  ['几何', [
-    ['radar.R100', '100 环半径', 40, 130, 1, 'radar() 的 R（= (size/2 - 12)/2）'],
-    ['radar.gridRings', '网格格数', 4, 16, 1, 'gridRings'],
-    ['radar.overflow', '越界区', null, null, null, 'auto / always / never', ['auto','always','never']],
-    ['radar.overflowAlpha', '越界虚线亮度', 0, .4, .005, 'ring.halo 的 stroke'],
-    ['radar.ringAlpha', '网格亮度', 0, .3, .005, '.ring 的 stroke'],
-    ['radar.ringMajorAlpha', '100 环亮度', 0, .5, .005, '.ring.major'],
-    ['radar.axisAlpha', '轴线亮度', 0, .3, .005, '.axis']
-  ]],
-  ['数据图形', [
-    ['radar.polyStroke', '多边形描边宽', 0.5, 6, .1, 'parea stroke-width'],
-    ['radar.polyFill', '多边形填充', 0, .8, .01, 'parea fill-opacity'],
-    /* 顶点圆点与档位弧已按作者要求删除，不再提供滑条 */
-  ]],
-  ['标签', [
-    ['radar.labelPad', '标签离顶点', 0, 40, 1, 'labelPad：贴顶点外侧多少'],
-    ['radar.labelMinR', '标签最小半径', 0, 80, 1, 'labelMinR：数值很小时的兜底'],
-    ['radar.nameSize', '维度名字号', 7, 18, .5, '.albl font-size'],
-    ['radar.nameWeight', '维度名字重', 400, 800, 100, '.albl font-weight'],
-    ['radar.nameStroke', '维度名描边', 0, 8, .2, '名字部分 stroke-width'],
-    ['radar.gradeSize', '档位字号', 7, 20, .5, '档位部分 font-size'],
-    ['radar.ultraSize', 'ULTRA 字号', 8, 26, .5, 'ULTRA 部分 font-size'],
-    ['radar.gradeStroke', '档位描边', 0, 8, .2, '档位部分 stroke-width'],
-    ['radar.ultraStroke', 'ULTRA 描边', 0, 8, .2, 'ULTRA 部分 stroke-width']
-  ]],
-  ['卡片', [
-    ['card.minW', '卡片最小宽', 200, 460, 2, '.plates minmax()'],
-    ['card.gap', '卡片间距', 0, 16, 1, '.plates gap'],
-    ['card.pad', '卡片内边距', 6, 34, 1, '.plate padding'],
-    ['card.innerGap', '卡片内间距', 4, 28, 1, '.plate gap']
-  ]]
+  ['雷达几何', [['radar.R100','100 环半径',40,130,1],['radar.gridRings','网格圈数',4,16,1],
+    ['radar.overflow','越界区','select',['auto','always','never']],['radar.ringAlpha','网格亮度',0,.5,.005],
+    ['radar.ringMajorAlpha','100 环亮度',0,.8,.005],['radar.axisAlpha','轴线亮度',0,.4,.005],['radar.overflowAlpha','越界线亮度',0,.4,.005]]],
+  ['数据图形', [['radar.polyStroke','多边形描边宽',0,6,.1],['radar.polyFill','多边形填充',0,.8,.01]]],
+  ['标签', [['radar.labelPad','标签离基准',0,40,1],['radar.nameSize','维度名字号',7,18,.5],['radar.nameWeight','维度名字重',400,800,100],
+    ['radar.nameStroke','维度名描边',0,8,.2],['radar.gradeSize','档位字号',7,20,.5],['radar.ultraSize','ULTRA 字号',8,26,.5],
+    ['radar.gradeStroke','档位描边',0,8,.2],['radar.ultraStroke','ULTRA 描边',0,8,.2]]],
+  ['卡片版式', [['card.minW','卡片最小宽',200,460,2],['card.gap','卡片间距',0,16,1],['card.pad','卡片内边距',6,34,1],['card.innerGap','卡片内间距',4,28,1]]],
+  ['背景', [['theme.bg','页面底色','color'],['theme.bgGlow','左侧光晕','color'],['theme.bgGlow2','右侧光晕','color'],['theme.bgGrid','背景网格','color']]],
+  ['卡片配色', [['theme.panelTop','卡片底色(上)','color'],['theme.panelBot','卡片底色(下)','color'],['theme.line','分隔线','color'],['theme.lineSoft','细分隔线','color']]],
+  ['文字配色', [['theme.text','主文字','color'],['theme.nameText','维度名','color'],['theme.textDim','次要文字','color'],['theme.textFaint','极弱文字','color'],['theme.accent','强调色(按钮)','color']]],
+  ['雷达线条', [['theme.grid','网格线','color'],['theme.gridMajor','100 环','color'],['theme.axis','轴线','color'],['theme.overflowLine','越界线','color']]],
+  ['阵营色', [['theme.self','自机多边形','color'],['theme.foe','敌方多边形','color']]],
+  ['档位配色', [['theme.tier.0','E','color'],['theme.tier.1','D','color'],['theme.tier.2','C','color'],['theme.tier.3','B','color'],
+    ['theme.tier.4','A','color'],['theme.tier.5','S','color'],['theme.tier.6','SS（金渐变）','color'],['theme.tier.7','ULTRA（五彩）','color']]]
 ];
-function v(path){ var p = path.split('.'); return P[p[0]][p[1]]; }
-function setv(path, val){ var p = path.split('.'); P[p[0]][p[1]] = val; }
-
 function buildPanel(){
   var h = '';
   KNOBS.forEach(function(g){
-    h += '<div class="grp"><h2>' + g[0] + '</h2>';
+    h += '<div class="grp"><h2>'+g[0]+'</h2>';
     g[1].forEach(function(k){
-      var path = k[0], label = k[1], min = k[2], max = k[3], step = k[4], note = k[5], opts = k[6];
-      h += '<div class="row"><label>' + label + '<i>' + note + '</i></label>';
-      if (opts){
-        h += '<select data-k="' + path + '" style="grid-column:1/-1">' + opts.map(function(o){
-          return '<option value="' + o + '"' + (v(path) === o ? ' selected' : '') + '>' + o + '</option>'; }).join('') + '</select>';
+      var path = k[0], label = k[1], kind = k[2], min = k[3], max = k[4], step = k[5], opts = (kind === 'select' ? k[3] : null);
+      h += '<div class="row"><label>'+label+'</label>';
+      if (kind === 'select'){
+        h += '<select data-k="'+path+'" style="grid-column:1/-1">'+opts.map(function(o){ return '<option value="'+o+'"'+(get(path)===o?' selected':'')+'>'+o+'</option>'; }).join('')+'</select>';
+      } else if (kind === 'color'){
+        h += '<input type="color" data-k="'+path+'" value="'+themeOf(path).hex+'">';
       } else {
-        h += '<input type="number" data-k="' + path + '" min="' + min + '" max="' + max + '" step="' + step + '" value="' + v(path) + '">' +
-             '<input type="range" data-k="' + path + '" min="' + min + '" max="' + max + '" step="' + step + '" value="' + v(path) + '" style="grid-column:1/-1;width:100%;accent-color:var(--amber)">';
+        h += '<input type="number" data-k="'+path+'" min="'+min+'" max="'+max+'" step="'+step+'" value="'+get(path)+'">' +
+             '<input type="range" data-k="'+path+'" min="'+min+'" max="'+max+'" step="'+step+'" value="'+get(path)+'" style="grid-column:1/-1;width:100%;accent-color:var(--ui-amber)">';
       }
       h += '</div>';
     });
     h += '</div>';
   });
   document.getElementById('panel').innerHTML = h;
-  Array.prototype.forEach.call(document.querySelectorAll('[data-k]'), function(el){
+  [].forEach.call(document.querySelectorAll('[data-k]'), function(el){
     el.addEventListener('input', function(){
       var path = el.getAttribute('data-k');
-      var raw = el.type === 'range' || el.type === 'number' ? parseFloat(el.value) : el.value;
-      setv(path, raw);
-      Array.prototype.forEach.call(document.querySelectorAll('[data-k="' + path + '"]'), function(o){
-        if (o !== el) o.value = raw;
-      });
+      if (el.type === 'color') setColor(path, el.value);
+      else if (el.type === 'number' || el.type === 'range') set(path, parseFloat(el.value));
+      else set(path, el.value);
+      [].forEach.call(document.querySelectorAll('[data-k="'+path+'"]'), function(o){ if (o !== el) o.value = (el.type === 'color') ? themeOf(path).hex : el.value; });
       apply();
     });
   });
 }
-
+function applyThemeVars(){
+  var T = P.theme, s = document.documentElement.style;
+  s.setProperty('--ui-bg', T.bg);
+  s.setProperty('--pantop', themeOf('theme.panelTop').hex);
+  s.setProperty('--panbot', themeOf('theme.panelBot').hex);
+  s.setProperty('--t-text', T.text); s.setProperty('--t-dim', T.textDim); s.setProperty('--t-faint', T.textFaint);
+  s.setProperty('--t-line', withA('theme.line', themeOf('theme.line').a));
+  var gl = themeOf('theme.bgGlow'), g2 = themeOf('theme.bgGlow2'), bg = themeOf('theme.bgGrid');
+  document.body.style.backgroundColor = T.bg;
+  document.body.style.backgroundImage =
+    'radial-gradient(1250px 640px at 13% -10%, ' + colorWithAlpha(gl.hex, gl.a) + ' 0, rgba(10,18,25,0) 62%),' +
+    'radial-gradient(880px 480px at 90% 2%, ' + colorWithAlpha(g2.hex, g2.a) + ' 0, rgba(10,18,25,0) 60%),' +
+    'repeating-linear-gradient(0deg, ' + colorWithAlpha(bg.hex, bg.a) + ' 0 1px, rgba(0,0,0,0) 1px 72px),' +
+    'repeating-linear-gradient(90deg, ' + colorWithAlpha(bg.hex, bg.a) + ' 0 1px, rgba(0,0,0,0) 1px 72px)';
+}
 function apply(){
-  var c = P.card;
-  document.documentElement.style.setProperty('--cardminw', c.minW + 'px');
-  document.documentElement.style.setProperty('--cardgap', c.gap + 'px');
-  document.documentElement.style.setProperty('--cardpad', c.pad + 'px');
-  document.documentElement.style.setProperty('--cardigap', c.innerGap + 'px');
+  var c = P.card, s = document.documentElement.style;
+  s.setProperty('--cardminw', c.minW + 'px'); s.setProperty('--cardgap', c.gap + 'px');
+  s.setProperty('--cardpad', c.pad + 'px'); s.setProperty('--cardigap', c.innerGap + 'px');
+  applyThemeVars();
   document.getElementById('cards').innerHTML = SETS[curSet].map(cardHTML).join('');
   document.getElementById('cfg').value = JSON.stringify(P, null, 2);
 }
-function toast(msg){
-  var t = document.getElementById('toast'); t.textContent = msg; t.classList.add('on');
-  setTimeout(function(){ t.classList.remove('on'); }, 1400);
-}
+function toast(m){ var t = document.getElementById('toast'); t.textContent = m; t.classList.add('on'); setTimeout(function(){ t.classList.remove('on'); }, 1400); }
 buildPanel();
 apply();
-
-Array.prototype.forEach.call(document.querySelectorAll('[data-set]'), function(b){
+[].forEach.call(document.querySelectorAll('[data-set]'), function(b){
   b.addEventListener('click', function(){
-    curSet = parseInt(b.getAttribute('data-set'), 10);
-    Array.prototype.forEach.call(document.querySelectorAll('[data-set]'), function(x){ x.classList.toggle('on', x === b); });
+    curSet = parseInt(b.getAttribute('data-set'),10);
+    [].forEach.call(document.querySelectorAll('[data-set]'), function(x){ x.classList.toggle('on', x === b); });
     apply();
   });
 });
-document.getElementById('cardw').addEventListener('input', function(){
-  P.card.minW = parseFloat(this.value);
-  document.getElementById('cardwv').textContent = this.value;
-  Array.prototype.forEach.call(document.querySelectorAll('[data-k="card.minW"]'), function(o){ o.value = this.value; });
-  apply();
-});
-document.getElementById('btnReset').addEventListener('click', function(){
-  P = JSON.parse(JSON.stringify(DEFAULTS));
-  buildPanel(); apply(); toast('已恢复当前线上值');
-});
+document.getElementById('btnReset').addEventListener('click', function(){ P = JSON.parse(JSON.stringify(DEFAULTS)); buildPanel(); apply(); toast('已恢复线上当前值'); });
 document.getElementById('btnCopy').addEventListener('click', function(){
   var ta = document.getElementById('cfg'); ta.select();
   try { document.execCommand('copy'); toast('配置已复制，粘给我即可'); } catch(e){ toast('复制失败，手动选中即可'); }
 });
 document.getElementById('btnDl').addEventListener('click', function(){
-  var blob = new Blob([document.getElementById('cfg').value], { type:'application/json' });
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(blob); a.download = '六维图排版配置.json'; a.click();
-  toast('已下载 JSON');
+  var blob = new Blob([document.getElementById('cfg').value], { type:'application/json' }), a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = '六维图排版配置.json'; a.click(); toast('已下载 JSON');
 });
 </script>
 </body>
