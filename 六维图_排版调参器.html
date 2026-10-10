@@ -145,14 +145,14 @@ var DEFAULTS = {
     overflowLine: "#e2e8eb",
     self: "#56a2d2",
     foe: "#e74040",
-    tier: [
+    "tier": [
       "#9c9c9c",
       "#9c9c9c",
       "#9c9c9c",
-      "#f0c53f",
-      "#f0c53f",
-      "#f0c53f",
-      "#f0c53f",
+      "#c9971f",
+      "#c9971f",
+      "#c9971f",
+      "#fff3c4",
       "#e08cff"
     ]
   }
@@ -178,7 +178,7 @@ function themeOf(path){ return parseColor(get(path)); }
 function setColor(path, hex){ var cur = themeOf(path); set(path, colorWithAlpha(hex, cur.a)); }
 function withA(path, a){ return colorWithAlpha(themeOf(path).hex, a); }
 var GRADES = ['E','D','C','B','A','S','SS','ULTRA'];
-var GGRAD = { SS:['#fffbe0','#ffd23f','#f2a51a'], ULTRA:['#ff4d6d','#ffb84d','#ffe95c','#5fe0a0','#5fc7ff','#b06bff'] };
+var GGRAD = { SS:['#ffffff','#fff3c4','#ffe08a'], ULTRA:['#ff4d6d','#ffb84d','#ffe95c','#5fe0a0','#5fc7ff','#b06bff'] };
 var GGRAD_ANGLE = { SS:'105deg', ULTRA:'80deg' };
 function tierColor(i){ return get('theme.tier.'+i); }
 var GBANDS = [20, 40, 60, 70, 80, 90, 100];
