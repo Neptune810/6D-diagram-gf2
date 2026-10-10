@@ -701,10 +701,11 @@ function radar(series, size, opt){
   }
   /* 标签：每个维度一个「维度名 + 档位」，位置贴着该维基准半径——实时跟着图面积走
      双形态卡每态各出一套（放在各自 <g> 里），切换时由 CSS 显隐，档位文字会跟着换 */
+  var blankChart = opt.blank === true;
   function emitLabels(vals, letters){
     for (var i4=0;i4<6;i4++){
       var vI = vals ? vals[i4] : 0;
-      var gI = letters ? letters[i4] : letterOf(vI);
+      var gI = blankChart ? '待填' : (letters ? letters[i4] : letterOf(vI));
       if (opt.grades === false) gI = '';
       var wI = labelWidth(DSHORT[i4], gI);
       var angI = -Math.PI/2 + i4*Math.PI/3;
@@ -716,9 +717,10 @@ function radar(series, size, opt){
       var pn = polar(cx,cy,lrI,i4);
       var an = 'middle';
       var ts = '<tspan style="fill:'+THEME.nameText+';stroke-width:'+LAYOUT.nameStroke+'px">'+DSHORT[i4]+'</tspan>';
-      if (gI) ts += '<tspan fill="'+gradeFill(gI, gpre)+'" style="font-size:'+(gI==='ULTRA'?LAYOUT.ultraSize:LAYOUT.gradeSize)+'px;font-weight:700;stroke-width:'+
+      if (gI) ts += '<tspan'+(blankChart ? '' : ' fill="'+gradeFill(gI, gpre)+'"')+' style="font-size:'+
+        (blankChart ? LAYOUT.gradeSize : (gI==='ULTRA'?LAYOUT.ultraSize:LAYOUT.gradeSize))+'px;font-weight:700;stroke-width:'+
         (gI==='ULTRA'?LAYOUT.ultraStroke:LAYOUT.gradeStroke)+'px'+
-        (gI==='SS' ? ';stroke:#f0c53f' : '')+'"> '+gI+'</tspan>';   /* SS 用金色外描边＝发亮，其余用暗描边 */
+        (blankChart ? ';fill:var(--paper-faint)' : (gI==='SS' ? ';stroke:#f0c53f' : ''))+'"> '+gI+'</tspan>';
       parts.push('<text class="albl" x="'+f1(pn[0])+'" y="'+f1(pn[1]+3)+'" text-anchor="'+an+'" style="font-size:'+LAYOUT.nameSize+'px;font-weight:'+LAYOUT.nameWeight+'">'+ts+'</text>');
     }
   }
@@ -753,10 +755,14 @@ function filtered(){
 }
 
 /* ---------- 卡片 ---------- */
+/* 空卡＝六维全是 0（刚加进去还没填数值的人形）：不参与对比、平均、排名，卡上显示「待填」 */
+function isBlank(e){ if (!e || !e.s) return true; for (var i=0;i<6;i++) if (Number(e.s[i]) !== 0) return false; return (e.s.length > 0); }
 function ledgerHTML(e){
+  var blank = isBlank(e);
   return DIMS.map(function(dim,i){
     var L = dimLetter(e, i);
     var off = !!(e.use && e.use[i] === false);
+    if (blank) return '<div class="led"><span>'+DSHORT[i]+'</span><b class="num" style="color:var(--paper-faint)">—</b><b style="color:var(--paper-faint);font-size:13px">待填</b></div>';
     return '<div class="led"'+(off?' style="opacity:.42"':'')+'><span>'+DSHORT[i]+'</span><b class="num">'+e.s[i]+'</b><b style="'+gradeStyle(L)+';font-size:13px">'+L+'</b>'+(off?'<small style="color:#c9a15a">不计</small>':'')+'</div>';
   }).join('');
 }
@@ -772,11 +778,13 @@ function cardHTML(e, idx, opts){
     +' style="'+(fv?'--acc:'+acc+';':'')+'animation-delay:'+Math.min(idx,26)*22+'ms">'+
     '<div class="ptop"><div><h3 class="pname">'+esc(e.name)+'</h3></div>'+
     '<div style="text-align:right">'+(fv?fvTotalsHTML(V, FVU):
-      '<div class="rankno">'+(e.total!=null?e.total:'—')+'<small>总分</small></div>'+
-      '<div class="tier" style="'+gradeStyle(e.tier)+'">'+e.tier+'</div>')+'</div></div>'+
+      (isBlank(e) ? '<div class="rankno" style="color:var(--paper-faint)">—<small>总分</small></div>'+
+                     '<div class="tier" style="color:var(--paper-faint)">待填</div>'
+                  : '<div class="rankno">'+(e.total!=null?e.total:'—')+'<small>总分</small></div>'+
+                    '<div class="tier" style="'+gradeStyle(e.tier)+'">'+e.tier+'</div>'))+'</div></div>'+
     '<div class="frm">素体 '+(e.frame?esc(e.frame):'无型号')+(e.weapon?'　武器 '+esc(e.weapon):'')+'</div>'+
     (fv?fvBarHTML(fv):'')+
-    '<div class="chart">'+radar(series, LAYOUT.sizeCard, fv?{ gradesAll:true }: { drag:true })+'</div>'+
+    '<div class="chart">'+radar(series, LAYOUT.sizeCard, fv?{ gradesAll:true }: { drag:true, blank:isBlank(e) })+'</div>'+
     '<div class="ledger'+(fv?' dual':'')+'">'+(fv?fvLedgerHTML(V):ledgerHTML(e))+'</div>'+
     (state.edit ? '<div class="pfoot"><div class="acts">'+
         '<button class="btn" data-act="edit" data-id="'+e.id+'">编辑</button>'+
@@ -827,7 +835,8 @@ function renderScale(){
 
 /* ---------- 阶梯 ---------- */
 function ladderHTML(){
-  var list = state.entries.slice().sort(function(a,b){ return b.rank-a.rank; });
+  var blanks = state.entries.filter(function(e){ return isBlank(e); });
+  var list = state.entries.filter(function(e){ return !isBlank(e); }).sort(function(a,b){ return b.rank-a.rank; });
   var tiers = ['ULTRA','SS','S','A','B','C','D','E'];
   var h = '<div class="ladder">';
   tiers.forEach(function(t){
@@ -1250,13 +1259,15 @@ function renderMChart2(){
 /* ---------- 编辑时的实时对比：左边画草稿，右边可选一个参照 ---------- */
 var mCmpId = '';
 function cmpOptions(){
-  return '<option value="">（不对比）</option><option value="__avg">全体平均</option>' +
-    state.entries.slice().sort(function(a,b){ return b.total - a.total; }).map(function(e){
+  var real = state.entries.filter(function(e){ return !isBlank(e); });
+  if (!real.length) return '<option value="">（暂无可对比对象：先给某个人形填数值）</option>';
+  return '<option value="">（不对比）</option><option value="__avg">全体平均（'+real.length+' 人）</option>' +
+    real.sort(function(a,b){ return b.total - a.total; }).map(function(e){
       return '<option value="'+e.id+'">'+esc(e.name)+'（'+e.total+' '+e.tier+'）</option>';
     }).join('');
 }
 function dimRankInfo(v, i){
-  var vals = state.entries.map(function(e){ return e.s[i]; }).sort(function(a,b){ return b - a; });
+  var vals = state.entries.filter(function(e){ return !isBlank(e); }).map(function(e){ return e.s[i]; }).sort(function(a,b){ return b - a; });
   return '第 ' + (vals.filter(function(x){ return x > v; }).length + 1) + '/' + vals.length + ' 高';
 }
 function renderMChart(){
@@ -1264,7 +1275,8 @@ function renderMChart(){
   var draft = { vals: mS.slice(), color: '#c8455f', letters: mS.map(letterOf) };
   var ref = null, refName = '';
   if (mCmpId === '__avg'){
-    var av = DIMS.map(function(_,i){ return Math.round(state.entries.reduce(function(a,e){ return a + e.s[i]; },0) / Math.max(1,state.entries.length)); });
+    var real = state.entries.filter(function(e){ return !isBlank(e); });
+    var av = DIMS.map(function(_,i){ return Math.round(real.reduce(function(a,e){ return a + e.s[i]; },0) / Math.max(1,real.length)); });
     ref = { vals: av, color: '#5fb3b0' }; refName = '全体平均';
   } else if (mCmpId){
     var e = byId(mCmpId);
