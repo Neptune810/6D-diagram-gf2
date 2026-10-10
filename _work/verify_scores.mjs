@@ -112,8 +112,8 @@ ck('18 六维图可拖动改数值（拖动把手 ＋ 指针事件 ＋ 沿轴换
   /class="dragv"/.test(html) && /function dragVal\(/.test(html) && /pointerdown/.test(html) &&
   /pointermove/.test(html) && /pointerup/.test(html) && /opt\.drag/.test(html), '');
 
-ck('19 空数据兜底：内置清空后图鉴给得出提示；有数据时卡片渲染入口在',
-  (E.length ? /function cardHTML\(/.test(html) : html.indexOf('内置数据已清空') >= 0), 'entries=' + E.length);
+ck('19 空数据兜底：空表时图鉴给出「＋ 新增人形」入口；有数据时卡片渲染入口在',
+  (E.length ? /function cardHTML\(/.test(html) : html.indexOf('还没有人形') >= 0 && /data-act="add"/.test(html)), 'entries=' + E.length);
 
 console.log(log.join('\n'));
 console.log('\n==== ' + pass + ' PASS / ' + fail + ' FAIL ====');

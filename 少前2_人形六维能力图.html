@@ -54,14 +54,18 @@ h1 em{font-style:normal;color:var(--amber)}
 .readout div{display:flex;align-items:baseline;gap:7px;padding-left:18px;border-left:1px solid var(--line)}
 .readout b{font-family:var(--dsp);font-size:21px;line-height:1;font-variant-numeric:tabular-nums;color:var(--paper)}
 
-.layout{display:grid;grid-template-columns:316px minmax(0,1fr);gap:0;margin-top:0}
+.layout{display:grid;grid-template-columns:var(--railw,318px) 8px minmax(0,1fr);gap:0;margin-top:0}
+.layout.folded{grid-template-columns:0 8px minmax(0,1fr)}
+.layout.folded .rail{display:none}
 .rail{border-right:1px solid var(--line);padding:24px 24px 40px 0;position:sticky;top:0;align-self:start;max-height:100vh;overflow:auto}
-.plot{padding:24px 0 0 32px;min-width:0}
+.plot{padding:24px 0 0 28px;min-width:0}
 @media(max-width:1080px){
   .masthead{grid-template-columns:1fr;gap:24px}
   .layout{grid-template-columns:1fr}
   .rail{position:static;border-right:0;border-bottom:1px solid var(--line);padding:16px 0 20px;max-height:none}
   .plot{padding:20px 0 0}
+  .railgrip{display:none}
+  .layout.folded .rail{display:block}
 }
 
 /* ===== controls ===== */
@@ -101,9 +105,9 @@ input:focus,select:focus{border-color:var(--amber);background:rgba(229,161,60,.0
 .strip i{display:block;width:3px;height:12px;background:var(--line-hard)}
 
 /* ===== plot area ===== */
-.plotbar{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;
+.plotbar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
   padding-bottom:16px;border-bottom:1px solid var(--line)}
-.tally{display:flex;flex-wrap:wrap;gap:10px 16px;font-size:12.5px;color:var(--paper-faint);font-variant-numeric:tabular-nums}
+.tally{display:flex;flex-wrap:wrap;gap:10px 16px;font-size:12.5px;color:var(--paper-faint);font-variant-numeric:tabular-nums;margin-right:auto}
 .tally span+span{padding-left:16px;border-left:1px solid var(--line)}
 .tally b{color:var(--paper);font-weight:600}
 .scale{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--paper-faint);align-items:center}
@@ -119,8 +123,8 @@ input:focus,select:focus{border-color:var(--amber);background:rgba(229,161,60,.0
 .plate::after{content:"";position:absolute;top:0;right:0;width:14px;height:14px;
   background:linear-gradient(135deg,rgba(0,0,0,0) 48%,var(--line-hard) 50%,var(--line-hard) 52%,rgba(0,0,0,0) 54%)}
 .plate.foe{background:linear-gradient(180deg,#151a20,var(--ink-900) 78%)}
-.plate.self{border-left:2px solid rgba(229,161,60,.5)}
-.plate.foe{border-left:2px solid rgba(207,90,95,.5)}
+.plate.self{border-left:2px solid rgba(255,184,77,.7)}
+.plate.foe{border-left:2px solid rgba(255,111,117,.7)}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .ptop{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
 .pname{font-family:var(--dsp);font-size:22px;line-height:1.15;letter-spacing:-.005em}
@@ -130,11 +134,11 @@ input:focus,select:focus{border-color:var(--amber);background:rgba(229,161,60,.0
 .mark.self{border-color:rgba(95,179,176,.42);color:var(--teal)}
 .mark.foe{border-color:rgba(207,90,95,.45);color:var(--crimson)}
 .chart{display:grid;place-items:center;padding:2px 0 0;background:radial-gradient(circle at 50% 48%,rgba(229,161,60,.055),rgba(0,0,0,0) 66%)}
-.scope{fill:none;stroke:rgba(226,232,235,.16);stroke-dasharray:3 5}
+.scope{fill:none;stroke:rgba(226,232,235,.11);stroke-dasharray:3 5}
 svg.radar{display:block;width:100%;height:auto;overflow:visible}
-.ring{fill:none;stroke:rgba(226,232,235,.10);stroke-width:1}
-.ring.major{stroke:rgba(226,232,235,.19)}
-.axis{stroke:rgba(226,232,235,.13);stroke-width:1}
+.ring{fill:none;stroke:rgba(226,232,235,.065);stroke-width:1}
+.ring.major{stroke:rgba(226,232,235,.14)}
+.axis{stroke:rgba(226,232,235,.085);stroke-width:1}
 .node{fill:rgba(226,232,235,.22)}
 .albl{font:400 9.5px var(--txt);fill:var(--paper-faint);letter-spacing:.03em}
 .agl{font:700 10.5px var(--dsp);letter-spacing:.01em;paint-order:stroke;stroke:var(--ink-900);stroke-width:3px;stroke-linejoin:round}
@@ -278,6 +282,15 @@ svg.net{display:block;width:100%;height:auto}
 .rvtag.warn{border-color:#7b5a1f;color:#e0b063}
 .rvtag.bad{border-color:#6d2f34;color:#e08a8a}
 .rvchanged{background:rgba(229,161,60,.08)}
+/* ===== 功能栏：拖宽 / 折叠 / 次级字段 / 空态 ===== */
+.railgrip{cursor:col-resize;background:linear-gradient(180deg,rgba(226,232,235,.03),rgba(226,232,235,.10),rgba(226,232,235,.03));border-left:1px solid var(--line-soft);border-right:1px solid var(--line-soft)}
+.railgrip:hover{background:rgba(255,184,77,.35)}
+.railfold{margin-right:2px}
+.sub{display:grid;grid-template-columns:76px minmax(0,1fr);gap:8px;align-items:center;margin-bottom:8px}
+.sub>span{font-size:11.5px;color:var(--paper-faint)}
+.empty-add{display:grid;justify-items:center;gap:12px;padding:56px 20px}
+.empty-add p{color:var(--paper-dim);font-size:13px}
+.btn.big{padding:10px 20px;font-size:14px}
 /* ===== 拖动改数值 / 手动保存 ===== */
 .dragv{cursor:grab;pointer-events:all}
 .dragv:hover{fill:rgba(229,161,60,.13);stroke:rgba(229,161,60,.6);stroke-width:1.5}
@@ -315,39 +328,43 @@ svg.net{display:block;width:100%;height:auto}
   <div>
     <div class="kickerline"><span>少女前线2：追放</span><span>同人设定 · 纯剧情论战</span><span>含剧情关系网</span></div>
     <h1>人形<em>六维</em>能力图</h1>
-    <p class="lede">只收录剧情登场人形。六维为 0–100 分细粒度评分，字母档＝<b>分数的 12.5 分带</b>（E→ULTRA，<b>同分必同档</b>）；<b>六个维度都已铺满 E→ULTRA</b>（分数按各维度内的相对位置重标定）；总分＝六维加权（搏斗 25／素体 20／火力 18／战术 15／电子战 12／速度 10），**每个维度都能单独开关「是否参与总分**」；关系网是原文证据，不再决定排序。</p>
+    <p class="lede">自己填分数的六维能力图：雷达图 · 加权总分 · 梯队 · 关系网。</p>
   </div>
   <div class="readout" id="readout"></div>
 </header>
-<div class="layout">
-  <aside class="rail">
+<div class="layout" id="layout">
+  <aside class="rail" id="rail">
+    <div class="field"><span>视图</span><div class="segmented" id="views">
+      <button data-v="grid" aria-pressed="true">图鉴</button><button data-v="ladder">阶梯</button><button data-v="network">关系网</button><button data-v="compare">对比</button><button data-v="table">表格</button><button data-v="review">校对</button></div></div>
+    <div class="field"><span>操作</span><div class="btnrow">
+      <button class="btn solid" id="btnAdd" title="新建一条人形">＋ 新增人形</button>
+      <button class="btn solid" id="btnSave" title="写入浏览器本地存档">保存</button>
+      <button class="btn" id="btnJson">导出 JSON</button>
+      <button class="btn" id="btnImport">导入 JSON</button>
+      <button class="btn" id="btnCsv">导出 CSV</button>
+      <input type="file" id="file" accept=".json,application/json" class="hidden"></div></div>
     <label class="field"><span>搜索</span><input id="q" type="search" placeholder="名称 / 阵营 / 依据"></label>
-    <label class="field"><span>立场</span><select id="fSide"><option value="">全部</option><option value="self">自机人形</option><option value="foe">敌方反派</option></select></label>
-    <label class="field"><span>小队 / 归属</span><select id="fFac"><option value="">全部</option></select></label>
-    <label class="field"><span>剧情出处</span><select id="fSrc"><option value="">全部</option></select></label>
-    <label class="field"><span>素体型号</span><select id="fFrame"><option value="">全部</option></select></label>
     <label class="field"><span>排序</span><select id="fSort">
       <option value="default">总分 高→低</option><option value="totalAsc">总分 低→高</option>
       <option value="name">名称</option><option value="faction">阵营</option>
       <option value="f0">火力</option><option value="f1">电子战</option><option value="f2">搏斗</option>
       <option value="f3">素体</option><option value="f4">速度</option><option value="f5">战术</option></select></label>
-    <div class="field"><span>视图</span><div class="segmented" id="views">
-      <button data-v="grid" aria-pressed="true">图鉴</button><button data-v="ladder">阶梯</button><button data-v="network">关系网</button><button data-v="compare">对比</button><button data-v="table">表格</button><button data-v="review">校对</button></div></div>
-    <div class="field"><span>编辑</span><div class="btnrow">
-      <button class="btn solid" id="btnSave" title="写入浏览器本地存档">保存</button>
+    <div class="field"><span>筛选</span>
+      <label class="sub"><span>立场</span><select id="fSide"><option value="">全部</option><option value="self">自机人形</option><option value="foe">敌方反派</option></select></label>
+      <label class="sub"><span>小队 / 归属</span><select id="fFac"><option value="">全部</option></select></label>
+      <label class="sub"><span>剧情出处</span><select id="fSrc"><option value="">全部</option></select></label>
+      <label class="sub"><span>素体型号</span><select id="fFrame"><option value="">全部</option></select></label>
+    </div>
+    <div class="field"><span>其他</span><div class="btnrow">
       <button class="btn" id="btnEdit" aria-pressed="false">编辑模式</button>
-      <button class="btn hidden" id="btnAdd">新增</button>
-      <button class="btn" id="btnJson">导出 JSON</button>
-      <button class="btn" id="btnCsv">导出 CSV</button>
-      <button class="btn" id="btnImport">导入 JSON</button>
-      <button class="btn danger" id="btnReset">恢复默认</button>
-      <input type="file" id="file" accept=".json,application/json" class="hidden"></div></div>
+      <button class="btn danger" id="btnReset">恢复默认</button></div></div>
     <div id="verbar" class="q" style="display:none;border:1px solid #7b5a1f;background:rgba(201,161,90,.10);padding:9px 11px;border-radius:4px;margin:10px 0;line-height:1.6"></div>
     <div class="idxhead"><span>名单（按总分）</span><span id="idxcount"></span></div>
     <div class="idxlist" id="idxlist"></div>
   </aside>
+  <div class="railgrip" id="railGrip" title="拖动调整左侧栏宽度"></div>
   <section class="plot">
-    <div class="plotbar"><div class="tally" id="tally"></div><div class="scale" id="scale"></div></div>
+    <div class="plotbar"><button class="btn railfold" id="btnFold" type="button" title="收起／展开左侧功能栏">☰ 功能区</button><div class="tally" id="tally"></div><div class="scale" id="scale"></div></div>
     <div id="grid" class="plates"></div>
     <div id="ladder" class="hidden"></div>
     <div id="network" class="hidden"></div>
@@ -355,41 +372,6 @@ svg.net{display:block;width:100%;height:auto}
     <div id="table" class="hidden"></div>
     <div id="review" class="hidden"></div>
   </section>
-</div>
-<div class="notes">
-  <div>
-    <h3>素体型号（客户端解包）</h3>
-    <p>全部素体型号直接解自本机客户端表 <b>GunCharacterData.bytes</b> 与 <b>EventRoleTrialData.bytes</b>（资源名 <code>Img_ArchivesCenter_Chr_&lt;代号&gt;</code> 与 <code>Img_Activity_ChrTryNumber_&lt;型号&gt;</code> 成对出现），不使用任何网络资料。</p>
-    <p class="q">2026-10-09 二次校正：先前的型号是用「字符串扫描＋按出现顺序配对」得到的，<b>会错位一行</b>——已证实「闪电＝SST-05A2／维普蕾＝SSD-62D」被写反，另修正 6 条（衍光 OBSRV_PRT_00、镜刻 DOPPELGAENGER、托洛洛 SST-05、克莱妲 GOL_Loki_00、埃芙 CSD_09B4M、巴希达 SSD-62D）。现改为 protobuf 直解 + LangPackage 名称 id 对齐，并以 EventRoleTrialData 交叉验证。</p>
-    <p>客户端共出现 17 种型号：<span id="modelList"></span></p>
-    <p class="q">注：我此前用网络资料给"威玛西娜 = SST-05"并据此编了一套"民用/军用/代次"档位解释，<b>已全部作废</b>——客户端显示她的型号是 <b>CSD_09B4M</b>，而"军用/民用/代次"那套区分没有任何官方依据，属我臆造。</p>
-    <h3>维度定义（按作者口径）</h3>
-    <p><b>火力</b>＝远程火力投放能力／单发威力（武器类型与改装是主要参考：<b>只要改装，扫地机器人也能拥有强大火力</b>；重武器使用者一般更猛，但用突击步枪不代表不猛）　<b>电子战</b>＝电子攻防／入侵与反入侵　<b>搏斗</b>＝近身战斗能力（与素体强度强相关：素体越强近战越强，特化定位可例外，如电子战特化的茧）<br>
-    <b>素体</b>＝素体强度（<b>与客户端素体型号绝对线性</b>：同型号同分，不做个人加减；无型号者单独按设定裁定）<br>
-    <b>速度</b>＝<b>【2026-10-10 改名】本维原为「心智」，现名「速度」；数值沿用原「心智」评分</b>（心智底层被攻击时能否保持稳定 ＋ 思想是否成熟，强调「强度」而非「稳定」；临场冷静属于【战术】，个人选择不算），<b>尚未按速度口径重评</b><br>
-    <b>战术</b>＝战场经验／战术运用／以弱胜强（主要看战斗经验与是否担任指挥位，含临战冷静与判断力）</p>
-    <p class="q">作者口径（2026-10-09）：<b>本作是游戏，六维以剧情判定为准</b>。硬规则只有一条——<b>素体与型号绝对线性</b>；火力看武器类型／改装（与素体半相关）、搏斗与素体强度相关、战术与战斗经验／指挥位相关，这三条都是<b>倾向性参考，不替代剧情判定</b>。星渊这类伯介姆生物只参考设定，以上规律不适用。<b>数值可填任意自然数，上限 200</b>：<b>SS 的顶点是 100，只要数值 &gt;100 就是 ULTRA</b>（留给少数人形）。<b>总分＝六维加权</b>：搏斗 25%／素体 20%／火力 18%／战术 15%／电子战 12%／速度 10%；<b>打 0 分的维度不参与计算</b>。</p>
-    <p class="q">已作废口径：曾把「战斗时冷静」「拒绝吞噬他人」算进心智（＝现「速度」维），现已剔除——前者归战术，后者只是个人选择。调律：战术人形的反应速度普遍足以应对弹道——这是 2070 年代的通用科技水平，不作为任何个体的特长加分。<b>2026-10-10 注：本维虽已改称「速度」，但现值不来自反应速度，而是沿用原「心智」评分。</b></p>
-    <h3>每个维度只能有一个 ULTRA</h3>
-    <p>字母档＝<b>数值分带</b>：E &lt;12.5，D &lt;25，C &lt;37.5，B &lt;50，A &lt;62.5，S &lt;75，<b>SS ≤100</b>；<b>数值 &gt;100 即 ULTRA</b>（顶点暂设 200）。<b>同一个数值必然同一个档</b>——所以「每维只有一位 ULTRA」是数值的硬结果。当前锚位（均为 ULTRA）：</p>
-    <p>火力＝<b>威玛西娜</b>(120)　电子战＝<b>莱娅</b>(120)　搏斗＝<b>星渊</b>(120)　素体＝<b>星渊</b>(120)　速度＝<b>埃芙</b>(120)　战术＝<b>闪电</b>(120)</p>
-    <h3>评分口径</h3>
-    <p>调律：战术人形的反应速度普遍足以应对弹道——这是 2070 年代的通用科技水平，不作为任何个体的特长加分。　<b>注（2026-10-10）</b>：本维已改名「速度」，但现值沿用原「心智」评分、不按反应速度评，待重评。</p>
-    <p>六维数值不封顶（上限 200），可填任意自然数。<b>六维图的上限是 100</b>，所以 <b>ULTRA 的顶点会画到 100 环之外</b>（最外那圈虚线＝200）。梯队＝总分的数值分带。</p>
-    <p><b>总分</b>＝六维加权：搏斗 25%／素体 20%／火力 18%／战术 15%／电子战 12%／速度 10%。<b>每个维度都有一个「参与总分」开关</b>——关掉的维度整项剔除，按剩余权重归一（比如星渊不需要火力与电子战，这两项关掉后他仍是总分第一）。</p>
-  </div>
-  <div>
-    <h3>关系性质</h3>
-    <p>每条关系带性质标记：<b>实战</b>（实打实的交手结果，参与阶界判定）、<b>情境</b>（如海伦对茧的近身偷袭）、<b>戏言</b>（台词玩笑）、<b>一次性</b>（爆发状态，如杜莎妮以心智强控机甲）、<b>定位</b>（最新剧情给的整体定位）。虚线边＝非实战，不参与战力校验。</p>
-    <h3>关系网怎么用</h3>
-    <p>「阶梯」按总序分层，并列出决定阶层分界的剧情语句；「关系网」把每条强弱关系画成有向边（红＝压倒/击败，黄＝逼退/交手/相当，青＝电子战与再生类），点击节点查看该角色的全部关系与原文。</p>
-    <p>未收录为独立条目的对手（计量官、三代原型机、傀儡人形等）以虚线节点出现，用于补全关系链。</p>
-  </div>
-  <div>
-    <h3>来源与限制</h3>
-    <p>名单与原文取自《少女前线2：追放》客户端文本表；关系边均附原文，可由关系网逐条核对。评分为同人论战结论，可在编辑模式改数值、开关「参与总分」，导出 JSON 固化。</p>
-    <p>戏言或特定情境的台词（如「我们两个加起来恐怕都打不过索普你哦」）已标注为情境关系，权重低于实战描写。</p>
-  </div>
 </div>
 </div>
 <div class="scrim hidden" id="modal">
@@ -425,9 +407,9 @@ svg.net{display:block;width:100%;height:auto}
 var GRADES = ['E','D','C','B','A','S','SS','ULTRA'];
 var DIMS = ['火力','电子战能力','搏斗能力','素体强度','速度','战术能力'];
 var DSHORT = ['火力','电子战','搏斗','素体','速度','战术'];
-var GCOLOR = ['#6d7a86','#7d94a4','#66a9a0','#9fb35c','#ddba55','#e08f3c','#d2694f','#c8455f'];
+var GCOLOR = ['#7c8b99','#93a9bb','#5fc7bd','#a8d34e','#ffd24a','#ff9f3d','#ff6b4a','#ff4d6d'];
 var SIDES = { self:'自机', foe:'敌方' };
-var ACC = { self:'#e5a13c', foe:'#cf5a5f' };
+var ACC = { self:'#ffb84d', foe:'#ff6f75' };
 var RELC = { '击败':'#cf5a5f','秒杀':'#e8443f','压制':'#d97b4a','全面压制':'#d97b4a','近身压制':'#d97b4a','战胜':'#cf5a5f',
   '逼退':'#c9a15a','夹击':'#c9a15a','拦阻':'#c9a15a','击溃':'#cf5a5f','入侵烧毁':'#5fb3b0','渗透':'#5fb3b0',
   '心智操控':'#5fb3b0','规避':'#5fb3b0','复原更快':'#5fb3b0','再生':'#5fb3b0','速度超越':'#5fb3b0','封锁支援':'#c9a15a',
@@ -504,15 +486,14 @@ function showVerBar(){
     var old = legacyLeft();
     if (!old.length){ bar.style.display = 'none'; return; }
     bar.style.display = '';
-    bar.innerHTML = '🧹 存档键已升到 <code>' + LSKEY + '</code>：2026-10-10 起**内置数据已清空**（换成了空表）。' +
-      '旧存档（' + old.join('、') + '）还留在浏览器里、但不再被读取——想用里面的数据就点下面的删除前先「导出 JSON」。<div class="btnrow" style="margin-top:7px">' +
-      '<button class="btn solid" id="vbPurge">彻底删除旧存档</button><button class="btn" id="vbHide">知道了</button></div>';
+    bar.innerHTML = '发现旧版存档（当前页面不读取它）。想保留里面的数据请先导出，否则可以直接删掉。' +
+      '<div class="btnrow" style="margin-top:7px"><button class="btn solid" id="vbPurge">彻底删除旧存档</button><button class="btn" id="vbHide">知道了</button></div>';
     q('vbPurge').addEventListener('click', function(){ old.forEach(function(k){ try { localStorage.removeItem(k); } catch(e){} }); bar.style.display = 'none'; });
     q('vbHide').addEventListener('click', function(){ bar.style.display = 'none'; });
     return;
   }
   bar.style.display = '';
-  bar.innerHTML = '⚠ 内置数据已更新（本地存档：' + esc(String(state.staleVer)) + ' → ' + DATA_VERSION + '）。<br>页面优先读浏览器本地存档，且 2026-10-10 起改为**手动保存**——改动要点「保存」才会写回去。' +
+  bar.innerHTML = '内置数据有更新。要换成新的内置数据，还是保留你现在的改动？' +
     '<div class="btnrow" style="margin-top:7px"><button class="btn solid" id="vbNew">用新内置数据</button>' +
     '<button class="btn" id="vbKeep">保留我的改动</button></div>';
   q('vbNew').addEventListener('click', function(){
@@ -550,16 +531,16 @@ function radar(series, size, opt){
     var pts = [], vt = [];
     parts.push('<g class="'+(se.cls||'')+'">');
     for (var i=0;i<6;i++){ var rr = rOf(se.vals[i]); var p = polar(cx,cy,rr,i); vt.push([p, rr]); pts.push(f1(p[0])+','+f1(p[1])); }
-    var fop = opt.fillOpacity !== undefined ? opt.fillOpacity : (series.length>1?0.10:0.15);
+    var fop = opt.fillOpacity !== undefined ? opt.fillOpacity : (series.length>1?0.20:0.30);
     parts.push('<polygon class="parea" points="'+pts.join(' ')+'" fill="'+se.color+'" fill-opacity="'+fop+
-      '" stroke="'+se.color+'" stroke-width="1.6"/>');
+      '" stroke="'+se.color+'" stroke-width="2.4"/>');
     if (opt.grades !== false && (series.length === 1 || opt.gradesAll === true)){
       for (var j=0;j<6;j++){
         var vx = vt[j], rv = vx[1];
         var a1 = polar(cx,cy,rv,j-0.075), a2 = polar(cx,cy,rv,j+0.075);
         parts.push('<path d="M '+f1(a1[0])+' '+f1(a1[1])+' A '+f1(rv)+' '+f1(rv)+' 0 0 1 '+f1(a2[0])+' '+f1(a2[1])+
-          '" fill="none" stroke="'+GCOLOR[GRADES.indexOf(se.letters ? se.letters[j] : letterOf(se.vals[j]))]+'" stroke-width="2.4" stroke-linecap="round"/>');
-        parts.push('<circle class="vtx" cx="'+f1(vx[0][0])+'" cy="'+f1(vx[0][1])+'" r="3.1" fill="'+GCOLOR[GRADES.indexOf(se.letters ? se.letters[j] : letterOf(se.vals[j]))]+'"/>');
+          '" fill="none" stroke="'+GCOLOR[GRADES.indexOf(se.letters ? se.letters[j] : letterOf(se.vals[j]))]+'" stroke-width="3" stroke-linecap="round"/>');
+        parts.push('<circle class="vtx" cx="'+f1(vx[0][0])+'" cy="'+f1(vx[0][1])+'" r="3.6" fill="'+GCOLOR[GRADES.indexOf(se.letters ? se.letters[j] : letterOf(se.vals[j]))]+'"/>');
       }
       if (series.length > 1 && opt.gradesAll === true){
         for (var j2=0;j2<6;j2++){
@@ -649,12 +630,12 @@ function cardHTML(e, idx, opts){
   return '<article class="plate '+(e.side==='foe'?'foe':'self')+(fv?' dual':'')+(opts.noAnim?' noanim':'')+'" id="card-'+e.id+'" data-active="'+(fv?(formPick==='1'?'1':'0'):'0')+'"'
     +' style="'+(fv?'--acc:'+acc+';':'')+'animation-delay:'+Math.min(idx,26)*22+'ms">'+
     '<div class="ptop"><div><h3 class="pname">'+esc(e.name)+'</h3>'+
-    '<div class="frm">素体 '+(e.frame?esc(e.frame):'客户端未收录')+(e.weapon?'　武器 '+esc(e.weapon):'')+'</div></div>'+
+    '<div class="frm">素体 '+(e.frame?esc(e.frame):'无型号')+(e.weapon?'　武器 '+esc(e.weapon):'')+'</div></div>'+
     '<div style="text-align:right">'+(fv?fvTotalsHTML(V):
       '<div class="rankno">'+(e.total!=null?e.total:'—')+'<small>总分</small></div>'+
       '<div class="tier" style="color:'+GCOLOR[GRADES.indexOf(e.tier)]+'">'+e.tier+'</div>')+'</div></div>'+
     (fv?fvBarHTML(fv):'')+
-    '<div class="chart">'+radar(series, 300, fv?{ gradesAll:true, fillOpacity:0.15 }:{ drag:true })+'</div>'+
+    '<div class="chart">'+radar(series, 300, fv?{ gradesAll:true, fillOpacity:0.30 }:{ drag:true })+'</div>'+
     '<div class="ledger'+(fv?' dual':'')+'">'+(fv?fvLedgerHTML(V):ledgerHTML(e))+'</div>'+
     (state.edit ? '<div class="pfoot"><div class="acts">'+
         '<button class="btn" data-act="edit" data-id="'+e.id+'">编辑</button>'+
@@ -700,8 +681,7 @@ function renderModels(){
   }).join('　');
 }
 function renderScale(){
-  q('scale').innerHTML = GRADES.map(function(g,i){ return '<span><i style="background:'+GCOLOR[i]+'"></i>'+g+'</span>'; }).join('') +
-    '<span style="color:var(--paper-faint)">上限 100 · ULTRA 溢出环外（200）</span>';
+  q('scale').innerHTML = GRADES.map(function(g,i){ return '<span><i style="background:'+GCOLOR[i]+'"></i>'+g+'</span>'; }).join('');
 }
 
 /* ---------- 阶梯 ---------- */
@@ -981,7 +961,7 @@ function renderTable(){
   h += list.map(function(e){
     var myrels = state.edges.filter(function(ed){ return ed.a === e.name || ed.b === e.name; });
     return '<tr><td><b>'+esc(e.name)+'</b> <span class="mark '+e.side+'" style="font-size:10px">'+SIDES[e.side]+'</span></td>'+
-      '<td>'+esc(e.faction||'待考')+'</td><td class="frmcell">'+esc(e.frame||'客户端未收录')+'</td><td>'+esc(e.src||'—')+'</td><td class="num"><b>'+e.total+'</b> <span style="color:'+GCOLOR[GRADES.indexOf(e.tier)]+'">'+e.tier+'</span></td>'+
+      '<td>'+esc(e.faction||'待考')+'</td><td class="frmcell">'+esc(e.frame||'无型号')+'</td><td>'+esc(e.src||'—')+'</td><td class="num"><b>'+e.total+'</b> <span style="color:'+GCOLOR[GRADES.indexOf(e.tier)]+'">'+e.tier+'</span></td>'+
       e.s.map(function(v,i){ var L = dimLetter(e, i); return '<td class="g"><b>'+v+'</b> <small style="color:'+GCOLOR[GRADES.indexOf(L)]+'">'+L+'</small></td>'; }).join('')+
       '<td style="white-space:normal;max-width:260px">'+myrels.map(function(ed){
         return '<span class="relbadge" style="border-color:'+(RELC[ed.rel]||'#8b98a8')+'">'+esc(ed.rel)+'</span> '+esc(ed.a===e.name?ed.b:ed.a); }).join('　')+'</td>'+
@@ -1050,7 +1030,7 @@ function render(){
     var list = filtered();
     q('grid').innerHTML = list.length ? list.map(cardHTML).join('') :
       (state.entries.length ? '<div class="empty">没有匹配的条目。</div>'
-        : '<div class="empty">内置数据已清空 —— 点左侧「新增」建人形，或「导入 JSON」把数据装进来。</div>');
+        : '<div class="empty empty-add"><p>还没有人形</p><button class="btn solid big" type="button" data-act="add">＋ 新增人形</button><p>也可以点左侧「导入 JSON」把数据装进来</p></div>');
   } else if (state.view === 'ladder') q('ladder').innerHTML = ladderHTML();
   else if (state.view === 'network') q('network').innerHTML = renderNetwork();
   else if (state.view === 'compare') renderCompare();
@@ -1058,7 +1038,6 @@ function render(){
   else renderTable();
   q('tally').innerHTML = '<span>当前显示 <b>'+filtered().length+'</b> 条</span><span>收录 <b>'+state.entries.length+'</b> 条</span>'+
     '<span>关系 <b>'+state.edges.length+'</b> 条</span>'+(state.entries.length?'<span>拖动雷达顶点可改数值</span>':'')+(state.edit?'<span style="color:var(--amber)">编辑模式</span>':'');
-  q('btnAdd').classList.toggle('hidden', !state.edit);
   q('btnEdit').setAttribute('aria-pressed', state.edit ? 'true' : 'false');
   Array.prototype.forEach.call(q('views').querySelectorAll('button'), function(b){
     b.setAttribute('aria-pressed', b.getAttribute('data-v') === state.view ? 'true' : 'false');
@@ -1228,6 +1207,16 @@ function dragMove(ev){
 }
 function endDrag(){ if (!dragCtx) return; var wasPlate = !!dragCtx.plate; dragCtx = null; document.body.style.userSelect = ''; if (wasPlate) render(); else renderMChart(); }
 
+/* ---------- 左侧功能栏：折叠 ＋ 拖宽 ---------- */
+var RAILW_KEY = 'gfl2-railw', railFold = false;
+function applyRail(){
+  var w = parseInt(localStorage.getItem(RAILW_KEY) || '318', 10);
+  if (!(w >= 220 && w <= 620)) w = 318;
+  document.documentElement.style.setProperty('--railw', w + 'px');
+  var lay = q('layout'); if (lay) lay.classList.toggle('folded', railFold);
+  var f = q('btnFold'); if (f) f.textContent = railFold ? '☰ 展开功能区' : '☰ 功能区';
+}
+
 function bind(){
   q('q').addEventListener('input', function(){ state.q = this.value; render(); });
   q('fSide').addEventListener('change', function(){ state.side = this.value; render(); });
@@ -1275,6 +1264,19 @@ function bind(){
   document.addEventListener('pointerup', endDrag);
   document.addEventListener('pointercancel', endDrag);
   window.addEventListener('beforeunload', function(ev){ if (state.dirty){ ev.preventDefault(); ev.returnValue = ''; } });
+  q('btnFold').addEventListener('click', function(){ railFold = !railFold; applyRail(); });
+  q('railGrip').addEventListener('pointerdown', function(ev){
+    if (window.innerWidth <= 1080) return;
+    var x0 = ev.clientX, w0 = (q('rail') ? q('rail').getBoundingClientRect().width : 318), w = w0;
+    document.body.style.cursor = 'col-resize'; document.body.style.userSelect = 'none';
+    function mv(e2){ w = Math.max(220, Math.min(620, w0 + (e2.clientX - x0)));
+      document.documentElement.style.setProperty('--railw', w + 'px'); e2.preventDefault(); }
+    function up(){ document.removeEventListener('pointermove', mv); document.removeEventListener('pointerup', up);
+      document.body.style.cursor = ''; document.body.style.userSelect = '';
+      try { localStorage.setItem(RAILW_KEY, String(Math.round(w))); } catch(e){} }
+    document.addEventListener('pointermove', mv); document.addEventListener('pointerup', up);
+    ev.preventDefault();
+  });
   q('btnSave').addEventListener('click', function(){
     var msg = '是否覆盖浏览器本地存档？\n\n存档键：' + LSKEY + '\n本次写入：' + state.entries.length + ' 条人形 / ' + state.edges.length + ' 条关系边' +
       (state.dirty ? '' : '\n（当前没有未保存的改动，仍会覆盖一次）');
@@ -1304,6 +1306,7 @@ function bind(){
     var go = t.getAttribute('data-goto');
     if (go){ gotoCard(go); return; }
     var act = t.getAttribute('data-act'); if (!act) return;
+    if (act === 'add'){ openEditor(null); return; }
     var id = t.getAttribute('data-id');
     if (act === 'edit') openEditor(id);
     else if (act === 'dup'){
@@ -1335,7 +1338,7 @@ state.entries.forEach(function(e){ if (!e.id) e.id = uid(); if (!e.tier) e.tier 
 syncLetters();
 applyHash();
 q('q').value = state.q; q('fSide').value = state.side;
-bind(); render(); showVerBar();
+applyRail(); bind(); render(); showVerBar();
 </script>
 </body>
 </html>
