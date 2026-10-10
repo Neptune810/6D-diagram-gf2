@@ -178,6 +178,14 @@ table.roster td.num{font-variant-numeric:tabular-nums}
 .sheet h2{font-family:var(--dsp);font-size:26px;font-weight:600;margin-bottom:18px}
 .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .grid2 .full{grid-column:1/-1}
+.form2{margin-top:16px;border-top:1px solid var(--line-soft);padding-top:12px}
+.form2 .f2head{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:9px;font-size:11.5px;color:var(--paper-faint)}
+.form2 .f2head b{color:var(--paper-2);font-weight:600;font-size:12.5px}
+.form2 .f2head select{margin-left:auto;padding:3px 6px;background:var(--ink-900);border:1px solid var(--line);border-radius:2px;color:var(--paper-2);font-size:12px}
+.form2 .f2row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:9px}
+.form2 .f2vals{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.form2 .f2vals label{display:flex;flex-direction:column;gap:4px;font-size:11px;color:var(--paper-faint)}
+.form2 .f2vals input{width:100%;padding:3px 5px;background:rgba(0,0,0,.22);border:1px solid var(--line);border-radius:2px;color:inherit;font-variant-numeric:tabular-nums}
 .sliders{margin-top:20px;border-top:1px solid var(--line);padding-top:14px}
 .editcmp{display:flex;gap:20px;align-items:flex-start;margin-top:16px;border-top:1px solid var(--line);padding-top:14px}
 .editchart{flex:0 0 290px}.editchart svg{width:290px;height:290px;display:block}
@@ -393,6 +401,18 @@ svg.net{display:block;width:100%;height:auto}
       </div>
     </div>
     <div class="sliders" id="mSliders"></div>
+    <div class="form2">
+      <div class="f2head"><b>双形态</b>
+        <span>填了「第二形态」这张卡就会多出切换按钮（同一张图叠两形态，切换＝换对比度）</span>
+        <select id="mFormPreset"><option value="">载入预设…</option>
+          <option value="wmx">威玛西娜 · 带断罪者／本体</option>
+          <option value="lfy">六分仪 · 入队时／当反派时</option></select></div>
+      <div class="f2row">
+        <label class="field"><span>主形态名称</span><input id="mFormLabel" type="text" placeholder="主表现值"></label>
+        <label class="field"><span>第二形态名称</span><input id="mForm2Label" type="text" placeholder="如 本体"></label>
+      </div>
+      <div class="f2vals" id="mForm2Vals"></div>
+    </div>
     <div class="sheetactions"><button class="btn" id="mCancel">取消</button><button class="btn solid" id="mSave">保存</button></div>
   </div>
 </div>
@@ -720,7 +740,7 @@ function ledgerHTML(e){
 function cardHTML(e, idx, opts){
   opts = opts || {};
   var acc = ACC[e.side] || ACC.self;
-  var fv = fvOf(e.name);
+  var fv = fvOf(e);
   var V = fv ? fv.forms.map(function(f){ return fvValues(fv, f); }) : null;
   var series = fv ? fv.forms.map(function(f, i){ return { vals: V[i], color: acc, cls: 'fp f' + i }; })
                   : [{ vals:e.s, color:acc, letters:dimLettersOf(e) }];
@@ -1082,11 +1102,25 @@ function renderTable(){
 
 /* ---------- 双形态缩略图（威玛西娜 / 六分仪：同一张六维图叠两形态，切换＝换对比度） ---------- */
 var formPick = null;
-function fvOf(name){
+function fvOf(x){
+  var e = (typeof x === 'string') ? byName(x) : x;
+  /* ① 条目自带双形态（编辑弹窗里填的「第二形态」，优先级最高） */
+  if (e && e.form2 && e.form2.vals && e.form2.vals.length === 6){
+    return { id:e.id, name:e.name, own:true, forms:[
+      { label: e.formLabel || '主表现值', tag: '主表现值', values: e.s.slice() },
+      { label: e.form2.label || '另一形态', values: e.form2.vals.slice() } ] };
+  }
+  /* ② 内置 FORM_DATA（归档数据，按名字匹配） */
+  var name = e ? e.name : x;
   var arr = (FORM_DATA && FORM_DATA.chars) || [];
   for (var i = 0; i < arr.length; i++) if (arr[i].name === name) return arr[i];
   return null;
 }
+/* 双形态预设（数值取自 _work/archive/2026-10-10_完整73人形） */
+var FORM_PRESETS = {
+  wmx: { formLabel:'带断罪者', form2Label:'本体',      main:[120,77,85,85,77,84], second:[88,77,80,85,77,84] },
+  lfy: { formLabel:'入队时',   form2Label:'当反派时',  main:[73,85,78,83,56,86],  second:[82,95,84,83,56,92] }
+};
 function fvLive(form){ return String(form.tag || '').indexOf('主表现值') >= 0; }
 function fvValues(ch, form){
   var e = byName(ch.name);
@@ -1197,6 +1231,33 @@ function renderMChart(){
   q('mStat').innerHTML = '总分 <b>' + tot + '</b>　' + letterOf(tot) + '　（第 ' + (totals.indexOf(tot) + 1) + '/' + totals.length + '）<br>' +
     DIMS.map(function(d,i){ return DSHORT[i] + '　' + mS[i] + '　' + (mUse[i] === false ? '<span style="color:#c9a15a">不计</span>' : dimRankInfo(mS[i], i)); }).join('<br>');
 }
+function buildForm2(e){
+  q('mForm2Vals').innerHTML = DIMS.map(function(d, i){
+    var v = (e && e.form2 && e.form2.vals) ? e.form2.vals[i] : '';
+    return '<label>' + d + '<input type="number" data-f2="' + i + '" min="0" max="200" step="1" value="' + (v === '' ? '' : v) + '" placeholder="—"></label>';
+  }).join('');
+  q('mFormLabel').value = (e && e.formLabel) ? e.formLabel : '';
+  q('mForm2Label').value = (e && e.form2 && e.form2.label) ? e.form2.label : '';
+}
+function readForm2(){
+  var vals = [], any = false;
+  [].forEach.call(q('mForm2Vals').querySelectorAll('input[data-f2]'), function(inp){
+    var n = parseInt(inp.value, 10);
+    if (isNaN(n)){ vals.push(0); } else { n = Math.max(0, Math.min(200, n)); vals.push(n); any = true; }
+  });
+  if (!q('mForm2Label').value.trim() && !any) return null;
+  return { label: q('mForm2Label').value.trim() || '另一形态', vals: vals };
+}
+function applyFormPreset(key){
+  var p = FORM_PRESETS[key];
+  if (!p) return;
+  q('mFormLabel').value = p.formLabel;
+  q('mForm2Label').value = p.form2Label;
+  [].forEach.call(q('mForm2Vals').querySelectorAll('input[data-f2]'), function(inp, i){ inp.value = p.second[i]; });
+  mS = p.main.slice();
+  buildSliders(); renderMChart();
+}
+q('mFormPreset').addEventListener('change', function(){ if (this.value){ applyFormPreset(this.value); this.value = ''; } });
 function openEditor(id){
   editId = id || null;
   var e = id ? byId(id) : null;
@@ -1209,6 +1270,8 @@ function openEditor(id){
   q('mRank').value = e ? e.total : '—';
   mS = e ? e.s.slice() : [50,50,50,50,50,50];
   mUse = e && Array.isArray(e.use) ? e.use.slice() : [true,true,true,true,true,true];
+  buildForm2(e);
+  q('mFormPreset').value = '';
   q('mCmpPick').innerHTML = cmpOptions();
   q('mCmpPick').value = mCmpId;
   buildSliders();
@@ -1224,6 +1287,10 @@ function saveEditor(){
   var rec = { name:name, faction:q('mFac').value.trim(), cls:q('mCls').value.trim(), weapon:q('mWeapon').value.trim(),
     brand:q('mBrand').value.trim(), frame:q('mFrame').value.trim(), side:q('mSide').value, src:q('mSrc').value.trim(),
     conf:q('mConf').value, basis:q('mBasis').value.trim(), s:mS.slice(), use:use, total:total, rank:total, tier:letterOf(total) };
+  /* 双形态：第二形态填了才算数 */
+  var f2 = readForm2();
+  rec.formLabel = q('mFormLabel').value.trim() || '';
+  if (f2) rec.form2 = f2;
   if (editId){ var e = byId(editId); for (var k in rec) e[k] = rec[k]; } else { rec.id = uid(); state.entries.push(rec); }
   save(); closeEditor(); render();
 }
