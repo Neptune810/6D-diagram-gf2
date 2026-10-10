@@ -1,4 +1,4 @@
-// _work/verify_scores.mjs — 六维数据自检（19 项：结构 / 页面接线；空表也能全绿）
+// _work/verify_scores.mjs — 六维数据自检（25 项：结构 / 页面接线 / 编辑弹窗；空表也能全绿）
 // 用法：在仓库根目录执行  node _work/verify_scores.mjs
 import fs from 'node:fs';
 import path from 'node:path';
@@ -118,6 +118,47 @@ ck('18 六维图可拖动改数值（拖动把手 ＋ 指针事件 ＋ 沿轴换
 
 ck('19 空数据兜底：空表时图鉴给出「＋ 新增人形」入口；有数据时卡片渲染入口在',
   (E.length ? /function cardHTML\(/.test(html) : html.indexOf('还没有人形') >= 0 && /data-act="add"/.test(html)), 'entries=' + E.length);
+
+/* ---------- 编辑弹窗（d62a18f 后修复：正在编辑的人形自己也得有图） ---------- */
+const fnBody = (name) => {
+  const i = html.indexOf('function ' + name + '(');
+  if (i < 0) return null;
+  const j = html.indexOf('\n}', i);
+  return j < 0 ? null : html.slice(i, j + 2);
+};
+const radarB = fnBody('radar');
+const rmB = fnBody('renderMChart');
+const cmpB = fnBody('cmpOptions');
+const openB = fnBody('openEditor');
+
+ck('20 草稿六维全 0 时编辑图里也有「正在编辑」的标记（dotZero 圆心点，不是空图）',
+  !!radarB && /opt\.dotZero && zmax < 1/.test(radarB) && /class="pdot"/.test(radarB) &&
+  /function polar\(/.test(html) && /dotZero: true/.test(html),
+  'radar 里没有 dotZero 分支');
+
+ck('21 编辑弹窗排名恒为「第 N/M 高」且 N≤M（分子分母同一池，旧版分母不含草稿）',
+  /function rankPool\(/.test(html) && /function rankText\(/.test(html) && !/dimRankInfo/.test(html) &&
+  !!rmB && /rankText\((tot|draftTotal), rankPool\(null\)\)/.test(rmB) && /rankText\(mS\[i\], rankPool\(i\)\)/.test(rmB),
+  '排名仍是旧的分子/分母分开统计');
+
+const rpB = fnBody('rankPool') || '';
+ck('22 排名池排除正在编辑的这一条（不跟自己并列）',
+  /isBlank/.test(rpB) && /e\.id !== editId/.test(rpB) && /\.push\(/.test(rpB),
+  'rankPool 没有排除 editId');
+
+ck('23 「对比对象」不列正在编辑的这一条；打开编辑器时下拉值与状态同步（旧选择就地作废）',
+  !!cmpB && /e\.id !== editId/.test(cmpB) && /mCmpId = q\('mCmpPick'\)\.value;/.test(openB || ''),
+  '对比下拉仍会列出自己 / 状态没同步');
+
+ck('24 空草稿的编辑弹窗显示「— 待填」＋圆心点提示，且不显示 0 分或 NaN',
+  !!rmB && /blankDraft/.test(rmB) && /chartnote/.test(rmB) && !/NaN/.test(rmB) &&
+  /正在编辑的人形六维还全是 0/.test(html),
+  '空草稿仍显示 0 / 缺提示');
+
+ck('25 「总分（自动）」跟着滑条实时刷新（空卡显示「—」）',
+  !!rmB && /q\('mRank'\)\.value = blankDraft \? '—' : String\(draftTotal\)/.test(rmB) &&
+  /var draftTotal = totalOf\(\{ s: mS, use: mUse \}\)/.test(rmB),
+  '自动总分仍只在打开弹窗时写一次');
 
 console.log(log.join('\n'));
 console.log('\n==== ' + pass + ' PASS / ' + fail + ' FAIL ====');

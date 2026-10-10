@@ -18,7 +18,7 @@ const byName = new Map(E.map(e => [e.name, e]));
 
 let md = '';
 md += '# 六维评分依据（由 少前2_人形六维数据.json 生成）\n\n';
-md += '本文件由 \`node _work/build_doc.mjs\` 生成，**勿手改**。自检：\`node _work/verify_scores.mjs\`（19 项）。\n';
+md += '本文件由 \`node _work/build_doc.mjs\` 生成，**勿手改**。自检：\`node _work/verify_scores.mjs\`（25 项）。\n';
 md += '> 2026-10-10：内置数据已清空，原 73 人形完整版（含依据档全文）归档在 \`_work/archive/2026-10-10_完整73人形/\`。\n\n---\n\n';
 
 md += '## 一、判据\n\n| 层级 | 内容 |\n|---|---|\n';

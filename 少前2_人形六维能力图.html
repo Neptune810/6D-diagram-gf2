@@ -189,6 +189,7 @@ table.roster td.num{font-variant-numeric:tabular-nums}
 .sliders{margin-top:20px;border-top:1px solid var(--line);padding-top:14px}
 .editcmp{display:flex;gap:20px;align-items:flex-start;margin-top:16px;border-top:1px solid var(--line);padding-top:14px}
 .editchart{flex:0 0 290px}.editchart svg{width:290px;height:290px;display:block}
+.chartnote{margin-top:7px;font-size:10.5px;line-height:1.55;color:var(--paper-faint);text-align:center;border:1px dashed var(--line);padding:5px 7px;border-radius:3px}
 .editmeta{flex:1;min-width:200px}
 .editmeta .q{font-size:11.5px;line-height:1.85;color:var(--paper-dim)}
 .editmeta b{color:var(--paper);font-size:15px}
@@ -684,6 +685,12 @@ function radar(series, size, opt){
     for (var i=0;i<6;i++){ var rr = rOf(se.vals[i]); var p = polar(cx,cy,rr,i); pts.push(f1(p[0])+','+f1(p[1])); }
     var fop = opt.fillOpacity !== undefined ? opt.fillOpacity : LAYOUT.polyFill;
     parts.push('<polygon class="parea" points="'+pts.join(' ')+'" fill="'+se.color+'" fill-opacity="'+fop+'" stroke="'+se.color+'" stroke-width="'+LAYOUT.polyStroke+'"/>');
+    /* 六维全 0 时多边形退化成圆心一个点（面积 0＝看不见）——补一个圆心标记，
+       编辑弹窗里「正在编辑」的人形才始终有图，不会只剩被对比的那条 */
+    var zmax = 0; for (var z = 0; z < 6; z++){ var zv = rOf(se.vals[z]); if (zv > zmax) zmax = zv; }
+    if (opt.dotZero && zmax < 1) parts.push(
+      '<circle class="pdot" cx="'+cx+'" cy="'+cy+'" r="4" fill="'+se.color+'" fill-opacity="0.9"/>'+
+      '<circle class="pdot" cx="'+cx+'" cy="'+cy+'" r="9.5" fill="none" stroke="'+se.color+'" stroke-opacity="0.45" stroke-width="1.3"/>');
     if (isDualNow && opt.labels !== false) emitLabels(se.vals, se.letters);   /* 每态一套标签 */
     if (opt.values){
       for (var m=0;m<6;m++){
@@ -1259,16 +1266,23 @@ function renderMChart2(){
 /* ---------- 编辑时的实时对比：左边画草稿，右边可选一个参照 ---------- */
 var mCmpId = '';
 function cmpOptions(){
-  var real = state.entries.filter(function(e){ return !isBlank(e); });
+  var real = state.entries.filter(function(e){ return !isBlank(e) && e.id !== editId; });   /* 不列正在编辑的这一条（自己跟自己比没意义） */
   if (!real.length) return '<option value="">（暂无可对比对象：先给某个人形填数值）</option>';
   return '<option value="">（不对比）</option><option value="__avg">全体平均（'+real.length+' 人）</option>' +
     real.sort(function(a,b){ return b.total - a.total; }).map(function(e){
       return '<option value="'+e.id+'">'+esc(e.name)+'（'+e.total+' '+e.tier+'）</option>';
     }).join('');
 }
-function dimRankInfo(v, i){
-  var vals = state.entries.filter(function(e){ return !isBlank(e); }).map(function(e){ return e.s[i]; }).sort(function(a,b){ return b - a; });
-  return '第 ' + (vals.filter(function(x){ return x > v; }).length + 1) + '/' + vals.length + ' 高';
+/* 排名池＝库里「非空卡」但排除正在编辑的那条（避免自己跟自己并列）＋草稿自己的实时数值。
+   旧版分子分母分开统计，空卡编辑时会出现「第 4/3 高」这种 N>M 的错；现在两者同池。 */
+function rankPool(i){
+  var arr = state.entries.filter(function(e){ return !isBlank(e) && e.id !== editId; })
+    .map(function(e){ return i === null ? e.total : e.s[i]; });
+  arr.push(i === null ? totalOf({ s: mS, use: mUse }) : mS[i]);
+  return arr.sort(function(a,b){ return b - a; });
+}
+function rankText(v, pool){
+  return '第 ' + (pool.filter(function(x){ return x > v; }).length + 1) + '/' + pool.length + ' 高';
 }
 function renderMChart(){
   if (!q('mChart')) return;
@@ -1282,14 +1296,22 @@ function renderMChart(){
     var e = byId(mCmpId);
     if (e){ ref = { vals: e.s, color: '#9fb8e0' }; refName = e.name; }
   }
-  q('mChart').innerHTML = radar(ref ? [ref, draft] : [draft], 290, { grades: !ref, drag: !ref }) +
+  var blankDraft = isBlank({ s: mS });      /* 还没填数值的草稿：图里只收在圆心，数字区跟着显示「待填」 */
+  var draftTotal = totalOf({ s: mS, use: mUse });
+  /* 「总分（自动）」跟着滑条实时刷新；空卡显示「—」而不是 0（旧版只在打开弹窗那一刻写一次） */
+  if (q('mRank')) q('mRank').value = blankDraft ? '—' : String(draftTotal);
+  q('mChart').innerHTML = radar(ref ? [ref, draft] : [draft], 290, { grades: !ref, drag: !ref, dotZero: true }) +
     '<div class="q" style="text-align:center;font-size:10.5px;margin-top:2px">' +
-    (ref ? '<span style="color:#9fb8e0">■ '+esc(refName)+'</span>　' : '') +
-    '<span style="color:#c8455f">■ 正在编辑</span></div>';
-  var tot = totalOf({ s: mS, use: mUse });
-  var totals = state.entries.map(function(e){ return e.total; }).concat([tot]).sort(function(a,b){ return b - a; });
-  q('mStat').innerHTML = '总分 <b>' + tot + '</b>　' + letterOf(tot) + '　（第 ' + (totals.indexOf(tot) + 1) + '/' + totals.length + '）<br>' +
-    DIMS.map(function(d,i){ return DSHORT[i] + '　' + mS[i] + '　' + (mUse[i] === false ? '<span style="color:#c9a15a">不计</span>' : dimRankInfo(mS[i], i)); }).join('<br>');
+    (ref ? '<span style="color:'+ref.color+'">■ '+esc(refName)+'</span>　' : '') +
+    '<span style="color:#c8455f">■ 正在编辑</span></div>' +
+    (blankDraft ? '<div class="chartnote">正在编辑的人形六维还全是 0（待填）——图形收在圆心（红点），拖动下面的滑条就会出多边形</div>' : '');
+  if (blankDraft){
+    q('mStat').innerHTML = '总分 <b>—</b>　<span style="color:var(--paper-faint)">待填</span>　<span class="q">（这张卡还没填数值）</span><br>' +
+      DIMS.map(function(d,i){ return DSHORT[i] + '　<span style="color:var(--paper-faint)">— 待填</span>'; }).join('<br>');
+  } else {
+    q('mStat').innerHTML = '总分 <b>' + draftTotal + '</b>　' + letterOf(draftTotal) + '　（' + rankText(draftTotal, rankPool(null)) + '）<br>' +
+      DIMS.map(function(d,i){ return DSHORT[i] + '　' + mS[i] + '　' + (mUse[i] === false ? '<span style="color:#c9a15a">不计</span>' : rankText(mS[i], rankPool(i))); }).join('<br>');
+  }
 }
 function loadForm2(e){
   q('mFormLabel').value = (e && e.formLabel) ? e.formLabel : '';
@@ -1326,6 +1348,7 @@ function openEditor(id){
   q('mFormPreset').value = '';
   q('mCmpPick').innerHTML = cmpOptions();
   q('mCmpPick').value = mCmpId;
+  mCmpId = q('mCmpPick').value;      /* 下拉里已不存在的旧选择（如正在编辑的这一条自己）就地作废 */
   buildSliders();
   buildSliders2();
   syncBlockState();
