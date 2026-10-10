@@ -142,6 +142,7 @@ svg.radar{display:block;width:100%;height:auto;overflow:visible}
 .axis{stroke:rgba(226,232,235,.085);stroke-width:1}
 .node{fill:rgba(226,232,235,.22)}
 .albl{font:400 9.5px var(--txt);fill:var(--paper-faint);letter-spacing:.03em}
+.agl.big{font-size:14.5px;stroke-width:3.8px}
 .agl{font:700 10.5px var(--dsp);letter-spacing:.01em;paint-order:stroke;stroke:var(--ink-900);stroke-width:3px;stroke-linejoin:round}
 .evidence{font-size:11.5px;line-height:1.55;color:var(--paper-dim);border-left:1px solid var(--line-hard);padding-left:9px}
 .ledger{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;border-top:1px solid var(--line-soft);padding-top:8px}
@@ -408,7 +409,31 @@ svg.net{display:block;width:100%;height:auto}
 var GRADES = ['E','D','C','B','A','S','SS','ULTRA'];
 var DIMS = ['火力','电子战能力','搏斗能力','素体强度','速度','战术能力'];
 var DSHORT = ['火力','电子战','搏斗','素体','速度','战术'];
-var GCOLOR = ['#7c8b99','#93a9bb','#5fc7bd','#a8d34e','#ffd24a','#ff9f3d','#ff6b4a','#ff4d6d'];
+var GCOLOR = ['#7c8b99','#93a9bb','#5fc7bd','#a8d34e','#ffd24a','#ff5a5f','#eaf6ff','#e08cff'];
+/* 档位配色：E–A 保持原样；S＝超凡大师（绛红＋金），SS＝最强王者（金白蓝，表面发亮），ULTRA＝五彩斑斓 */
+var GGRAD = {
+  S:     ['#ffd166','#ff7a4d','#d92e46'],
+  SS:    ['#ffe9a8','#ffffff','#7fd8ff'],
+  ULTRA: ['#ff4d6d','#ffb84d','#ffe95c','#5fe0a0','#5fc7ff','#b06bff']
+};
+var GGRAD_ANGLE = { S:'120deg', SS:'105deg', ULTRA:'80deg' };
+function gradList(g){ return GGRAD[g].join(','); }
+function gradeStyle(g){ return GGRAD[g]
+  ? 'color:' + GCOLOR[GRADES.indexOf(g)] + ';background-image:linear-gradient(' + (GGRAD_ANGLE[g]||'110deg') + ',' + gradList(g) + ');-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent'
+  : 'color:' + GCOLOR[GRADES.indexOf(g)]; }
+function gradeBg(g){ return GGRAD[g]
+  ? 'background-image:linear-gradient(' + (GGRAD_ANGLE[g]||'110deg') + ',' + gradList(g) + ')'
+  : 'background:' + GCOLOR[GRADES.indexOf(g)]; }
+var radarSeq = 0;
+function gradeFill(g, pre){ return GGRAD[g] ? 'url(#' + pre + g + ')' : GCOLOR[GRADES.indexOf(g)]; }
+function gradDefs(pre){
+  return '<defs>' + Object.keys(GGRAD).map(function(g){
+    var n = GGRAD[g].length;
+    return '<linearGradient id="' + pre + g + '" x1="0" y1="0" x2="1" y2="1">' +
+      GGRAD[g].map(function(c, i){ return '<stop offset="' + Math.round(i/(n-1)*100) + '%" stop-color="' + c + '"/>'; }).join('') +
+      '</linearGradient>';
+  }).join('') + '</defs>';
+}
 var SIDES = { self:'自机', foe:'敌方' };
 var ACC = { self:'#ffb84d', foe:'#ff6f75' };
 var RELC = { '击败':'#cf5a5f','秒杀':'#e8443f','压制':'#d97b4a','全面压制':'#d97b4a','近身压制':'#d97b4a','战胜':'#cf5a5f',
@@ -518,6 +543,8 @@ function radar(series, size, opt){
   var outer = cx - 12;                       // 顶点 200 的半径
   var R = outer * 100 / MAXV;                // 100 的半径（六维图上限）
   parts.push('<svg class="radar" viewBox="0 0 '+size+' '+size+'" aria-hidden="true">');
+  var gpre = 'rg' + (++radarSeq) + '_';
+  parts.push(gradDefs(gpre));
   function rOf(v){ return R * Math.max(0, Math.min(MAXV, v)) / 100; }   // >100 即画到 100 环外
   /* 常规网格只到 100：默认情况下 100 环就是图的顶点 */
   for (var k=1;k<=8;k++){
@@ -548,17 +575,18 @@ function radar(series, size, opt){
     if (opt.grades !== false && (series.length === 1 || opt.gradesAll === true)){
       for (var j=0;j<6;j++){
         var vx = vt[j], rv = vx[1];
+        var Lj = se.letters ? se.letters[j] : letterOf(se.vals[j]);
         var a1 = polar(cx,cy,rv,j-0.075), a2 = polar(cx,cy,rv,j+0.075);
         parts.push('<path d="M '+f1(a1[0])+' '+f1(a1[1])+' A '+f1(rv)+' '+f1(rv)+' 0 0 1 '+f1(a2[0])+' '+f1(a2[1])+
-          '" fill="none" stroke="'+GCOLOR[GRADES.indexOf(se.letters ? se.letters[j] : letterOf(se.vals[j]))]+'" stroke-width="3" stroke-linecap="round"/>');
-        parts.push('<circle class="vtx" cx="'+f1(vx[0][0])+'" cy="'+f1(vx[0][1])+'" r="3.6" fill="'+GCOLOR[GRADES.indexOf(se.letters ? se.letters[j] : letterOf(se.vals[j]))]+'"/>');
+          '" fill="none" stroke="'+gradeFill(Lj, gpre)+'" stroke-width="3" stroke-linecap="round"/>');
+        parts.push('<circle class="vtx" cx="'+f1(vx[0][0])+'" cy="'+f1(vx[0][1])+'" r="3.6" fill="'+gradeFill(Lj, gpre)+'"/>');
       }
       if (series.length > 1 && opt.gradesAll === true){
         for (var j2=0;j2<6;j2++){
           var Lg = se.letters ? se.letters[j2] : letterOf(se.vals[j2]);
           var plg = polar(cx,cy,Math.min(Math.max(R, rOf(se.vals[j2])) + 10, outer - 4),j2);
           var alg = Math.abs(plg[0]-cx) < 1.5 ? 'middle' : (plg[0] > cx ? 'start' : 'end');
-          parts.push('<text class="agl" x="'+f1(plg[0])+'" y="'+f1(plg[1]+4)+'" text-anchor="'+alg+'" fill="'+GCOLOR[GRADES.indexOf(Lg)]+'">'+Lg+'</text>');
+          parts.push('<text class="agl'+(Lg==='ULTRA'?' big':'')+'" x="'+f1(plg[0])+'" y="'+f1(plg[1]+4)+'" text-anchor="'+alg+'" fill="'+gradeFill(Lg, gpre)+'">'+Lg+'</text>');
         }
       }
     }
@@ -578,7 +606,7 @@ function radar(series, size, opt){
     }
   }
   if (opt.labels !== false){
-    var W = { E:9,D:9,C:9,B:9,A:9,S:9,SS:17,ULTRA:35 };
+    var W = { E:9,D:9,C:9,B:9,A:9,S:9,SS:17,ULTRA:48 };
     var multi = series.length > 1 && opt.gradesAll === true;
     for (var i=0;i<6;i++){
       var lg = (series.length===1 && opt.grades !== false) ? (series[0].letters ? series[0].letters[i] : letterOf(series[0].vals[i])) : '';
@@ -594,7 +622,7 @@ function radar(series, size, opt){
       if (lg){
         var pl = polar(cx,cy,letterR,i);
         var al = Math.abs(pl[0]-cx) < 1.5 ? 'middle' : (pl[0] > cx ? 'start' : 'end');
-        parts.push('<text class="agl" x="'+f1(pl[0])+'" y="'+f1(pl[1]+4)+'" text-anchor="'+al+'" fill="'+GCOLOR[GRADES.indexOf(lg)]+'">'+lg+'</text>');
+        parts.push('<text class="agl'+(lg==='ULTRA'?' big':'')+'" x="'+f1(pl[0])+'" y="'+f1(pl[1]+4)+'" text-anchor="'+al+'" fill="'+gradeFill(lg, gpre)+'">'+lg+'</text>');
       }
     }
   }
@@ -631,7 +659,7 @@ function ledgerHTML(e){
   return DIMS.map(function(dim,i){
     var L = dimLetter(e, i);
     var off = !!(e.use && e.use[i] === false);
-    return '<div class="led"'+(off?' style="opacity:.42"':'')+'><span>'+DSHORT[i]+'</span><b class="num">'+e.s[i]+'</b><b style="color:'+GCOLOR[GRADES.indexOf(L)]+';font-size:13px">'+L+'</b>'+(off?'<small style="color:#c9a15a">不计</small>':'')+'</div>';
+    return '<div class="led"'+(off?' style="opacity:.42"':'')+'><span>'+DSHORT[i]+'</span><b class="num">'+e.s[i]+'</b><b style="'+gradeStyle(L)+';font-size:13px">'+L+'</b>'+(off?'<small style="color:#c9a15a">不计</small>':'')+'</div>';
   }).join('');
 }
 function cardHTML(e, idx, opts){
@@ -647,7 +675,7 @@ function cardHTML(e, idx, opts){
     '<div class="frm">素体 '+(e.frame?esc(e.frame):'无型号')+(e.weapon?'　武器 '+esc(e.weapon):'')+'</div></div>'+
     '<div style="text-align:right">'+(fv?fvTotalsHTML(V):
       '<div class="rankno">'+(e.total!=null?e.total:'—')+'<small>总分</small></div>'+
-      '<div class="tier" style="color:'+GCOLOR[GRADES.indexOf(e.tier)]+'">'+e.tier+'</div>')+'</div></div>'+
+      '<div class="tier" style="'+gradeStyle(e.tier)+'">'+e.tier+'</div>')+'</div></div>'+
     (fv?fvBarHTML(fv):'')+
     '<div class="chart">'+radar(series, 300, fv?{ gradesAll:true, fillOpacity:0.30 }:{ drag:true })+'</div>'+
     '<div class="ledger'+(fv?' dual':'')+'">'+(fv?fvLedgerHTML(V):ledgerHTML(e))+'</div>'+
@@ -656,7 +684,7 @@ function cardHTML(e, idx, opts){
         '<button class="btn" data-act="dup" data-id="'+e.id+'">复制</button>'+
         '<button class="btn danger" data-act="del" data-id="'+e.id+'">删除</button></div></div>' : '')+'</article>';
 }
-function stripHTML(e){ return '<span class="strip" aria-hidden="true">'+e.s.map(function(v,i){ return '<i style="background:'+GCOLOR[GRADES.indexOf(dimLetter(e, i))]+'"></i>'; }).join('')+'</span>'; }
+function stripHTML(e){ return '<span class="strip" aria-hidden="true">'+e.s.map(function(v,i){ return '<i style="'+gradeBg(dimLetter(e, i))+'"></i>'; }).join('')+'</span>'; }
 
 /* ---------- 侧栏 ---------- */
 function renderRail(){
@@ -695,7 +723,7 @@ function renderModels(){
   }).join('　');
 }
 function renderScale(){
-  q('scale').innerHTML = GRADES.map(function(g,i){ return '<span><i style="background:'+GCOLOR[i]+'"></i>'+g+'</span>'; }).join('');
+  q('scale').innerHTML = GRADES.map(function(g,i){ return '<span><i style="'+gradeBg(GRADES[i])+'"></i>'+g+'</span>'; }).join('');
 }
 
 /* ---------- 阶梯 ---------- */
@@ -707,7 +735,7 @@ function ladderHTML(){
     var grp = list.filter(function(e){ return e.tier === t; });
     if (!grp.length) return;
     h += '<section class="tierrow"><div class="tierhead" style="border-color:'+GCOLOR[GRADES.indexOf(t)]+'">'+
-      '<b style="color:'+GCOLOR[GRADES.indexOf(t)]+'">'+t+'</b><span>'+grp.length+' 名 · '+grp[0].total+'–'+grp[grp.length-1].total+'</span></div>'+
+      '<b style="'+gradeStyle(t)+'">'+t+'</b><span>'+grp.length+' 名 · '+grp[0].total+'–'+grp[grp.length-1].total+'</span></div>'+
       '<div class="tierbody">'+grp.map(function(e){
         return '<button class="chip2" data-goto="'+e.id+'" title="'+esc(e.basis)+'">'+
           '<span class="cn">'+esc(e.name)+'</span><span class="cr">'+e.total+'</span></button>';
@@ -862,7 +890,7 @@ function renderCompare(){
   DIMS.forEach(function(dim,i){
     h += '<tr><td>'+dim+'</td>'+chosen.map(function(e){
       var L = dimLetter(e, i);
-      return '<td class="g"><b style="color:'+GCOLOR[GRADES.indexOf(L)]+'">'+e.s[i]+'</b> <small>'+L+'</small></td>'; }).join('');
+      return '<td class="g"><b style="'+gradeStyle(L)+'">'+e.s[i]+'</b> <small>'+L+'</small></td>'; }).join('');
     h += '<td class="num">'+chosen.slice(1).map(function(e){
       var d = e.s[i] - base.s[i];
       return '<span style="color:'+(d>0?'#66a9a0':d<0?'#cf5a5f':'#8b98a8')+'">'+e.name+' '+(d>0?'+':'')+d+'</span>'; }).join('<br>')+'</td></tr>';
@@ -975,8 +1003,8 @@ function renderTable(){
   h += list.map(function(e){
     var myrels = state.edges.filter(function(ed){ return ed.a === e.name || ed.b === e.name; });
     return '<tr><td><b>'+esc(e.name)+'</b> <span class="mark '+e.side+'" style="font-size:10px">'+SIDES[e.side]+'</span></td>'+
-      '<td>'+esc(e.faction||'待考')+'</td><td class="frmcell">'+esc(e.frame||'无型号')+'</td><td>'+esc(e.src||'—')+'</td><td class="num"><b>'+e.total+'</b> <span style="color:'+GCOLOR[GRADES.indexOf(e.tier)]+'">'+e.tier+'</span></td>'+
-      e.s.map(function(v,i){ var L = dimLetter(e, i); return '<td class="g"><b>'+v+'</b> <small style="color:'+GCOLOR[GRADES.indexOf(L)]+'">'+L+'</small></td>'; }).join('')+
+      '<td>'+esc(e.faction||'待考')+'</td><td class="frmcell">'+esc(e.frame||'无型号')+'</td><td>'+esc(e.src||'—')+'</td><td class="num"><b>'+e.total+'</b> <span style="'+gradeStyle(e.tier)+'">'+e.tier+'</span></td>'+
+      e.s.map(function(v,i){ var L = dimLetter(e, i); return '<td class="g"><b>'+v+'</b> <small style="'+gradeStyle(L)+'">'+L+'</small></td>'; }).join('')+
       '<td style="white-space:normal;max-width:260px">'+myrels.map(function(ed){
         return '<span class="relbadge" style="border-color:'+(RELC[ed.rel]||'#8b98a8')+'">'+esc(ed.rel)+'</span> '+esc(ed.a===e.name?ed.b:ed.a); }).join('　')+'</td>'+
       (state.edit?'<td><button class="btn" data-act="edit" data-id="'+e.id+'">编辑</button> <button class="btn danger" data-act="del" data-id="'+e.id+'">删除</button></td>':'')+
@@ -1025,15 +1053,15 @@ function fvLedgerHTML(V){
   return DIMS.map(function(d, i){
     var a = V[0][i], b = V[1][i];
     return '<div class="led dual"><span>' + DSHORT[i] + '</span>' +
-      '<b class="a">' + a + '<i style="color:' + GCOLOR[GRADES.indexOf(letterOf(a))] + '">' + letterOf(a) + '</i></b>' +
-      '<b class="b">' + b + '<i style="color:' + GCOLOR[GRADES.indexOf(letterOf(b))] + '">' + letterOf(b) + '</i></b></div>';
+      '<b class="a">' + a + '<i style="'+gradeStyle(letterOf(a))+'">' + letterOf(a) + '</i></b>' +
+      '<b class="b">' + b + '<i style="'+gradeStyle(letterOf(b))+'">' + letterOf(b) + '</i></b></div>';
   }).join('');
 }
 function fvTotalsHTML(V){
   var t0 = fvTotal(V[0]), t1 = fvTotal(V[1]), L0 = letterOf(t0), L1 = letterOf(t1);
   return '<div class="rankno"><span class="ta">' + t0 + '</span><span class="tb">' + t1 + '</span><small>总分</small></div>' +
-    '<div class="tier"><span class="ta" style="color:' + GCOLOR[GRADES.indexOf(L0)] + '">' + L0 + '</span>' +
-    '<span class="tb" style="color:' + GCOLOR[GRADES.indexOf(L1)] + '">' + L1 + '</span></div>';
+    '<div class="tier"><span class="ta" style="'+gradeStyle(L0)+'">' + L0 + '</span>' +
+    '<span class="tb" style="'+gradeStyle(L1)+'">' + L1 + '</span></div>';
 }
 
 /* ---------- 渲染 ---------- */
