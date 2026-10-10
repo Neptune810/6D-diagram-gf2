@@ -107,7 +107,7 @@ input:focus,select:focus{border-color:var(--amber);background:rgba(229,161,60,.0
 /* ===== plot area ===== */
 .plotbar{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;
   padding-bottom:16px;border-bottom:1px solid var(--line)}
-.tally{display:flex;flex-wrap:wrap;gap:10px 16px;font-size:12.5px;color:var(--paper-faint);font-variant-numeric:tabular-nums;margin-right:auto}
+.tally{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:15px;color:var(--paper-2);font-variant-numeric:tabular-nums;margin-right:auto}
 .tally span+span{padding-left:16px;border-left:1px solid var(--line)}
 .tally b{color:var(--paper);font-weight:600}
 .scale{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--paper-faint);align-items:center}
@@ -122,8 +122,8 @@ input:focus,select:focus{border-color:var(--amber);background:rgba(229,161,60,.0
 .plate.self{border-left:2px solid var(--acc-self,var(--amber))}
 .plate.foe{border-left:2px solid var(--acc-foe,var(--crimson))}
 @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-.ptop{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
-.pname{font-family:var(--dsp);font-size:22px;line-height:1.15;letter-spacing:-.005em}
+.ptop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.pname{font-family:var(--dsp);font-size:24px;line-height:1.15;letter-spacing:-.005em}
 .pfaction{font-size:11.5px;color:var(--paper-dim);margin-top:3px}
 .psrc{font-size:10.5px;color:var(--paper-faint);margin-top:2px}
 .mark{font-size:10.5px;letter-spacing:.06em;padding:2px 7px;border:1px solid var(--line);white-space:nowrap;color:var(--paper-dim)}
@@ -141,7 +141,7 @@ svg.radar{display:block;width:100%;height:auto;overflow:visible;position:relativ
 .evidence{font-size:11.5px;line-height:1.55;color:var(--paper-dim);border-left:1px solid var(--line-hard);padding-left:9px}
 .ledger{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;border-top:1px solid var(--line-soft);padding-top:8px}
 .led{display:flex;justify-content:space-between;gap:8px;align-items:baseline;padding:3px 0;border-bottom:1px solid var(--line-soft)}
-.led span{font-size:11.5px;color:var(--paper-faint)}
+.led span{font-size:12px;color:var(--paper-dim)}
 .led b{font-family:var(--dsp);font-size:15px;font-variant-numeric:tabular-nums}
 .pfoot{display:flex;justify-content:space-between;align-items:flex-end;padding-top:10px;border-top:1px solid var(--line)}
 .total{font-family:var(--dsp);font-size:26px;font-variant-numeric:tabular-nums;line-height:1}
@@ -192,6 +192,17 @@ table.roster td.num{font-variant-numeric:tabular-nums}
 .editmeta{flex:1;min-width:200px}
 .editmeta .q{font-size:11.5px;line-height:1.85;color:var(--paper-dim)}
 .editmeta b{color:var(--paper);font-size:15px}
+.sblock{margin-top:16px;border-top:1px solid var(--line-soft);padding-top:12px}
+.sblock .sliders{margin-top:6px;border-top:0;padding-top:0}
+.shead{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:6px}
+.shead b{font-family:var(--dsp);font-size:15px;color:var(--paper)}
+.shead input[type=text]{padding:4px 8px;background:rgba(0,0,0,.22);border:1px solid var(--line);border-radius:2px;color:inherit;font-size:13.5px;min-width:130px}
+.shead .shint{font-size:11.5px;color:var(--paper-faint)}
+.shead .suse{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--paper-dim)}
+.shead select{margin-left:auto;padding:4px 7px;background:var(--ink-900);border:1px solid var(--line);border-radius:2px;color:var(--paper-2);font-size:12.5px}
+.sblock[data-on="0"] .sliders{opacity:.32;pointer-events:none}
+.sblock[data-on="0"] .shead select{margin-left:auto}
+.editcmp{flex-wrap:wrap}
 .srow{display:grid;grid-template-columns:96px 1fr 56px;align-items:center;gap:14px;padding:5px 0}
 .srow label{font-size:12.5px;color:var(--paper-dim)}
 .srow output{font-family:var(--dsp);font-size:16px;text-align:center;border:1px solid var(--line);padding:1px 0}
@@ -217,7 +228,7 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;heigh
 }
 @media print{.rail,.acts,.plotbar{display:none}.plate{animation:none}}
 
-.frm{font-size:10.5px;color:var(--paper-faint);margin-top:4px}
+.frm{font-size:14px;color:var(--paper-2);margin-top:2px;letter-spacing:0;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .verdict{font-size:11px;color:#c9a15a;border-left:2px solid #7b5a1f;padding-left:8px;margin-top:-4px}
 .netbar.kinds{margin-bottom:6px}
 .relbtn.kind{font-size:11.5px;padding:3px 8px}
@@ -228,8 +239,8 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:13px;heigh
 .kbadge.定位{color:#c8455f;border-color:#5a2029}
 .frm .up{color:#66a9a0}
 .frm .dn{color:#c9a15a}
-.rankno{font-family:var(--dsp);font-size:24px;line-height:1.05;font-variant-numeric:tabular-nums;margin-top:4px}
-.rankno small{font-family:var(--txt);font-size:10px;color:var(--paper-faint);margin-left:4px}
+.rankno{font-family:var(--dsp);font-size:26px;line-height:1.05;font-variant-numeric:tabular-nums;margin-top:4px;white-space:nowrap}
+.rankno small{font-family:var(--txt);font-size:11px;color:var(--paper-dim);margin-left:4px}
 .tier{font-family:var(--dsp);font-size:12px;letter-spacing:.06em}
 .led b.num{margin-left:auto}
 .led{display:grid;grid-template-columns:1fr auto 34px;align-items:baseline;gap:8px}
@@ -396,23 +407,26 @@ svg.net{display:block;width:100%;height:auto}
     </div>
     <div class="editcmp">
       <div class="editchart" id="mChart"></div>
+      <div class="editchart" id="mChart2" style="flex:0 0 210px;display:none"></div>
       <div class="editmeta">
         <label class="field"><span>对比对象</span><select id="mCmpPick"></select></label>
         <div class="q" id="mStat"></div>
       </div>
     </div>
-    <div class="sliders" id="mSliders"></div>
-    <div class="form2">
-      <div class="f2head"><b>双形态</b>
-        <span>填了「第二形态」这张卡就会多出切换按钮（同一张图叠两形态，切换＝换对比度）</span>
+    <div class="sblock">
+      <div class="shead"><b>主形态</b>
+        <input id="mFormLabel" type="text" placeholder="主表现值">
+        <span class="shint">名字随便起，如「带断罪者」</span></div>
+      <div class="sliders" id="mSliders"></div>
+    </div>
+    <div class="sblock" id="mBlock2">
+      <div class="shead"><b>第二形态</b>
+        <input id="mForm2Label" type="text" placeholder="如 本体">
+        <label class="suse"><input type="checkbox" id="mForm2On"> 启用（卡上出现切换按钮）</label>
         <select id="mFormPreset"><option value="">载入预设…</option>
           <option value="wmx">威玛西娜 · 带断罪者／本体</option>
           <option value="lfy">六分仪 · 入队时／当反派时</option></select></div>
-      <div class="f2row">
-        <label class="field"><span>主形态名称</span><input id="mFormLabel" type="text" placeholder="主表现值"></label>
-        <label class="field"><span>第二形态名称</span><input id="mForm2Label" type="text" placeholder="如 本体"></label>
-      </div>
-      <div class="f2vals" id="mForm2Vals"></div>
+      <div class="sliders" id="mSliders2"></div>
     </div>
     <div class="sheetactions"><button class="btn" id="mCancel">取消</button><button class="btn solid" id="mSave">保存</button></div>
   </div>
@@ -751,13 +765,14 @@ function cardHTML(e, idx, opts){
   var V = fv ? fv.forms.map(function(f){ return fvValues(fv, f); }) : null;
   var series = fv ? fv.forms.map(function(f, i){ return { vals: V[i], color: acc, cls: 'fp f' + i }; })
                   : [{ vals:e.s, color:acc, letters:dimLettersOf(e) }];
+  var FVU = fv ? [ e.use, (e.form2 && e.form2.use) || null ] : null;
   return '<article class="plate '+(e.side==='foe'?'foe':'self')+(fv?' dual':'')+(opts.noAnim?' noanim':'')+'" id="card-'+e.id+'" data-active="'+(fv?(formPick==='1'?'1':'0'):'0')+'"'
     +' style="'+(fv?'--acc:'+acc+';':'')+'animation-delay:'+Math.min(idx,26)*22+'ms">'+
-    '<div class="ptop"><div><h3 class="pname">'+esc(e.name)+'</h3>'+
-    '<div class="frm">素体 '+(e.frame?esc(e.frame):'无型号')+(e.weapon?'　武器 '+esc(e.weapon):'')+'</div></div>'+
-    '<div style="text-align:right">'+(fv?fvTotalsHTML(V):
+    '<div class="ptop"><div><h3 class="pname">'+esc(e.name)+'</h3></div>'+
+    '<div style="text-align:right">'+(fv?fvTotalsHTML(V, FVU):
       '<div class="rankno">'+(e.total!=null?e.total:'—')+'<small>总分</small></div>'+
       '<div class="tier" style="'+gradeStyle(e.tier)+'">'+e.tier+'</div>')+'</div></div>'+
+    '<div class="frm">素体 '+(e.frame?esc(e.frame):'无型号')+(e.weapon?'　武器 '+esc(e.weapon):'')+'</div>'+
     (fv?fvBarHTML(fv):'')+
     '<div class="chart">'+radar(series, LAYOUT.sizeCard, fv?{ gradesAll:true }: { drag:true })+'</div>'+
     '<div class="ledger'+(fv?' dual':'')+'">'+(fv?fvLedgerHTML(V):ledgerHTML(e))+'</div>'+
@@ -1134,9 +1149,9 @@ function fvValues(ch, form){
   if (fvLive(form) && e && e.s && e.s.length === 6) return e.s.slice();
   return form.values.slice();
 }
-function fvTotal(vals){
-  var num = 0, den = 0;
-  DIMS.forEach(function(d, i){ if (WEIGHTS[i]) { num += WEIGHTS[i] * vals[i]; den += WEIGHTS[i]; } });
+function fvTotal(vals, use){
+  var num = 0, den = 0, us = use || [true,true,true,true,true,true];
+  DIMS.forEach(function(d, i){ if (us[i] !== false && WEIGHTS[i]) { num += WEIGHTS[i] * vals[i]; den += WEIGHTS[i]; } });
   return den ? Math.round(num / den * 10) / 10 : 0;
 }
 function fvBarHTML(ch){
@@ -1153,8 +1168,9 @@ function fvLedgerHTML(V){
       '<b class="b">' + b + '<i style="'+gradeStyle(letterOf(b))+'">' + letterOf(b) + '</i></b></div>';
   }).join('');
 }
-function fvTotalsHTML(V){
-  var t0 = fvTotal(V[0]), t1 = fvTotal(V[1]), L0 = letterOf(t0), L1 = letterOf(t1);
+function fvTotalsHTML(V, U){
+  var us = U || [null, null];
+  var t0 = fvTotal(V[0], us[0] || undefined), t1 = fvTotal(V[1], us[1] || undefined), L0 = letterOf(t0), L1 = letterOf(t1);
   return '<div class="rankno"><span class="ta">' + t0 + '</span><span class="tb">' + t1 + '</span><small>总分</small></div>' +
     '<div class="tier"><span class="ta" style="'+gradeStyle(L0)+'">' + L0 + '</span>' +
     '<span class="tb" style="'+gradeStyle(L1)+'">' + L1 + '</span></div>';
@@ -1185,26 +1201,49 @@ function render(){
 
 /* ---------- 编辑 ---------- */
 var editId = null, mS = [50,50,50,50,50,50], mUse = [true,true,true,true,true,true];
-function buildSliders(){
-  var box = q('mSliders');
+var mS2 = [50,50,50,50,50,50], mUse2 = [true,true,true,true,true,true];
+/* 一套模板给两个形态共用：boxId 容器、vals/use 数组（按引用写回）、key 生成 id、onInput 重画回调 */
+function buildSliderBlock(boxId, vals, use, key, onInput){
+  var box = q(boxId); if (!box) return;
   box.innerHTML = DIMS.map(function(dim,i){
-    return '<div class="srow"><label for="sl'+i+'">'+dim+'</label>'+
-      '<input id="sl'+i+'" type="range" min="0" max="200" step="1" value="'+mS[i]+'" data-i="'+i+'">'+
-      '<output data-i="'+i+'">'+mS[i]+' '+letterOf(mS[i])+'</output>'+
-      '<label style="font-size:11px;color:var(--paper-dim);display:flex;align-items:center;gap:4px"><input type="checkbox" data-use="'+i+'"'+(mUse[i]?' checked':'')+'> 参与总分</label></div>';
+    return '<div class="srow"><label for="'+key+i+'">'+dim+'</label>'+
+      '<input id="'+key+i+'" type="range" min="0" max="200" step="1" value="'+vals[i]+'" data-i="'+i+'">'+
+      '<output data-i="'+i+'">'+vals[i]+' '+letterOf(vals[i])+'</output>'+
+      '<label style="font-size:11px;color:var(--paper-dim);display:flex;align-items:center;gap:4px"><input type="checkbox" data-use="'+i+'"'+(use[i]?' checked':'')+'> 参与总分</label></div>';
   }).join('');
   Array.prototype.forEach.call(box.querySelectorAll('input[type=range]'), function(r){
     r.addEventListener('input', function(){
-      var i = parseInt(r.getAttribute('data-i'),10); mS[i] = parseInt(r.value,10);
-      var o = box.querySelector('output[data-i="'+i+'"]'); o.textContent = mS[i]+' '+letterOf(mS[i]);
-      o.style.color = GCOLOR[GRADES.indexOf(letterOf(mS[i]))];
-      renderMChart();
+      var i = parseInt(r.getAttribute('data-i'),10); vals[i] = parseInt(r.value,10);
+      paintOutput(box, i, vals[i]);
+      onInput();
     });
   });
-  DIMS.forEach(function(_,i){ var o = box.querySelector('output[data-i="'+i+'"]'); o.style.color = GCOLOR[GRADES.indexOf(letterOf(mS[i]))]; });
+  DIMS.forEach(function(_, i){ paintOutput(box, i, vals[i]); });
   Array.prototype.forEach.call(box.querySelectorAll('input[data-use]'), function(cb){
-    cb.addEventListener('change', function(){ mUse[parseInt(cb.getAttribute('data-use'),10)] = cb.checked; renderMChart(); });
+    cb.addEventListener('change', function(){ use[parseInt(cb.getAttribute('data-use'),10)] = cb.checked; onInput(); });
   });
+}
+function paintOutput(box, i, v){
+  var o = box.querySelector('output[data-i="'+i+'"]'); if (!o) return;
+  o.textContent = v + ' ' + letterOf(v);
+  o.style.color = GCOLOR[GRADES.indexOf(letterOf(v))];
+}
+function buildSliders(){ buildSliderBlock('mSliders', mS, mUse, 'sl', function(){ renderMChart(); }); }
+function buildSliders2(){ buildSliderBlock('mSliders2', mS2, mUse2, 'sl2', function(){ renderMChart2(); }); }
+function form2On(){ var c = q('mForm2On'); return !!(c && c.checked); }
+function syncBlockState(){
+  var on = form2On();
+  q('mBlock2').setAttribute('data-on', on ? '1' : '0');
+  var c = q('mForm2On'); c.disabled = false;
+  renderMChart2();
+}
+/* 第二形态的草稿图（主形态作淡参照） */
+function renderMChart2(){
+  var box = q('mChart2'); if (!box) return;
+  if (!form2On()){ box.style.display = 'none'; return; }
+  box.style.display = 'block';
+  var series = [ { vals: mS.slice(), color: '#5fb3b0' }, { vals: mS2.slice(), color: '#c8455f' } ];
+  box.innerHTML = radar(series, 210, { labels:false, fillOpacity:0.28 });
 }
 /* ---------- 编辑时的实时对比：左边画草稿，右边可选一个参照 ---------- */
 var mCmpId = '';
@@ -1238,33 +1277,25 @@ function renderMChart(){
   q('mStat').innerHTML = '总分 <b>' + tot + '</b>　' + letterOf(tot) + '　（第 ' + (totals.indexOf(tot) + 1) + '/' + totals.length + '）<br>' +
     DIMS.map(function(d,i){ return DSHORT[i] + '　' + mS[i] + '　' + (mUse[i] === false ? '<span style="color:#c9a15a">不计</span>' : dimRankInfo(mS[i], i)); }).join('<br>');
 }
-function buildForm2(e){
-  q('mForm2Vals').innerHTML = DIMS.map(function(d, i){
-    var v = (e && e.form2 && e.form2.vals) ? e.form2.vals[i] : '';
-    return '<label>' + d + '<input type="number" data-f2="' + i + '" min="0" max="200" step="1" value="' + (v === '' ? '' : v) + '" placeholder="—"></label>';
-  }).join('');
+function loadForm2(e){
   q('mFormLabel').value = (e && e.formLabel) ? e.formLabel : '';
   q('mForm2Label').value = (e && e.form2 && e.form2.label) ? e.form2.label : '';
-}
-function readForm2(){
-  var vals = [], any = false;
-  [].forEach.call(q('mForm2Vals').querySelectorAll('input[data-f2]'), function(inp){
-    var n = parseInt(inp.value, 10);
-    if (isNaN(n)){ vals.push(0); } else { n = Math.max(0, Math.min(200, n)); vals.push(n); any = true; }
-  });
-  if (!q('mForm2Label').value.trim() && !any) return null;
-  return { label: q('mForm2Label').value.trim() || '另一形态', vals: vals };
+  mS2 = (e && e.form2 && e.form2.vals) ? e.form2.vals.slice() : [50,50,50,50,50,50];
+  mUse2 = (e && e.form2 && Array.isArray(e.form2.use)) ? e.form2.use.slice() : [true,true,true,true,true,true];
+  q('mForm2On').checked = !!(e && e.form2);
 }
 function applyFormPreset(key){
   var p = FORM_PRESETS[key];
   if (!p) return;
   q('mFormLabel').value = p.formLabel;
   q('mForm2Label').value = p.form2Label;
-  [].forEach.call(q('mForm2Vals').querySelectorAll('input[data-f2]'), function(inp, i){ inp.value = p.second[i]; });
-  mS = p.main.slice();
-  buildSliders(); renderMChart();
+  q('mForm2On').checked = true;
+  mS = p.main.slice(); mS2 = p.second.slice();
+  mUse = [true,true,true,true,true,true]; mUse2 = [true,true,true,true,true,true];
+  buildSliders(); buildSliders2(); syncBlockState(); renderMChart();
 }
 q('mFormPreset').addEventListener('change', function(){ if (this.value){ applyFormPreset(this.value); this.value = ''; } });
+q('mForm2On').addEventListener('change', syncBlockState);
 function openEditor(id){
   editId = id || null;
   var e = id ? byId(id) : null;
@@ -1277,11 +1308,13 @@ function openEditor(id){
   q('mRank').value = e ? e.total : '—';
   mS = e ? e.s.slice() : [50,50,50,50,50,50];
   mUse = e && Array.isArray(e.use) ? e.use.slice() : [true,true,true,true,true,true];
-  buildForm2(e);
+  loadForm2(e);
   q('mFormPreset').value = '';
   q('mCmpPick').innerHTML = cmpOptions();
   q('mCmpPick').value = mCmpId;
   buildSliders();
+  buildSliders2();
+  syncBlockState();
   renderMChart();
   q('modal').classList.remove('hidden'); q('mName').focus();
 }
@@ -1294,11 +1327,12 @@ function saveEditor(){
   var rec = { name:name, faction:q('mFac').value.trim(), cls:q('mCls').value.trim(), weapon:q('mWeapon').value.trim(),
     brand:q('mBrand').value.trim(), frame:q('mFrame').value.trim(), side:q('mSide').value, src:q('mSrc').value.trim(),
     conf:q('mConf').value, basis:q('mBasis').value.trim(), s:mS.slice(), use:use, total:total, rank:total, tier:letterOf(total) };
-  /* 双形态：第二形态填了才算数 */
-  var f2 = readForm2();
+  /* 多形态：勾了「启用」才算数 */
   rec.formLabel = q('mFormLabel').value.trim() || '';
-  if (f2) rec.form2 = f2;
-  if (editId){ var e = byId(editId); for (var k in rec) e[k] = rec[k]; } else { rec.id = uid(); state.entries.push(rec); }
+  if (form2On()) rec.form2 = { label: q('mForm2Label').value.trim() || '第二形态', vals: mS2.slice(), use: mUse2.slice() };
+  if (editId){ var e = byId(editId); for (var k in rec) e[k] = rec[k];
+    if (!rec.form2) delete e.form2; }                     /* 取消启用时清掉旧数据 */
+  else { rec.id = uid(); state.entries.push(rec); }
   save(); closeEditor(); render();
 }
 function download(name, text, mime){
@@ -1388,6 +1422,20 @@ function applyRail(){
   var f = q('btnFold'); if (f) f.textContent = railFold ? '☰ 展开功能区' : '☰ 功能区';
 }
 
+/* 所有 number 输入框都支持滚轮微调（含 0–200 限制与 step） */
+document.addEventListener('wheel', function(ev){
+  var t = ev.target;
+  if (!t || t.tagName !== 'INPUT' || t.type !== 'number' || t.readOnly) return;
+  var step = parseFloat(t.step) || 1;
+  var v = parseFloat(t.value); if (isNaN(v)) v = parseFloat(t.min) || 0;
+  v += (ev.deltaY < 0 ? step : -step);
+  var mn = (t.min === '' ? -Infinity : parseFloat(t.min)), mx = (t.max === '' ? Infinity : parseFloat(t.max));
+  v = Math.max(mn, Math.min(mx, Math.round(v * 1000) / 1000));
+  t.value = v;
+  t.dispatchEvent(new Event('input', { bubbles:true }));
+  t.dispatchEvent(new Event('change', { bubbles:true }));
+  ev.preventDefault();
+}, { passive:false });
 function bind(){
   q('q').addEventListener('input', function(){ state.q = this.value; render(); });
   q('fSide').addEventListener('change', function(){ state.side = this.value; render(); });
