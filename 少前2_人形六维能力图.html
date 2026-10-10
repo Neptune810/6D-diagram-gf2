@@ -409,14 +409,21 @@ svg.net{display:block;width:100%;height:auto}
 var GRADES = ['E','D','C','B','A','S','SS','ULTRA'];
 var DIMS = ['火力','电子战能力','搏斗能力','素体强度','速度','战术能力'];
 var DSHORT = ['火力','电子战','搏斗','素体','速度','战术'];
-var GCOLOR = ['#7c8b99','#93a9bb','#5fc7bd','#a8d34e','#ffd24a','#ff5a5f','#eaf6ff','#e08cff'];
-/* 档位配色：E–A 保持原样；S＝超凡大师（绛红＋金），SS＝最强王者（金白蓝，表面发亮），ULTRA＝五彩斑斓 */
+/* 档位配色＝LoL 现役段位徽章取色（CommunityDragon 图标采样，按暗底可读性提亮后转三段渐变）：
+   E 黑铁 iron｜D 黄铜 bronze｜C 白银 silver｜B 铂金 platinum｜A 钻石 diamond
+   S 超凡大师 master（紫）｜SS 最强王者 challenger（金，偏黄）｜ULTRA 五彩斑斓 */
+var GCOLOR = ['#8b8481','#bd7550','#a4b7cd','#2fbfd6','#3f8ef2','#b44ef2','#ffd23f','#e08cff'];
 var GGRAD = {
-  S:     ['#ffd166','#ff7a4d','#d92e46'],
-  SS:    ['#ffe9a8','#ffffff','#7fd8ff'],
+  E:     ['#cbc7c4','#8b8481','#57514f'],
+  D:     ['#f5b189','#bd7550','#7d472c'],
+  C:     ['#eef5ff','#a4b7cd','#63758c'],
+  B:     ['#9cf2e4','#2fbfd6','#1a7f9c'],
+  A:     ['#bcdcff','#3f8ef2','#234f9e'],
+  S:     ['#e6bcff','#b44ef2','#7826b8'],
+  SS:    ['#fffbe0','#ffd23f','#f2a51a'],
   ULTRA: ['#ff4d6d','#ffb84d','#ffe95c','#5fe0a0','#5fc7ff','#b06bff']
 };
-var GGRAD_ANGLE = { S:'120deg', SS:'105deg', ULTRA:'80deg' };
+var GGRAD_ANGLE = { E:'150deg', D:'135deg', C:'140deg', B:'135deg', A:'130deg', S:'120deg', SS:'105deg', ULTRA:'80deg' };
 function gradList(g){ return GGRAD[g].join(','); }
 function gradeStyle(g){ return GGRAD[g]
   ? 'color:' + GCOLOR[GRADES.indexOf(g)] + ';background-image:linear-gradient(' + (GGRAD_ANGLE[g]||'110deg') + ',' + gradList(g) + ');-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent'
